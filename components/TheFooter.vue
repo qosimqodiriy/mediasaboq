@@ -14,11 +14,11 @@
           </div>
         </div>
         <div class="socs">
-          <a href="#" class="soc"><i class="bx bxl-youtube"></i></a>
-          <a href="#" class="soc"><i class="bx bxl-telegram"></i></a>
-          <a href="#" class="soc"><i class="bx bxl-facebook"></i></a>
-          <a href="#" class="soc"><i class="bx bxl-twitter"></i></a>
-          <a href="#" class="soc"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="soc"> <img src="../assets/icons/youTube.png" alt="" /> </a>
+          <a href="#" class="soc"> <img src="../assets/icons/telegram.png" alt="" /> </a>
+          <a href="#" class="soc"> <img src="../assets/icons/facebook.png" alt="" /> </a>
+          <a href="#" class="soc"> <img src="../assets/icons/twitter.png" alt="" /> </a>
+          <a href="#" class="soc"> <img src="../assets/icons/instagram.png" alt="" /> </a>
         </div>
       </div>
       <div class="bottom">
@@ -33,8 +33,36 @@
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   name: 'TheFooter',
+
+  // data() {
+  //   return {
+  //     socials: [],
+  //   }
+  // },
+
+  // methods: {
+  //   async getLinks() {
+  //     const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
+  //     console.log(res.data)
+  //     this.socials = res.data
+  //     console.log(socials)
+  //   },
+  // },
+
+  // mounted() {
+  //   this.getLinks()
+  // },
+
+  // async asyncData() {
+  //   const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
+  //   console.log(res);
+  //   const links = res.data
+  //   console.log(links);
+  //   return { links }
+  // },
 }
 </script>
 
@@ -58,6 +86,10 @@ export default {
 .link {
   color: white;
   margin-right: 40px;
+}
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .link:last-child {
   margin-right: 0;

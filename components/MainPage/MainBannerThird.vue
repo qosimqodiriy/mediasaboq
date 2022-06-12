@@ -1,0 +1,104 @@
+<template>
+  <div class="wrap">
+    <!-- <div class="category">
+      <p class="name">Kategoriya</p>
+    </div> -->
+    <div class="img">
+      <img src="@/assets/img/book.jpg" alt="" class="pic" />
+    </div>
+    <div class="content">
+      <div class="mid">
+        <p class="time">Kel Nyuport</p>
+      </div>
+      <h4 class="txt">
+        Diqqat: Chalg‘ituvchi dunyoda muvaffaqiyat sirlari haqida
+      </h4>
+      <div class="download">
+        <a href="#" download class="btn">
+          Yuklab olish <img src="../../assets/icons/download.png" alt="">
+        </a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'BookBanner',
+}
+</script>
+
+<style scoped>
+.wrap {
+  position: relative;
+  border: 2px solid var(--black);
+  filter: var(--shadow);
+}
+.category {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  background: white;
+  border-bottom: 2px solid var(--orange);
+  padding: 10px 20px;
+}
+.img,
+.seen,
+.time {
+  gap: 5px;
+  display: flex;
+  align-items: center;
+}
+.pic {
+  width: 100%;
+  height: 540px;
+  object-fit: cover;
+  border-bottom: 2px solid black;
+}
+.seen,
+.time {
+  opacity: 0.6;
+}
+.content {
+  background: transparent;
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  width: 100%;
+  color: black;
+}
+.txt {
+  font-size: var(--30px);
+  font-weight: 600;
+  line-height: 44px;
+}
+.link {
+  color: black;
+}
+.link:hover {
+  color: black;
+}
+.mid {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 0 10px 0;
+}
+.btn {
+  background: var(--orange);
+  color: white;
+  font-size: var(--12px);
+  width: 240px;
+  padding: 1rem 0;
+  border-radius: 0;
+  margin-top: 40px;
+}
+.btn:focus {
+  box-shadow: none;
+}
+@media screen and (max-width: 1024px) {
+  .txt {
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+</style>
