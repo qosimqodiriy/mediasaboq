@@ -3,7 +3,15 @@
     <div class="container p-0">
       <h1 class="title">Kutubxona</h1>
       <div class="grid">
-        <SecondCard v-for="item in list" :key="item.id" :item="item" />
+        <nuxt-link
+          class="link flex"
+          :to="`/books/${item.id}`"
+          v-for="item in list"
+          :key="item.id"
+          @click.native="scrollToTop"
+        >
+          <SecondCard :item="item" />
+        </nuxt-link>
       </div>
       <div class="load">
         <button class="btn" v-if="offset < count - 6" @click="loadMedia">
@@ -28,11 +36,15 @@ export default {
     return {
       offset: 0,
       list: [],
-      count: 0
+      count: 0,
     }
   },
 
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
+    
     loadMedia() {
       this.offset = this.offset + 6
       if (this.offset < this.count) {
@@ -40,20 +52,17 @@ export default {
       }
     },
     async getBooks() {
-    const res = await axios.get('http://mediasaboq.uz/api/v1/books', {
-      params: {
-        size: 6,
-        offset: this.offset,
-        type: 4
-      }
-    })
-    // console.log(res.data.list);
-    this.count = res.data.count
-    this.list = [
-        ...this.list,
-        ...res.data.list
-    ]
-  }
+      const res = await axios.get('http://mediasaboq.uz/api/v1/books', {
+        params: {
+          size: 6,
+          offset: this.offset,
+          type: 4,
+        },
+      })
+      // console.log(res.data.list);
+      this.count = res.data.count
+      this.list = [...this.list, ...res.data.list]
+    },
   },
 
   mounted() {

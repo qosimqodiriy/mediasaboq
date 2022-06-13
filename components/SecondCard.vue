@@ -1,13 +1,12 @@
 <template>
   <div class="whole">
-    <a :href="item.url" download>
+    <div>
       <div  class="imgBox">
         <div class="imgDown"></div>
         <img src="../assets/img/book2.png" alt="" class="pic" />
-        <img src="@/assets/img/download.png" alt="" class="imgDown" />
       </div>
-    </a>
-    <nuxt-link class="link" :to="`/books/${item.id}`" @click.native="scrollToTop">
+    </div>
+    <div>
       <!-- <div class="mid">
           <p class="name">Kategoriya nomi</p>
         </div> -->
@@ -17,20 +16,14 @@
           <p class="txt">{{ item.bookAuthor }}</p>
         </div>
       </div>
-    </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'SecondCard',
-
-  methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0)
-    },
-  },
-
+  
   props: {
     item: {
       required: true,
@@ -55,13 +48,7 @@ export default {
   justify-content: center;
   position: relative;
 }
-.imgDown {
-  display: none;
-  position: absolute;
-}.imgBox:hover .imgDown {
-  display: block;
-  animation: identifier 0.2s ease-out;
-}
+
 @keyframes identifier {
   0% {
     opacity: 0.1;

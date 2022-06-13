@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import MainBannerThird from '../../components/MainPage/MainBannerThird.vue'
+import MainBannerThird from '@/components/MainPage/MainBannerThird.vue'
 export default {
   name: 'BookInner',
   components: { MainBannerThird },

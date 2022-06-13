@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .wrap {
-  min-height: 90vh;
+  min-height: calc(100vh - 67px);
 }
 .grid {
   display: grid;

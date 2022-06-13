@@ -5,7 +5,7 @@
       <div class="grid">
         <nuxt-link
           :to="`/authors/${item.id}`"
-          class="link"
+          class="link flex"
           v-for="item in data.list"
           :key="item.id"
           @click.native="scrollToTop"

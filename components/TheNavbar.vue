@@ -21,17 +21,14 @@
           <nuxt-link class="link" @click.native="scrollToTop" to="/media">
             Media loyihalar
           </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/online-edu">
+          <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar">
             Onlayn darslar</nuxt-link
           >
         </div>
-        <!-- <div class="search">
-          <input type="search" class="input" id="search" />
-          <label class="label" for="search"
-            ><img src="@/assets/img/search.svg" alt=""
-          /></label>
-        </div> -->
       </div>
+      <nuxt-link class="search" to="/qidirish">
+        <img src="@/assets/img/search.svg" alt="" />
+      </nuxt-link>
 
       <div
         class="burger"

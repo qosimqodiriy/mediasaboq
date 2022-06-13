@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'MediaSaboq',
+    title: 'Media Saboq',
     htmlAttrs: {
       lang: 'en',
     },
@@ -52,7 +52,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/style',],
+  css: ['@/assets/css/style'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

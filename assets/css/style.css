@@ -224,6 +224,7 @@ select {
 
 .link {
   color: #010E38;
+  cursor: pointer;
 }
 
 .link:hover {

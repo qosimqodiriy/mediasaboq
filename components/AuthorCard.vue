@@ -1,7 +1,7 @@
 <template>
-  <div class="whole">
+  <div class="whole flex w-full">
     <!-- <nuxt-link class="link" to="/" @click.native="scrollToTop"> -->
-      <div class="asap">
+      <div class="asap flex-auto">
         <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
         <div class="bottom">
           <p class="title__lil">{{ item.name }}</p>

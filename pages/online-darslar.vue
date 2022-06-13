@@ -19,19 +19,22 @@
 
 <style scoped>
 .body {
-  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: url('../assets/img/onlineBg.png') no-repeat top center;
   background-size: cover;
 }
 .container {
   padding: 0;
   display: flex;
+  width: 100%;
+  height: calc(100vh - 231px);
   align-items: center;
   justify-content: center;
 }
 .container__inner {
   width: 804px;
-  height: calc(100vh - 70px);
   display: flex;
   margin: 0 auto;
   align-items: center;

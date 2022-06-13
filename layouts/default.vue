@@ -1,9 +1,11 @@
 <template>
-  <div>
+  <div class="flex flex-col min-h-screen">
     <TheNavbar />
-    <transition>
+    <div class="flex-auto">
+      <transition>
       <nuxt />
     </transition>
+    </div>
     <TheFooter />
   </div>
 </template>
