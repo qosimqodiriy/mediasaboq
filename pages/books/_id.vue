@@ -5,11 +5,11 @@
       <nuxt-link class="last-page" to="/books">/ Kutubxona </nuxt-link>
       <p class="this-page">/ Diqqat</p>
     </div>
-    <div class="row">
-      <div class="col-md-6 col-xs-12">
+    <div class="row grid-cols-1 lg:grid-cols-2">
+      <div class="">
         <MainBannerThird />
       </div>
-      <div class="col-md-6 col-xs-12 left">
+      <div class="">
         <div class="content">
           <p class="lil-title">Kitob haqida</p>
           <p>Qadrli maktab bitiruvchilari!
@@ -43,7 +43,7 @@
 <script>
 import MainBannerThird from '../../components/MainPage/MainBannerThird.vue'
 export default {
-  name: 'BookInnerName',
+  name: 'BookInner',
   components: { MainBannerThird },
 }
 </script>
@@ -51,6 +51,10 @@ export default {
 <style scoped>
 .container {
   padding-bottom: 80px !important;
+}
+.row {
+  gap: 20px;
+  display: grid;
 }
 .content p {
   font-size: var(--18px);

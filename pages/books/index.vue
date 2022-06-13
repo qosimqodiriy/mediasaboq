@@ -16,7 +16,7 @@
 
 <script>
 import axios from 'axios'
-import SecondCard from '../components/SecondCard'
+import SecondCard from '@/components/SecondCard'
 export default {
   name: 'BooksPage',
 
@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
 .wrap {
-  min-height: 70vh;
+  min-height: 90vh;
 }
 .title {
   padding: 40px 0 20px 0;

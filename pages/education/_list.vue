@@ -3,17 +3,16 @@
     <div class="container p-0">
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-        <nuxt-link class="last-page" to="/edu">/ Ta’lim </nuxt-link>
-        <p class="this-page">/ Video-o‘yinlar savodxonligi</p>
+        <nuxt-link class="last-page" to="/education">/ Ta’lim </nuxt-link>
+        <p class="this-page">/ {{ name }}</p>
       </div>
       <div class="grid">
-        <FirstCard />
-        <FirstCard />
-        <FirstCard />
-        <FirstCard />
+        <!-- <nuxt-link to="/education" v-for="item in list" :key="item.id"> -->
+          <FirstCard :item="item" />
+        <!-- </nuxt-link> -->
       </div>
       <div class="load">
-        <button class="btn">
+        <button class="btn" v-if="offset < count - 6" @click="loadMedia">
           Boshqa yangiliklar
           <img src="@/assets/img/refresh.svg" alt="" />
         </button>
@@ -23,13 +22,67 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
 export default {
   name: 'EducationInner',
 
+  data() {
+    return {
+      id: null,
+      slug: '',
+      name: '',
+      offset: 0,
+      list: [],
+      count: 0,
+    }
+  },
+
   components: {
     FirstCard,
+  },
+
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
+
+    loadMedia() {
+      this.offset = this.offset + 6
+      if (this.offset < this.count) {
+        this.getMedia()
+      }
+    },
+
+    async getEducation() {
+      const res = await axios.get(
+        `http://mediasaboq.uz/api/v1/articles?&category=${this.id}`,
+        {
+          params: {
+            size: 6,
+            offset: this.offset,
+            type: 2,
+          },
+        }
+      )
+      console.log(res.data)
+      this.list = [
+        ...this.list,
+        ...res.data.list
+      ]
+      // console.log(this.list)
+    },
+  },
+
+  mounted() {
+    this.getEducation()
+    this.id = this.$route.query.id
+    this.name = this.$route.query.category
+    this.slug = this.$route.params.list
+    
+    // console.log(this.$route.query)
+    // console.log(this.$route.params);
   },
 }
 </script>
@@ -115,6 +168,12 @@ export default {
   .load {
     padding: 2rem 0;
   }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
   }

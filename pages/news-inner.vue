@@ -6,8 +6,8 @@
         / Shavkat Mirziyoyev maktab bitiruvchilarini tabrikladi
       </p>
     </div>
-    <div class="row">
-      <div class="col-md-8 col-xs-12">
+    <div class="row grid-cols-1 lg:grid-cols-3">
+      <div class="lg:col-span-2">
         <MainBannerSec />
         <div class="content">
           <p>
@@ -49,7 +49,7 @@
           </div>
         </div> -->
       </div>
-      <div class="col-md-4 col-xs-12 left">
+      <div class="">
         <MainPopular />
       </div>
     </div>
@@ -72,6 +72,10 @@ export default {
 <style scoped>
 .container {
   padding-bottom: 80px !important;
+}
+.row {
+  gap: 20px;
+  display: grid;
 }
 .person img {
   width: 70px;

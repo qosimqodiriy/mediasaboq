@@ -3,7 +3,7 @@
     <div class="container p-0">
       <div class="top">
         <h3 class="title">Ta’lim</h3>
-        <nuxt-link class="next" to="/edu">
+        <nuxt-link class="next" to="/edu" @click.native="scrollToTop">
           Barchasi <img src="../../assets/icons/arrow.png" alt="">
         </nuxt-link>
       </div>
@@ -11,11 +11,9 @@
         <FirstCard />
         <FirstCard />
         <FirstCard />
-        <FirstCard />
-        <FirstCard />
       </div>
       <div class="load">
-        <nuxt-link class="btn"  to="/media-blog">
+        <nuxt-link class="btn"  to="/media-blog" @click.native="scrollToTop">
           Boshqa yangiliklar
         </nuxt-link>
       </div>

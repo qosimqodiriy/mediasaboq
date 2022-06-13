@@ -1,10 +1,10 @@
 <template>
   <div class="wrap">
     <div class="container p-0">
-      <h1 class="title">Mualliflar llk</h1>
+      <h1 class="title">Mualliflar</h1>
       <div class="grid">
         <nuxt-link
-          to="/"
+          :to="`/authors/${item.id}`"
           class="link"
           v-for="item in data.list"
           :key="item.id"
@@ -19,7 +19,7 @@
 
 <script>
 import axios from 'axios'
-import AuthorCard from '../components/AuthorCard'
+import AuthorCard from '@/components/AuthorCard'
 export default {
   name: 'BooksPage',
 

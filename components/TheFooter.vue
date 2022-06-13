@@ -4,21 +4,21 @@
       <div class="top">
         <div class="better">
           <div class="brand">
-            <nuxt-link to="/">
+            <nuxt-link to="/" @click.native="scrollToTop">
               <img src="@/assets/img/brand.svg" alt="" />
             </nuxt-link>
           </div>
           <div class="links">
-            <nuxt-link class="link" to="/">Biz haqimizda</nuxt-link>
-            <nuxt-link class="link" to="/authors">Mualliflar</nuxt-link>
+            <nuxt-link class="link" to="/aboutAs" @click.native="scrollToTop">Biz haqimizda</nuxt-link>
+            <nuxt-link class="link" to="/authors" @click.native="scrollToTop">Mualliflar</nuxt-link>
           </div>
         </div>
         <div class="socs">
-          <a href="#" class="soc"> <img src="../assets/icons/youTube.png" alt="" /> </a>
-          <a href="#" class="soc"> <img src="../assets/icons/telegram.png" alt="" /> </a>
+          <a href="#" v-for="link in list" :key="link.id"> <img class="soc" :src="`http://mediasaboq.uz/${link.icon}`" alt="" /> </a>
+          <!-- <a href="#" class="soc"> <img src="../assets/icons/telegram.png" alt="" /> </a>
           <a href="#" class="soc"> <img src="../assets/icons/facebook.png" alt="" /> </a>
           <a href="#" class="soc"> <img src="../assets/icons/twitter.png" alt="" /> </a>
-          <a href="#" class="soc"> <img src="../assets/icons/instagram.png" alt="" /> </a>
+          <a href="#" class="soc"> <img src="../assets/icons/instagram.png" alt="" /> </a> -->
         </div>
       </div>
       <div class="bottom">
@@ -33,36 +33,33 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   name: 'TheFooter',
 
-  // data() {
-  //   return {
-  //     socials: [],
-  //   }
-  // },
+  data() {
+    return {
+      list: [],
+    }
+  },
 
-  // methods: {
-  //   async getLinks() {
-  //     const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
-  //     console.log(res.data)
-  //     this.socials = res.data
-  //     console.log(socials)
-  //   },
-  // },
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
+    async getSocials() {
+    const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
+    // console.log(res.data);
+    this.list = [
+        ...res.data
+    ]
+    // console.log(this.list)
+  }
+  },
 
-  // mounted() {
-  //   this.getLinks()
-  // },
-
-  // async asyncData() {
-  //   const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
-  //   console.log(res);
-  //   const links = res.data
-  //   console.log(links);
-  //   return { links }
-  // },
+  mounted() {
+    this.getSocials()
+  },
 }
 </script>
 
@@ -102,8 +99,10 @@ export default {
   justify-content: center;
 }
 .soc {
-  color: white;
-  font-size: 28px;
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+  object-position: center;
 }
 .txt {
   text-align: center;

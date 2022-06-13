@@ -1,14 +1,14 @@
 <template>
   <div class="cardo">
-    <nuxt-link class="link" to="/edu-inner">
+    <!-- <nuxt-link class="link" :to="`/education/${item.id}`">  -->
       <img src="@/assets/img/card-1.jpg" class="pic" alt="" />
       <div class="content">
-        <p class="txt">{{ title }}</p>
+        <p class="txt">{{ item.name }}</p>
         <p class="arrow">
-          <i class="bx bx-up-arrow-alt"></i>
+          <img src="../../assets/icons/arrowUp.png" alt="">
         </p>
       </div>
-    </nuxt-link>
+    <!-- </nuxt-link> -->
   </div>
 </template>
 
@@ -16,26 +16,10 @@
 export default {
   name: 'EduMainCard',
 
-  props: ['title'],
-
-  data() {
-    return {
-      description: 'A blog post about some stuff',
-    }
-  },
-  
-  metaInfo() {
-    return {
-      title: this.title,
-      meta: [
-        { vmid: 'description', name: 'description', content: this.description },
-      ],
-    }
-  },
-
-  methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0)
+  props: {
+    item: {
+      required: true,
+      type: Object,
     },
   },
 }
@@ -76,10 +60,10 @@ export default {
 .arrow {
   color: black;
   font-size: 28px;
-  transform: rotate(45deg);
+  /* transform: rotate(45deg); */
   transition: 0.3s;
 }
 .cardo:hover .arrow {
-  transform: translateY(-5px) translateX(5px) rotate(45deg);
+  transform: translateY(-5px) translateX(5px);
 }
 </style>

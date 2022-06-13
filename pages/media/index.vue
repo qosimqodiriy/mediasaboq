@@ -7,7 +7,7 @@
         </div>
         <div class="grid">
           <nuxt-link
-            to="`/media/${item.id}`"
+            :to="`/media/${item.id}`"
             v-for="item in list"
             :key="item.id"
             @click.native="scrollToTop"
@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .wrap {
-  min-height: 70vh;
+  min-height: 90vh;
 }
 .grid {
   display: grid;

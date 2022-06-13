@@ -3,12 +3,11 @@
     <div class="container p-0">
       <div class="top">
         <h3 class="title">Media blog</h3>
-        <nuxt-link class="next" to="/">
+        <nuxt-link class="next" to="/media-blog" @click.native="scrollToTop">
           Barchasi <img src="../../assets/icons/arrow.png" alt="">
         </nuxt-link>
       </div>
       <div class="grid">
-        <FirstCard />
         <FirstCard />
         <FirstCard />
         <FirstCard />
@@ -24,6 +23,12 @@ export default {
 
   components: {
     FirstCard,
+  },
+
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
   },
 }
 </script>

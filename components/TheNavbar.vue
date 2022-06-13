@@ -12,7 +12,7 @@
           <nuxt-link class="link" @click.native="scrollToTop" to="/media-blog">
             Media blog
           </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/edu">
+          <nuxt-link class="link" @click.native="scrollToTop" to="/education">
             Ta’lim
           </nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/books">

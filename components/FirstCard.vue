@@ -18,6 +18,8 @@
           DTMning ma’lum qilishicha, test sinovlarini o‘tkazish uchun binolar
           ro‘yxati 2 xil variantda shakllantirilgan. Agar pand...
         </p>
+         <!-- <p class="title__lil">{{ item.title }}</p> -->
+        <!-- <p class="txt">{{ item.description }}</p> -->
       </div>
     </div>
     <!-- </nuxt-link> -->

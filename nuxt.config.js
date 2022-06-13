@@ -1,7 +1,7 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: true,
-  
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'MediaSaboq',
@@ -13,6 +13,40 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: '-',
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: '-',
+      },
+      {
+        hid: 'og_title',
+        property: 'og:title',
+        content: 'Media Saboq',
+      },
+      {
+        property: 'og:site_name',
+        content: 'Media Saboq',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: '-',
+      },
+      {
+        hid: 'og_type',
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },

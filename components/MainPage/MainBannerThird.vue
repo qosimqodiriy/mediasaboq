@@ -87,10 +87,14 @@ export default {
   background: var(--orange);
   color: white;
   font-size: var(--12px);
-  width: 240px;
-  padding: 1rem 0;
+  /* width: 240px; */
+  padding: 1rem 60px;
   border-radius: 0;
   margin-top: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 5px;
 }
 .btn:focus {
   box-shadow: none;

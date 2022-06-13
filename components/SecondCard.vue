@@ -1,23 +1,20 @@
 <template>
   <div class="whole">
-    <a href="#" download>
+    <a :href="item.url" download>
       <div  class="imgBox">
         <div class="imgDown"></div>
         <img src="../assets/img/book2.png" alt="" class="pic" />
         <img src="@/assets/img/download.png" alt="" class="imgDown" />
       </div>
     </a>
-    <nuxt-link class="link" to="/book-inner" @click.native="scrollToTop">
+    <nuxt-link class="link" :to="`/books/${item.id}`" @click.native="scrollToTop">
       <!-- <div class="mid">
           <p class="name">Kategoriya nomi</p>
         </div> -->
       <div class="asap">
         <div class="bottom">
-          <p class="title__lil">
-            Abituriyentlarni nimalar kutyapti? - imtihonlar bo‘yicha asosiy
-            yangiliklar
-          </p>
-          <p class="txt">Kel Nyuport</p>
+          <p class="title__lil">{{ item.description }}</p>
+          <p class="txt">{{ item.bookAuthor }}</p>
         </div>
       </div>
     </nuxt-link>
@@ -34,12 +31,12 @@ export default {
     },
   },
 
-  // props: {
-  //   item: {
-  //     required: true,
-  //     type: Object,
-  //   },
-  // },
+  props: {
+    item: {
+      required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 
