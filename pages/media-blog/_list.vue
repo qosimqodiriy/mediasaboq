@@ -3,13 +3,13 @@
     <div class="container p-0">
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-        <nuxt-link class="last-page" to="/education">/ Ta’lim </nuxt-link>
+        <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
         <p class="this-page">/ {{ name }}</p>
       </div>
       <div class="grid">
-        <!-- <nuxt-link to="/education" v-for="item in list" :key="item.id"> -->
+        <nuxt-link :to="`/media-blog/post/${item.id}`" v-for="item in list" :key="item.id">
           <FirstCard :item="item" />
-        <!-- </nuxt-link> -->
+        </nuxt-link>
       </div>
       <div class="load">
         <button class="btn" v-if="offset < count - 6" @click="loadMedia">
@@ -26,7 +26,7 @@ import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
 export default {
-  name: 'EducationInner',
+  name: 'MediaBlogInner',
 
   data() {
     return {
@@ -51,11 +51,11 @@ export default {
     loadMedia() {
       this.offset = this.offset + 6
       if (this.offset < this.count) {
-        this.getMedia()
+        this.getMediaBlog()
       }
     },
 
-    async getEducation() {
+    async getMediaBlog() {
       const res = await axios.get(
         `http://mediasaboq.uz/api/v1/articles?&category=${this.id}`,
         {
@@ -76,7 +76,7 @@ export default {
   },
 
   mounted() {
-    this.getEducation()
+    this.getMediaBlog()
     this.id = this.$route.query.id
     this.name = this.$route.query.category
     this.slug = this.$route.params.list

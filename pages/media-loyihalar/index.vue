@@ -7,7 +7,7 @@
         </div>
         <div class="grid">
           <nuxt-link
-            :to="`/media/${item.id}`"
+            :to="`/media-loyihalar/${item.id}`"
             v-for="item in list"
             :key="item.id"
             @click.native="scrollToTop"

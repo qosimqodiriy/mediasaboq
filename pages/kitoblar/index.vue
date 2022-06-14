@@ -5,7 +5,7 @@
       <div class="grid">
         <nuxt-link
           class="link flex"
-          :to="`/books/${item.id}`"
+          :to="`/kitoblar/${item.id}`"
           v-for="item in list"
           :key="item.id"
           @click.native="scrollToTop"
@@ -14,7 +14,7 @@
         </nuxt-link>
       </div>
       <div class="load">
-        <button class="btn" v-if="offset < count - 6" @click="loadMedia">
+        <button class="btn" v-if="offset < count - 8" @click="loadMedia">
           Boshqa kitoblar <img src="@/assets/img/refresh.svg" alt="" />
         </button>
       </div>
@@ -46,15 +46,15 @@ export default {
     },
     
     loadMedia() {
-      this.offset = this.offset + 6
+      this.offset = this.offset + 8
       if (this.offset < this.count) {
-        this.getMedia()
+        this.getBooks()
       }
     },
     async getBooks() {
       const res = await axios.get('http://mediasaboq.uz/api/v1/books', {
         params: {
-          size: 6,
+          size: 8,
           offset: this.offset,
           type: 4,
         },

@@ -1,47 +1,31 @@
 <template>
-  <div>
-    <div class="wrap">
-      <div class="container p-0">
-        <div class="top">
-          <h3 class="title">Media Blog</h3>
-        </div>
-        <div class="grid">
-          <nuxt-link
-            class="link"
-            :to="`/media-blog/${item.id}`"
-            v-for="item in list"
-            :key="item.id"
-            @click.native="scrollToTop"
-          >
-            <FirstCard />
-          </nuxt-link>
-        </div>
-        <div class="load">
-          <button class="btn" v-if="offset < count - 6" @click="loadMedia">
-            Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="" />
-          </button>
-        </div>
+  <div class="wrap">
+    <div class="container p-0">
+      <h1 class="title">Media Blog</h1>
+      <div class="grid">
+        <nuxt-link
+          v-for="item in list"
+          :key="item.id"
+          :to="`/media-blog/${item.slug}?id=${item.id}&category=${item.name}`"
+        >
+          <EduMainCard :item="item" />
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
-import FirstCard from '../../components/FirstCard.vue'
-
+import EduMainCard from '@/components/EduPage/EduMainCard.vue'
 export default {
-  name: 'MediaProjekts',
+  name: 'MediaBlog',
 
-  components: {
-    FirstCard,
-  },
+  components: { EduMainCard },
 
   data() {
     return {
-      offset: 0,
       list: [],
-      count: 0
     }
   },
 
@@ -49,117 +33,42 @@ export default {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
-    loadMedia() {
-      this.offset = this.offset + 6
-      if (this.offset < this.count) {
-        this.getMedia()
-      }
+
+    async getMediaBlog() {
+      const res = await axios.get(
+        'http://mediasaboq.uz/api/v1/categories?type=1&lang=uz'
+      )
+      // console.log(res.data.list)
+      this.list = res.data.list
+      // console.log(this.list)
     },
-    async getMedia() {
-    const res = await axios.get('http://mediasaboq.uz/api/v1/articles', {
-      params: {
-        size: 6,
-        offset: this.offset,
-        type: 1
-      }
-    })
-    // console.log(res.data.list);
-    this.count = res.data.count
-    this.list = [
-        ...this.list,
-        ...res.data.list
-    ]
-    // console.log(this.list)
-  }
   },
 
   mounted() {
-    this.getMedia()
+    this.getMediaBlog()
   },
 }
 </script>
 
 <style scoped>
 .wrap {
+  padding: 40px 0;
   min-height: 90vh;
 }
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 40px 0 20px 0;
-}
-.next {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: black;
-  font-weight: 500;
-  font-size: var(--18px);
-  position: relative;
-  transition: 0.3s;
-}
-.next::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 75%;
-  height: 2px;
-  background: black;
-  transition: 0.3s;
-  opacity: 0;
-  visibility: hidden;
-}
-.next:hover {
-  text-decoration: none !important;
-}
-.next:hover.next::after {
-  opacity: 1;
-  visibility: visible;
-}
-.load {
-  padding: 80px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 392px;
-  padding: 20px 0;
-  background: var(--orange);
-  gap: 10px;
-  color: white;
-  font-weight: 500;
-  font-size: 15px;
-  border-radius: 0;
-  box-shadow: var(--shadow);
-}
-.btn img {
-  transition: 1s;
-}
-.btn:hover img {
-  transform: rotate(-360deg);
+  gap: 20px;
+  padding: 20px 0 0;
 }
 
 @media screen and (max-width: 1024px) {
-  .load {
-    padding: 2rem 0;
-  }
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
   }

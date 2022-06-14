@@ -12,13 +12,13 @@
           <nuxt-link class="link" @click.native="scrollToTop" to="/media-blog">
             Media blog
           </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/education">
+          <nuxt-link class="link" @click.native="scrollToTop" to="/talim">
             Ta’lim
           </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/books">
+          <nuxt-link class="link" @click.native="scrollToTop" to="/kitoblar">
             Kutubxona</nuxt-link
           >
-          <nuxt-link class="link" @click.native="scrollToTop" to="/media">
+          <nuxt-link class="link" @click.native="scrollToTop" to="/media-loyihalar">
             Media loyihalar
           </nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar">

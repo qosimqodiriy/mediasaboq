@@ -6,7 +6,7 @@
         <nuxt-link
           v-for="item in list"
           :key="item.id"
-          :to="`/education/${item.slug}?id=${item.id}&category=${item.name}`"
+          :to="`/talim/${item.slug}?id=${item.id}&category=${item.name}`"
         >
           <EduMainCard :item="item" />
         </nuxt-link>

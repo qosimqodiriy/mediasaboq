@@ -61,7 +61,7 @@
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
 import MainPopular from '@/components/MainPage/MainPopular'
 export default {
-  name: 'NewsInner',
+  name: 'MediaBlogPost',
 
   components: {
     MainBannerSec,

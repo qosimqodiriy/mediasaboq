@@ -2,7 +2,7 @@
   <div class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-      <nuxt-link class="last-page" to="/books">/ Kutubxona </nuxt-link>
+      <nuxt-link class="last-page" to="/kitoblar">/ Kutubxona </nuxt-link>
       <p class="this-page">/ Diqqat</p>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-2">

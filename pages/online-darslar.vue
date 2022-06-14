@@ -7,14 +7,47 @@
           Agarda biz bilan pochta manzilingizni bo‘lishsangiz onlayn darslar
           imkoniyatimiz ishga tushganda sizga o‘zimiz xabar beramiz!
         </p>
-        <div class="contact-box">
-          <input class="input" type="email" placeholder="Pochta manzilingiz" autocomplete="false" />
-          <button class="btn" type="submit">Ma’lumotni qoldirish</button>
-        </div>
+        <form class="contact-box">
+          <input class="input" type="text" v-model="EmailValue" placeholder="Pochta manzilingiz" autocomplete="false" required />
+          <button class="btn" type="submit" @click="PostEmail">Ma’lumotni qoldirish</button>
+        </form>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+export default {
+  name: 'OnlineDarslar',
+
+  data() {
+    return {
+      EmailValue: "",
+    }
+  },
+
+  methods: {
+    PostEmail(event) {
+      event.preventDefault()
+      if(this.EmailValue.length !== 0) {
+        axios.post('http://mediasaboq.uz/api/v1/email', {
+          url: this.EmailValue,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        setTimeout(() => {
+          this.EmailValue = ''
+        }, 150)
+      }
+    }
+  }
+}
+</script>
 
 
 <style scoped>
@@ -29,7 +62,7 @@
   padding: 0;
   display: flex;
   width: 100%;
-  height: calc(100vh - 231px);
+  height: calc(100vh - 140px);
   align-items: center;
   justify-content: center;
 }
@@ -80,6 +113,17 @@ h1 {
   background: #ff6300;
   box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
 }
+/* .native {
+  position: fixed;
+  font-size: 18px;
+  bottom: 12%;
+  right: 5%;
+  display: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 7px;
+  background-color: #ff6300;
+} */
 
 @media screen and (max-width: 700px) {
   h1 {

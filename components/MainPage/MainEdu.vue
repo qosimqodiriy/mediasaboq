@@ -3,7 +3,7 @@
     <div class="container p-0">
       <div class="top">
         <h3 class="title">Ta’lim</h3>
-        <nuxt-link class="next" to="/edu" @click.native="scrollToTop">
+        <nuxt-link class="next" to="/talim" @click.native="scrollToTop">
           Barchasi <img src="../../assets/icons/arrow.png" alt="">
         </nuxt-link>
       </div>
@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 export default {
   name: 'MainEdu',
@@ -30,10 +31,29 @@ export default {
     FirstCard,
   },
 
+  data() {
+    return {
+      list: [],
+    }
+  },
+
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
+
+    async getTalim() {
+      const res = await axios.get(
+        'http://mediasaboq.uz/api/v1/articles?type=2&size=3'
+      )
+      // console.log(res.data.list)
+      this.list = res.data.list
+      // console.log(this.list)
+    },
+  },
+
+  mounted() {
+    this.getTalim()
   },
 }
 </script>

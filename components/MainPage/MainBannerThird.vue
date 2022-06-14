@@ -96,6 +96,9 @@ export default {
   justify-content: center;
   column-gap: 5px;
 }
+.btn:hover img {
+  transform: rotate(0deg);
+}
 .btn:focus {
   box-shadow: none;
 }

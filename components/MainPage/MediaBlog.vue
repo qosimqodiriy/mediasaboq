@@ -8,16 +8,18 @@
         </nuxt-link>
       </div>
       <div class="grid">
-        <FirstCard />
-        <FirstCard />
-        <FirstCard />
+        <nuxt-link :to="`/media-blog/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+          <FirstCard :item="item" />
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
+
 export default {
   name: 'MediaBlog',
 
@@ -25,10 +27,29 @@ export default {
     FirstCard,
   },
 
+  data() {
+    return {
+      list: [],
+    }
+  },
+
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
+
+    async getMediaBlog() {
+      const res = await axios.get(
+        'http://mediasaboq.uz/api/v1/articles?type=1&size=3'
+      )
+      // console.log(res.data.list)
+      this.list = res.data.list
+      // console.log(this.list)
+    },
+  },
+
+  mounted() {
+    this.getMediaBlog()
   },
 }
 </script>
