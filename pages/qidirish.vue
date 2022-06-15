@@ -23,7 +23,7 @@
       </div>
     </form>
     <div v-if="InputValue.length == 100000" class="flex-auto w-full h-full flex items-center justify-center pb-10">
-      <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!</p>
+      <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!!!!</p>
     </div>
     <div class="pb-10">
       <div class="tabs flex items-center justify-center gap-10">
@@ -50,6 +50,7 @@
         </div>
         <div v-bind:class="{ hidden: openTab !== 4, block: openTab === 4 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <FirstCard v-for="item in mediaLoyihalar.list" :key="item" :item="item"/>
             <FirstCard v-for="item in mediaLoyihalar.list" :key="item" :item="item"/>
           </div>
         </div>
