@@ -19,7 +19,7 @@ export default {
 .time {
   font-size: var(--12px);
   opacity: 0.6;
-  margin-bottom: 0.5rem;
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
   column-gap: 5px;

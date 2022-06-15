@@ -49,22 +49,20 @@
           </div>
         </div> -->
       </div>
-      <div class="">
-        <MainPopular />
-      </div>
+      <SimilarCard />
     </div>
   </div>
 </template>
 
 <script>
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
-import MainPopular from '@/components/MainPage/MainPopular'
+import SimilarCard from '@/components/SimilarCard.vue'
 export default {
   name: 'NewsInner',
 
   components: {
     MainBannerSec,
-    MainPopular,
+    SimilarCard,
   },
 }
 </script>

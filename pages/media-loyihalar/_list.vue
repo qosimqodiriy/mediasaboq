@@ -51,7 +51,7 @@
         </div>
       </div>
       <div class="">
-        <MainPopular />
+        <SimilarCard />
       </div>
     </div>
   </div>
@@ -59,13 +59,13 @@
 
 <script>
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
-import MainPopular from '@/components/MainPage/MainPopular'
+import SimilarCard from '@/components/SimilarCard.vue'
 export default {
   name: 'NewsInner',
 
   components: {
     MainBannerSec,
-    MainPopular,
+    SimilarCard,
   },
 }
 </script>

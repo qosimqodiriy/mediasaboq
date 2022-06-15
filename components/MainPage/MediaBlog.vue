@@ -17,40 +17,27 @@
 </template>
 
 <script>
-import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
 export default {
-  name: 'MediaBlog',
+  name: 'MainMediaBlog',
 
   components: {
     FirstCard,
   },
-
-  data() {
-    return {
-      list: [],
-    }
+  
+  props: {
+    list: {
+      required: true,
+      type: Array,
+    },
   },
 
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
-
-    async getMediaBlog() {
-      const res = await axios.get(
-        'http://mediasaboq.uz/api/v1/articles?type=1&size=3'
-      )
-      // console.log(res.data.list)
-      this.list = res.data.list
-      // console.log(this.list)
-    },
-  },
-
-  mounted() {
-    this.getMediaBlog()
-  },
+  }
 }
 </script>
 
@@ -67,7 +54,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 .next {
   display: flex;
