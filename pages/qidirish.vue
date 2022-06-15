@@ -22,10 +22,10 @@
         </div>
       </div>
     </form>
-    <div v-if="InputValue.length == 100000" class="flex-auto w-full h-full flex items-center justify-center pb-10">
+    <div v-if="InputValue.length < 3" class="flex-auto w-full h-full flex items-center justify-center pb-10">
       <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!!!!</p>
     </div>
-    <div class="pb-10">
+    <div v-if="InputValue.length > 2" class="pb-10">
       <div class="tabs flex items-center justify-center gap-10">
         <p class="pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
         <p class="pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
@@ -35,23 +35,22 @@
       <div class="pt-10">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <FirstCard v-for="item in mediaBlog.list" :key="item" :item="item" />
+            <FirstCard v-for="(item, index) in mediaBlog.list" :key="index" :item="item" />
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <FirstCard v-for="item in talim.list" :key="item" :item="item" />
+            <FirstCard v-for="(item, index) in talim.list" :key="index" :item="item" />
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            <SecondCard v-for="item in kitoblar.list" :key="item" :item="item" />
+            <SecondCard v-for="(item, index) in kitoblar.list" :key="index" :item="item" />
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 4, block: openTab === 4 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <FirstCard v-for="item in mediaLoyihalar.list" :key="item" :item="item"/>
-            <FirstCard v-for="item in mediaLoyihalar.list" :key="item" :item="item"/>
+            <FirstCard v-for="(item, index) in mediaLoyihalar.list" :key="index" :item="item"/>
           </div>
         </div>
       </div>
@@ -74,6 +73,7 @@ export default {
 
   data() {
     return {
+      isTrue: 0,
       openTab: 1,
       InputValue: '',
       changeValue: 1,
@@ -98,25 +98,36 @@ export default {
         this.getData();
         this.changeValue = this.InputValue
       }
+      if(this.InputValue.length > 0) {
+        this.isTrue = 1
+      }
       setTimeout(() => {this.Check()}, 100)
     },
     
     async getData() {
-      if(this.InputValue.length !== 0) {
+      if(this.InputValue.length > 2 ) {
         const res1 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`)
         const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`)
         const res3 = await axios.get(`http://mediasaboq.uz/api/v1/books?search=${this.InputValue}`)
         const res4 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=4`)
 
-        console.log(res1.data)
-        console.log(res2.data)
-        console.log(res3.data)
-        console.log(res4.data)
+        // console.log(res1.data)
+        // console.log(res2.data)
+        // console.log(res3.data)
+        // console.log(res4.data)
 
         this.mediaBlog = res1.data
         this.talim = res2.data
         this.kitoblar = res3.data
         this.mediaLoyihalar = res4.data
+      }
+      if(this.InputValue.length < 3 && this.isTrue === 1) {
+        this.mediaBlog = []
+        this.talim = []
+        this.kitoblar = []
+        this.mediaLoyihalar = []
+
+        this.openTab = 1
       }
     },
   },

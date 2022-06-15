@@ -1,6 +1,6 @@
 <template>
   <div class="wrap space-y-10">
-    <h3 class="title">Mashhur bloglar</h3>
+    <h3 class="title">O'xshash bloglar</h3>
     <BlogCard />
     <BlogCard />
     <BlogCard />
@@ -10,7 +10,7 @@
 <script>
 import BlogCard from '@/components/BlogCard.vue'
 export default {
-  name: 'MainPopular',
+  name: 'SimilarCard',
 
   components: {BlogCard}
 }
