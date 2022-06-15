@@ -8,7 +8,7 @@
         </nuxt-link>
       </div>
       <div class="grid">
-        <nuxt-link :to="`/media-blog/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+        <nuxt-link :to="`/media-blog/post/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>

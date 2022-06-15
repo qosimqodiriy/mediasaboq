@@ -26,7 +26,7 @@
           >
         </div>
       </div>
-      <nuxt-link class="search" to="/qidirish">
+      <nuxt-link class="search" to="/qidirish" @click.native="scrollToTop">
         <img src="@/assets/img/search.svg" alt="" />
       </nuxt-link>
 

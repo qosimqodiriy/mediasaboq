@@ -77,6 +77,7 @@ import axios from 'axios'
 
 export default {
   name: 'pink-tabs',
+  
   data() {
     return {
       id: null,
