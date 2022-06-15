@@ -30,6 +30,5 @@ export default {
   gap: 20px;
   display: grid;
   padding-top: 40px !important;
-  background-color: red;
 }
 </style>

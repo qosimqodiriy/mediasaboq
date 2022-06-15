@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <nuxt-link class="link" to="/news-inner">
+    <nuxt-link class="link" to="/yangiliklar">
       <div class="category">
         <p class="name">Kategoriya</p>
       </div>
