@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="model.body" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/talim">/ Ta`lim </nuxt-link>
@@ -9,50 +9,26 @@
       </p>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-3">
-      <div class="lg:col-span-2">
-        <MainBannerSec />
+      <div v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }">
+        <MainBannerSec :item="model" />
         <div class="content">
-          <p>
-            Qadrli maktab bitiruvchilari!
-
-            Sizlarni maktab ta’limini muvaffaqiyatli tugatib, mustaqil hayotga –
-            umringizning yanada go‘zal va mas’uliyatli bosqichiga qadam
-            qo‘yayotganingiz bilan chin qalbimdan samimiy tabriklayman.
-            
-            Mamlakatimizdagi barcha umumta’lim dargohlarida “so‘nggi
-            qo‘ng‘iroq”lar yangrab, qadrdon maktabingiz, mehribon ustozlaringiz
-            bilan xayrlashuv tadbirlari o‘tkazilayotgan ushbu quvonchli va
-            g‘oyat hayajonli damlarda hammangizga kelgusi hayotda ulkan yutuq va
-            omadlar tilayman.
-            
-            Umid va ishonch ramzi bo‘lgan yetuklik shahodatnomalari barchangizga
-            muborak bo‘lsin!
-            
-            Bu yil respublikamizda 390 ming nafardan ziyod o‘quvchi yoshlar
-            umumta’lim maktablarini bitirmoqda. Hech shubhasiz, o‘z bilim va
-            iste’dodini Vatanimiz va xalqimizga munosib farzand bo‘lishdek
-            olijanob maqsadlarga sarflashga chog‘lanib turgan sizdek tirishqoq
-            va intiluvchan farzandlarimiz – bizning ishonchimiz va tayanchimiz,
-            Yangi O‘zbekistonning oltin fondi, bebaho xazinasidir.
-          </p>
+        <p>{{ model.body }}</p>
         </div>
         <div class="tags">
-          <p>#bleach</p>
-          <p>#onepiece</p>
-          <p>#naruto</p>
+          <p v-for="tag in model.tags" :key="tag.id">#bleach</p>
         </div>
-        <div class="author">
-          <div class="person">
-            <img src="@/assets/img/1.jpg" alt="" />
+        <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
+          <div class="person overflow-hidden rounded-full object-cover">
+            <img :src="`http://mediasaboq.uz/${model.author.image}`" alt="" />
           </div>
           <div class="initials">
-            <p class="name">Elnur Ismoilov</p>
-            <p class="status">Muallif</p>
+            <p class="name">{{ model.author.name }}</p>
+            <p class="status">{{ model.author.username }}</p>
           </div>
-        </div>
+        </nuxt-link>
       </div>
-      <div class="">
-        <SimilarCard />
+      <div v-if="model.suggests.length > 0">
+        <SimilarCard :item="model" />
       </div>
     </div>
   </div>
@@ -80,13 +56,15 @@ export default {
   },
 
   methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0)
+    },
+
     async getModel() {
-     
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`,)
+      const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`)
       this.model = response.data
       this.categoryName = this.model.category.name
       console.log(this.model);
-     
     },
 
   },
@@ -111,12 +89,7 @@ export default {
   width: 70px;
   height: 70px;
   object-fit: cover;
-  border-radius: 50%;
-}
-.author {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  background-position: center;
 }
 .name {
   font-size: var(--18px);

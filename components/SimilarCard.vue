@@ -1,18 +1,25 @@
 <template>
   <div class="wrap space-y-10">
     <h3 class="title">O'xshash bloglar</h3>
-    <BlogCard />
-    <BlogCard />
-    <BlogCard />
+    <div v-for="blog in item.suggests" :key="blog.id">
+      <p class="time">
+        <img src="@/assets/icons/time.png" alt="" /> 6 soat avval
+      </p>
+      <p class="txt">{{ blog.title }}</p>
+    </div>
   </div>
 </template>
 
 <script>
-import BlogCard from '@/components/BlogCard.vue'
 export default {
   name: 'SimilarCard',
 
-  components: {BlogCard}
+  props: {
+    item: {
+      // required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 
@@ -28,5 +35,23 @@ export default {
 .wrap {
   border: 2px solid var(--black);
   padding: 20px;
+}
+.time {
+  font-size: var(--12px);
+  opacity: 0.6;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.txt {
+  font-size: var(--18px);
+  font-weight: 500;
+  line-height: 27px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

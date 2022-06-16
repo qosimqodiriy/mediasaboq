@@ -1,11 +1,9 @@
 <template>
   <div class="wrap">
     <div class="category">
-      <p class="name">Kategoriya</p>
+      <p class="name">{{ item.name }}</p>
     </div>
-    <div class="img">
-      <img src="@/assets/img/aka.jpg" alt="" class="pic" />
-    </div>
+    <div class="img"><img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
     <div class="content">
       <div class="mid">
         <p class="time"><img src="../../assets/icons/time.png" alt=""> 6 soat avval</p>
@@ -14,10 +12,7 @@
           255
         </p>
       </div>
-      <h4 class="txt">
-        Shavkat Mirziyoyev maktab bitiruvchilarini So‘nggi qo‘ng‘iroq bayrami
-        bilan tabrikladi
-      </h4>
+      <h4 class="txt">{{ item.title }}</h4>
     </div>
   </div>
 </template>
@@ -25,6 +20,13 @@
 <script>
 export default {
   name: 'MainBanner',
+  
+  props: {
+    item: {
+      // required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 

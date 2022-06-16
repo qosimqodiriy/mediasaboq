@@ -7,7 +7,7 @@
         <p class="this-page">/ {{ this.categoryName }}</p>
       </div>
       <div class="grid">
-        <nuxt-link :to="`/talim/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id">
+        <nuxt-link :to="`/talim/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>
@@ -64,19 +64,12 @@ export default {
          this.categoryId = this.category.id
          this.getArticles()
       })
-       
     },
 
     async getArticles() {
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{
-        params: {
-            size: 6,
-            offset: this.offset,
-          },
-      })
+      const response = await axios.get(`http://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
       this.list = response.data.list
-    },
-
+    }
   },
 
   mounted() {

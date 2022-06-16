@@ -1,8 +1,8 @@
 <template>
-  <div class="wrap">
+  <div class="wrap py-5">
     <div class="container p-0">
-      <h1 class="title">Ta’lim</h1>
-      <div class="grid">
+      <h1 class="title">Ta’lim </h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 py-5">
         <nuxt-link
           v-for="item in list"
           :key="item.id"
@@ -30,15 +30,8 @@ export default {
   },
 
   methods: {
-    scrollToTop() {
-      window.scrollTo(0, 0)
-    },
-
     async getEducation() {
-      const res = await axios.get(
-        'http://mediasaboq.uz/api/v1/categories?type=2&lang=uz'
-      )
-      // console.log(res.data.list)
+      const res = await axios.get('http://mediasaboq.uz/api/v1/categories?type=2&lang=uz')
       this.list = res.data.list
       // console.log(this.list)
     },
@@ -52,25 +45,6 @@ export default {
 
 <style scoped>
 .wrap {
-  padding: 40px 0;
-  min-height: 90vh;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px 0 0;
-}
-
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  min-height: calc(100vh - 140px);
 }
 </style>
