@@ -4,10 +4,10 @@
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
-        <p class="this-page">/ {{ slug }}</p>
+        <p class="this-page">/ {{ this.categoryName }}</p>
       </div>
       <div class="grid">
-        <nuxt-link :to="`/media-blog/post/${item.slug}`" v-for="item in list" :key="item.id">
+        <nuxt-link :to="`/media-blog/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>
@@ -26,10 +26,13 @@ import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
 export default {
-  name: 'MediaBlogInner',
+  name: 'MediaBlogCategory',
 
   data() {
     return {
+      category: {},
+      categoryName: '',
+      categoryId: null,
       slug: '',
       offset: 0,
       list: [],
@@ -49,36 +52,29 @@ export default {
     loadMedia() {
       this.offset = this.offset + 6
       if (this.offset < this.count) {
-        this.getMediaBlog()
+        this.getEducation()
       }
     },
 
-    async getMediaBlog() {
-      const res = await axios.get(
-        `http://mediasaboq.uz/api/v1/articles?&category=${this.id}`,
-        {
-          params: {
-            size: 6,
-            offset: this.offset,
-            type: 2,
-          },
-        }
-      )
-      // console.log(res.data)
-      this.list = [
-        ...this.list,
-        ...res.data.list
-      ]
-      // console.log(this.list)
+    async getCategory() {
+     
+      await axios.get(`http://mediasaboq.uz/api/v1/category?slug=${this.slug}`).then(response =>{
+         this.category = response.data
+         this.categoryName = this.category.name
+         this.categoryId = this.category.id
+         this.getArticles()
+      })
     },
+
+    async getArticles() {
+      const response = await axios.get(`http://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
+      this.list = response.data.list
+    }
   },
 
   mounted() {
-    this.getMediaBlog()
-    this.slug = this.$route.params.list
-    
-    // console.log(this.$route.query)
-    // console.log(this.$route.params);
+    this.slug = this.$route.params.category
+    this.getCategory()
   },
 }
 </script>
