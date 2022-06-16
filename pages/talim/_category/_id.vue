@@ -2,9 +2,10 @@
   <div class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-      <nuxt-link class="last-page" to="/talim">/ talim </nuxt-link>
+      <nuxt-link class="last-page" to="/talim">/ Ta`lim </nuxt-link>
+      <nuxt-link class="last-page" :to="`/talim/${this.category}`">/ {{this.categoryName}}</nuxt-link>
       <p class="this-page">
-        / Bu talimga oid sarlavha
+        / {{ model.title }}
       </p>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-3">
@@ -58,6 +59,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
 import SimilarCard from '@/components/SimilarCard.vue'
 export default {
@@ -66,6 +68,33 @@ export default {
   components: {
     MainBannerSec,
     SimilarCard,
+  },
+
+  data() {
+    return {
+      id: null,
+      category: null,
+      categoryName: '',
+      model: {},
+    }
+  },
+
+  methods: {
+    async getModel() {
+     
+      const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`,)
+      this.model = response.data
+      this.categoryName = this.model.category.name
+      console.log(this.model);
+     
+    },
+
+  },
+
+  mounted() {
+    this.id = this.$route.params.id;
+    this.category = this.$route.params.category
+    this.getModel()
   },
 }
 </script>

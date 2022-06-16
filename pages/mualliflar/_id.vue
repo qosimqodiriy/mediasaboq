@@ -2,11 +2,7 @@
   <div class="container">
     <div class="author-box">
       <div class="img-box">
-        <img
-          class="max-w-full max-h-full"
-          src="../../assets/img/aka.jpg"
-          alt=""
-        />
+        <img class="max-w-full max-h-full" src="../../assets/img/aka.jpg" alt=""/>
       </div>
       <div class="max-w-sm">
         <p class="author-name">Sardor Ergashev</p>
@@ -81,6 +77,7 @@ export default {
   data() {
     return {
       id: null,
+      user: {},
       openTab: 1,
       mediaBlog: [],
       talim: [],
@@ -92,6 +89,7 @@ export default {
       this.openTab = tabNumber
     },
     async getAuthor() {
+      const getUser = await axios.get(`http://mediasaboq.uz/api/v1/author?id=${this.id}`)
       const res1 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.id}&type=1`)
       const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.id}&type=2`)
       const res3 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.id}&type=4`)
@@ -103,6 +101,7 @@ export default {
       this.mediaBlog = res1.data.list
       this.talim = res2.data.list
       this.mediaLoyiha = res3.data.list
+      this.user = getUser
       // console.log(this.list)
     },
   },

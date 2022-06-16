@@ -12,6 +12,13 @@
 <script>
 export default {
   name: 'BlogCard',
+  
+  // props: {
+  //   item: {
+  //     required: true,
+  //     type: Object,
+  //   },
+  // },
 }
 </script>
 

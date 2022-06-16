@@ -4,7 +4,7 @@
       <h1 class="title">Mualliflar</h1>
       <div class="grid">
         <nuxt-link
-          :to="`/mualliflar/${item.id}`"
+          :to="`/mualliflar/${item.username}`"
           class="link flex"
           v-for="item in data.list"
           :key="item.id"
@@ -26,7 +26,7 @@ export default {
   async asyncData() {
     const post = await axios.get('http://mediasaboq.uz/api/v1/authors')
     const data = post.data
-    // console.log(data);
+    console.log(data.list);
     return { data }
   },
 

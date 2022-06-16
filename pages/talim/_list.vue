@@ -4,10 +4,10 @@
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/talim">/ Ta’lim </nuxt-link>
-        <p class="this-page">/ {{ name }}</p>
+        <p class="this-page">/ {{ slug }}</p>
       </div>
       <div class="grid">
-        <nuxt-link :to="`/talim/post/${item.id}`" v-for="item in list" :key="item.id">
+        <nuxt-link :to="`/talim/category`" v-for="item in list" :key="item.id">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>
@@ -30,9 +30,7 @@ export default {
 
   data() {
     return {
-      id: null,
       slug: '',
-      name: '',
       offset: 0,
       list: [],
       count: 0,
@@ -66,7 +64,7 @@ export default {
           },
         }
       )
-      console.log(res.data)
+      // console.log(res.data)
       this.list = [
         ...this.list,
         ...res.data.list
@@ -78,7 +76,6 @@ export default {
   mounted() {
     this.getEducation()
     this.id = this.$route.query.id
-    this.name = this.$route.query.category
     this.slug = this.$route.params.list
     
     // console.log(this.$route.query)
