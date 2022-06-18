@@ -6,7 +6,7 @@
         class="text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
         >Search</label
       >
-      <div class="relative">
+      <div class="relative px-2">
         <input
           id="default-search"
           class="search block w-full relative outline-none text-center"
@@ -16,7 +16,7 @@
         <div
           v-if="InputValue.length !== 0"
           @click="DeleteValue"
-          class="flex items-center absolute inset-y-0 right-2.5 close"
+          class="flex items-center absolute inset-y-0 right-3 close"
         >
           <img class="cursor-pointer" src="../assets/icons/close.png" alt="" />
         </div>

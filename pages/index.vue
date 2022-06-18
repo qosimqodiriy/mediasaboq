@@ -59,8 +59,14 @@ export default {
         if ((item.isMain === true || item.isTop === true) && index < 6) {
           if (index === 1) {
             this.isBig = item
-            console.log(this.isBig);
           } else {
+            if(item.type === 1) {
+              item.to = `/media-blog/${item.category.slug}/${item.slug}`
+            } else if (item.type === 2) {
+              item.to = `/talim/${item.category.slug}/${item.slug}`
+            } else if (item.type === 3) {
+              item.to = `/media-loyihalar/${item.slug}`
+            }
             this.listTops.push(item)
           }
         } else if (item.type === 1) {

@@ -3,17 +3,7 @@
           <h3 class="title">Mashhur bloglar</h3>
 
           <div v-for="item in list" :key="item.id">
-            <nuxt-link :to="`/media-blog/${item.category.slug}/${item.slug}`" v-if="item.type === 1">
-              <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval </p>
-              <p class="txtCard">{{ item.title }}</p>
-            </nuxt-link>
-
-            <nuxt-link :to="`/talim/${item.category.slug}/${item.slug}`" v-if="item.type === 2">
-              <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval </p>
-              <p class="txtCard">{{ item.title }}</p>
-            </nuxt-link>
-            
-            <nuxt-link :to="`/media-loyihalar/${item.slug}`" v-if="item.type === 3">
+            <nuxt-link :to="item.to">
               <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval </p>
               <p class="txtCard">{{ item.title }}</p>
             </nuxt-link>
@@ -24,7 +14,13 @@
 
 <script>
 export default {
-    name: 'MainPopular',
+  name: 'MainPopular',
+
+  data() {
+    return {
+      to: '',
+    }
+  },
   
   props: {
     list: {

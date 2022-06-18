@@ -203,7 +203,8 @@ select {
 
 .container {
   max-width: 1216px;
-  margin: 0 auto;
+  margin: 0 auto; 
+  padding: 0 10px !important;
 }
 
 .title {
@@ -233,10 +234,6 @@ select {
 }
 
 @media screen and (max-width: 1024px) {
-  .container {
-    padding: 0 1rem !important;
-  }
-
   .crumbs {
     align-items: flex-start !important;
   }
