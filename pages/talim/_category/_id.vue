@@ -64,7 +64,7 @@ export default {
       const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`)
       this.model = response.data
       this.categoryName = this.model.category.name
-      console.log(this.model);
+      // console.log(this.model);
     },
 
   },

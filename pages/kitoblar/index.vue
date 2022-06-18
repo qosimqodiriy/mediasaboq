@@ -5,7 +5,7 @@
       <div class="grid">
         <nuxt-link
           class="link flex"
-          :to="`/kitoblar/${item.id}`"
+          :to="`/kitoblar/${item.slug}`"
           v-for="item in list"
           :key="item.id"
           @click.native="scrollToTop"
@@ -59,9 +59,9 @@ export default {
           type: 4,
         },
       })
-      // console.log(res.data.list);
       this.count = res.data.count
       this.list = [...this.list, ...res.data.list]
+      // console.log(this.list);
     },
   },
 

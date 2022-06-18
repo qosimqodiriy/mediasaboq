@@ -7,8 +7,8 @@
           Barchasi <img src="../../assets/icons/arrow.png" alt="">
         </nuxt-link>
       </div>
-      <div class="grid">
-        <nuxt-link :to="`/media-blog/post/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <nuxt-link :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>
@@ -33,22 +33,24 @@ export default {
     },
   },
 
+  data() {
+    return {
+      id: null,
+      model: {},
+    }
+  },
+  
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
-  }
+  },
 }
 </script>
 
 <style scoped>
 .wrap {
   padding: 40px 0;
-}
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
 }
 .top {
   display: flex;
@@ -84,17 +86,5 @@ export default {
 .next:hover.next::after {
   opacity: 1;
   visibility: visible;
-}
-
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
 }
 </style>

@@ -4,9 +4,7 @@
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
       <nuxt-link class="last-page" :to="`/media-blog/${this.category}`">/ {{this.categoryName}}</nuxt-link>
-      <p class="this-page">
-        / {{ model.title }}
-      </p>
+      <p class="this-page"> / {{ model.title }}</p>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-3">
       <div v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }">
@@ -15,7 +13,7 @@
         <p>{{ model.body }}</p>
         </div>
         <div class="tags">
-          <p v-for="tag in model.tags" :key="tag.id">#bleach</p>
+          <p v-for="tag in model.tags" :key="tag.id">#{{ tag.name }}</p>
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
@@ -28,7 +26,7 @@
         </nuxt-link>
       </div>
       <div v-if="model.suggests.length > 0">
-        <SimilarCard :item="model" />
+        <SimilarCard :item="model.suggests" />
       </div>
     </div>
   </div>
@@ -131,9 +129,6 @@ export default {
 }
 .this-page {
   font-weight: 600;
-}
-@media screen and (max-width: 1024px) {
- 
 }
 
 @media screen and (max-width: 768px) {

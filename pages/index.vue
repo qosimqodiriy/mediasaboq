@@ -1,40 +1,30 @@
 <template>
   <div>
-    <div class="container p-0">
-      <div class="row grid-cols-1 lg:grid-cols-3">
-
-        <div v-if="isBig" class="lg:col-span-2">
-          <div class="wrap">
-            <nuxt-link class="link" to="/yangiliklar" >
-
-              <div class="category"><p class="name">{{ isBig.category }}</p></div>
-              <div class="img"><img :src="isBig && `http:mediasaboq.uz/${isBig.image}`" alt="" class="pic" /></div>
-              <div class="content"><h4 class="txt">{{isBig.title}}</h4></div>
-
-            </nuxt-link>
-          </div>
+    <div class="container p-0 relative">
+      <div class="grid gap-5 pt-10 grid-cols-1 lg:grid-cols-3 items-start">
+        
+        <div v-if="isBig.category"  v-bind:class="{ 'lg:col-span-2': listTops.length > 0, 'lg:col-span-3': listTops.length === 0 }">
+          <MainCard :item="isBig" />
         </div>
         
-        <div class="wrapBottom space-y-10">
-          <h3 class="title">Mashhur bloglar</h3>
-
-          <!-- <BlogCard v-for="item in listTops" :key="item.id" :item="item" /> -->
-          <div v-for="item in listTops" :key="item.id" class="item">
-            <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval </p>
-            <p class="txtCard">{{ item.title }}</p>
-          </div>
-        </div>
+        <MainPopular :list="listTops"  v-if="listTops.length > 0" />
+      </div>
+      <MediaBlog v-if="listType1.length > 0" :list="listType1" />
+      <MainEdu v-if="listType2.length > 0" :list="listType2" />
+      <MediaLoyiha v-if="listType3.length > 0" :list="listType3" />
+      <div class="load" v-if="listAll.length > 0">
+        <nuxt-link class="btn"  to="/media-blog" @click.native="scrollToTop"> 
+          Boshqa yangiliklar
+        </nuxt-link>
       </div>
     </div>
-
-    <MediaBlog :list="listType1" />
-    <MediaLoyiha :list="listType2" />
-    <MainEdu :list="listType4" />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import MainCard from '@/components/MainPage/MainCard.vue'
+import MainPopular from '@/components/MainPage/MainPopular.vue'
 import MediaBlog from '@/components/MainPage/MediaBlog.vue'
 import MediaLoyiha from '@/components/MainPage/MediaLoyihalar.vue'
 import MainEdu from '@/components/MainPage/MainEdu.vue'
@@ -43,18 +33,16 @@ import MainEdu from '@/components/MainPage/MainEdu.vue'
 export default {
   name: 'IndexPage',
 
-  components: { MediaBlog, MainEdu, MediaLoyiha },
+  components: { MediaBlog, MainEdu, MediaLoyiha, MainPopular, MainCard },
 
   data() {
     return {
+      isBig: {},
       listAll: [],
       listTops: [],
       listType1: [],
       listType2: [],
-      listType4: [],
-
-      isBig: {},
-      // isTop: [],
+      listType3: [],
     }
   },
 
@@ -64,7 +52,6 @@ export default {
     },
     async getBooks() {
       const res = await axios.get('http://mediasaboq.uz/api/v1/articles?mainPage=true')
-      // console.log(res.data)
       this.listAll = res.data
 
       let index = 1
@@ -80,8 +67,8 @@ export default {
           this.listType1.push(item)
         } else if (item.type === 2) {
           this.listType2.push(item)
-        } else if (item.type === 4) {
-          this.listType4.push(item)
+        } else if (item.type === 3) {
+          this.listType3.push(item)
         }
         index++
       })
@@ -89,7 +76,7 @@ export default {
       // console.log(this.listTops);
       // console.log(this.listType1);
       // console.log(this.listType2);
-      // console.log(this.listType4);
+      // console.log(this.listType3);
     },
   },
 
@@ -103,89 +90,30 @@ export default {
 
 
 <style scoped>
-.wrap {
-  position: relative;
-  border: 2px solid var(--black);
-  filter: var(--shadow);
-}
-.category {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: white;
-  border-bottom: 2px solid var(--orange);
-  padding: 10px 20px;
-}
-.img {
+.load {
+  padding: 80px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
-.pic {
-  width: 100%;
-  height: 540px;
-  object-fit: cover;
-}
-
-.content {
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 20px;
-  width: 100%;
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 392px;
+  padding: 20px 0;
+  background: var(--orange);
+  gap: 10px;
   color: white;
-}
-.txt {
-  font-size: var(--30px);
-  font-weight: 600;
-  line-height: 44px;
-}
-.link {
-  color: black;
-}
-.link:hover {
-  color: black;
-}
-.row {
-  gap: 20px;
-  display: grid;
-  padding-top: 40px !important;
-}
-.wrapBottom {
-  padding: 20px;
-  border: 2px solid var(--black);
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
-}
-.title {
-  font-size: var(--24px);
-  font-weight: 600;
-  line-height: 32px;
-}
-
-.time {
-  font-size: var(--12px);
-  opacity: 0.6;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  column-gap: 5px;
-}
-.txtCard {
-  font-size: var(--18px);
   font-weight: 500;
-  line-height: 27px;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 15px;
+  border-radius: 0;
+  box-shadow: var(--shadow);
 }
 
 @media screen and (max-width: 1024px) {
-  .txt {
-    font-size: 20px;
-    line-height: 28px;
+  .load {
+    padding: 2rem 0;
   }
 }
 </style>

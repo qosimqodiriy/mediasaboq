@@ -1,28 +1,18 @@
 <template>
-  <div class="whole">
-    <!-- <nuxt-link class="link" to="/news-inner" @click.native="scrollToTop"> -->
+  <div v-if="item.category" class="whole">
     <div class="img">
-      <img src="@/assets/img/1.jpg" alt="" class="pic" />
+      <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">
-        <p class="name">Kategoriya nomi</p>
+        <p class="name">{{ item.category.name }}</p>
         <p class="time"><img src="../assets/icons/time.png" alt=""> 6 soat avval</p>
       </div>
       <div class="bottom">
-        <p class="title__lil">
-          Abituriyentlarni nimalar kutyapti? - imtihonlar bo‘yicha asosiy
-          yangiliklar
-        </p>
-        <p class="txt">
-          DTMning ma’lum qilishicha, test sinovlarini o‘tkazish uchun binolar
-          ro‘yxati 2 xil variantda shakllantirilgan. Agar pand...
-        </p>
-         <!-- <p class="title__lil">{{ item.title }}</p> -->
-        <!-- <p class="txt">{{ item.description }}</p> -->
+        <p class="title__lil">{{ item.title }}</p>
+        <p class="txt">{{ item.description }}</p>
       </div>
     </div>
-    <!-- </nuxt-link> -->
   </div>
 </template>
 
@@ -30,12 +20,12 @@
 export default {
   name: 'FirstCard',
   
-  // props: {
-  //   item: {
-  //     required: true,
-  //     type: Object,
-  //   },
-  // },
+  props: {
+    item: {
+      // required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 

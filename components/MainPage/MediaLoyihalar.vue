@@ -2,13 +2,13 @@
   <div class="wrap">
     <div class="container p-0">
       <div class="top">
-        <h3 class="title">Media Lotihalar</h3>
+        <h3 class="title">Media Loyihalar</h3>
         <nuxt-link class="next" to="/media-loyihalar" @click.native="scrollToTop">
           Barchasi <img src="../../assets/icons/arrow.png" alt="">
         </nuxt-link>
       </div>
-      <div class="grid">
-        <nuxt-link :to="`/media-loyihalar/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <nuxt-link :to="`/media-loyihalar/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>
@@ -45,11 +45,6 @@ export default {
 .wrap {
   padding: 40px 0;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
 .top {
   display: flex;
   align-items: center;
@@ -84,17 +79,5 @@ export default {
 .next:hover.next::after {
   opacity: 1;
   visibility: visible;
-}
-
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
 }
 </style>

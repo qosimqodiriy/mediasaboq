@@ -1,11 +1,21 @@
 <template>
   <div class="wrap space-y-10">
     <h3 class="title">O'xshash bloglar</h3>
-    <div v-for="blog in item.suggests" :key="blog.id">
-      <p class="time">
-        <img src="@/assets/icons/time.png" alt="" /> 6 soat avval
-      </p>
-      <p class="txt">{{ blog.title }}</p>
+    <div v-for="blog in item" :key="blog.id">
+      <nuxt-link v-if="blog.type === 1" :to="`/media-blog/${blog.category.slug}/${blog.slug}`" >
+        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
+        <p class="txt">{{ blog.title }}</p>
+      </nuxt-link>
+
+      <nuxt-link v-if="blog.type === 2" :to="`/talim/${blog.category.slug}/${blog.slug}`" >
+        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
+        <p class="txt">{{ blog.title }}</p>
+      </nuxt-link>
+
+      <nuxt-link v-if="blog.type === 3" :to="`/media-loyihalar/${blog.slug}`" >
+        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
+        <p class="txt">{{ blog.title }}</p>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -17,7 +27,7 @@ export default {
   props: {
     item: {
       // required: true,
-      type: Object,
+      type: Array,
     },
   },
 }

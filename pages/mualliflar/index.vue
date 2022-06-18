@@ -26,7 +26,6 @@ export default {
   async asyncData() {
     const post = await axios.get('http://mediasaboq.uz/api/v1/authors')
     const data = post.data
-    console.log(data.list);
     return { data }
   },
 

@@ -7,13 +7,13 @@
         </div>
         <div class="grid">
           <nuxt-link
-            :to="`/media-loyihalar/${item.id}`"
+            :to="`/media-loyihalar/${item.slug}`"
             v-for="item in list"
             :key="item.id"
             @click.native="scrollToTop"
             class="link"
           >
-            <FirstCard />
+            <FirstCard :item="item" />
           </nuxt-link>
         </div>
         <div class="load">
@@ -60,7 +60,7 @@ export default {
       params: {
         size: 6,
         offset: this.offset,
-        type: 4
+        type: 3
       }
     })
     // console.log(res.data.list);
@@ -69,7 +69,7 @@ export default {
         ...this.list,
         ...res.data.list
     ]
-    // console.log(this.list)
+    console.log(this.list)
   }
   },
 

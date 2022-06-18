@@ -1,20 +1,15 @@
 <template>
-  <div class="wrap">
-    <!-- <div class="category">
-      <p class="name">Kategoriya</p>
-    </div> -->
+  <div v-if="item.title" class="card">
     <div class="img">
-      <img src="@/assets/img/book.jpg" alt="" class="pic" />
+      <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
     </div>
     <div class="content">
       <div class="mid">
-        <p class="time">Kel Nyuport</p>
+        <p class="time">{{ item.bookAuthor }}</p>
       </div>
-      <h4 class="txt">
-        Diqqat: Chalg‘ituvchi dunyoda muvaffaqiyat sirlari haqida
-      </h4>
+      <h4 class="txt">{{ item.title }}</h4>
       <div class="download">
-        <a href="#" download class="btn">
+        <a :href="`http://mediasaboq.uz/${item.url}`" download class="btn">
           Yuklab olish <img src="../../assets/icons/download.png" alt="">
         </a>
       </div>
@@ -25,11 +20,18 @@
 <script>
 export default {
   name: 'BookBanner',
+  
+  props: {
+    item: {
+      // required: true,
+      type: Object,
+    },
+  },
 }
 </script>
 
 <style scoped>
-.wrap {
+.card {
   position: relative;
   border: 2px solid var(--black);
   filter: var(--shadow);
