@@ -11,8 +11,8 @@
         <div class="content">
           <p>{{ model.body }}</p>
         </div>
-        <div class="tags">
-          <p v-for="tag in model.tags" :key="tag.id">#{{ tag.name }}</p>
+        <div v-if="model.tags" class="tags">
+          <nuxt-link :to="`/${tag.name}`" v-for="tag in model.tags" :key="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
