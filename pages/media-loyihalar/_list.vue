@@ -6,13 +6,13 @@
       <p class="this-page"> / {{ model.title }}</p>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-3">
-      <div v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }">
+      <div class="lg:col-span-2">  <!-- v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }"-->
         <MainBannerSec :item="model" />
         <div class="content">
           <p>{{ model.body }}</p>
         </div>
-        <div class="tags">
-          <p v-for="tag in model.tags" :key="tag.id">#{{ tag.name }}</p>
+        <div v-if="model.tags" class="tags">
+          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
@@ -58,7 +58,6 @@ export default {
     async getModel() {
       const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`)
       this.model = response.data
-      // console.log(this.model);
     },
   },
 

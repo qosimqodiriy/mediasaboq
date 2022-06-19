@@ -48,10 +48,15 @@ export default {
   data() {
     return {
       tag: '',
-      tagId: null,
+      count1: 0,
+      count2: 0,
+      count3: 0,
+      offset1: 0,
+      offset2: 0,
+      offset3: 0,
       openTab: 1,
-      mediaBlog: [],
       talim: [],
+      mediaBlog: [],
       mediaLoyihalar: [],
     }
   },
@@ -60,28 +65,32 @@ export default {
     toggleTabs(tabNumber) {
       this.openTab = tabNumber
     },
+
+    loadMediaBlog() {
+      this.offset1 = this.offset1 + 6
+      if (this.offset1 < this.count1) {
+        this.getEducation()
+      }
+    },
     
-    async getData() {
+    async getMediaBlog() {
         const res1 = await axios.get(`http://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=1&lang=uz`)
-        const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=2&lang=uz`)
-        const res3 = await axios.get(`http://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=4&lang=uz`)
-
-        // console.log(res1.data)
-        // console.log(res2.data)
-        // console.log(res3.data)
-
         this.mediaBlog = res1.data
+    },
+    async getMediaBlog() {
+        const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=2&lang=uz`)
         this.talim = res2.data
+    },
+    async getMediaBlog() {
+        const res3 = await axios.get(`http://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=3&lang=uz`)
         this.mediaLoyihalar = res3.data
-
-        this.openTab = 1
     },
   },
 
   mounted() {
-    this.tag = this.$route.params.tags
-    console.log(this.tag);
-    this.getData()
+    this.openTab = 1
+    this.tag = this.$route.params.list
+    this.getMediaBlog()
   },
 }
 </script>

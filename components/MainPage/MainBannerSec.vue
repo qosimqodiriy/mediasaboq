@@ -59,7 +59,7 @@ export default {
 }
 .content {
   background: transparent;
-  backdrop-filter: blur(15px);
+  /* backdrop-filter: blur(15px); */
   padding: 20px;
   width: 100%;
   color: black;
