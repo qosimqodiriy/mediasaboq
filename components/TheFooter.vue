@@ -14,19 +14,13 @@
           </div>
         </div>
         <div class="socs">
-          <a target="_blank" :href="link.url" v-for="link in list" :key="link.id"> <img class="soc" :src="`http://mediasaboq.uz/${link.icon}`" alt="" /> </a>
-          <!-- <a href="#" class="soc"> <img src="../assets/icons/telegram.png" alt="" /> </a>
-          <a href="#" class="soc"> <img src="../assets/icons/facebook.png" alt="" /> </a>
-          <a href="#" class="soc"> <img src="../assets/icons/twitter.png" alt="" /> </a>
-          <a href="#" class="soc"> <img src="../assets/icons/instagram.png" alt="" /> </a> -->
+          <a target="_blank" :href="link.url" v-for="link in list" :key="link.id">
+            <img class="soc" :src="`http://mediasaboq.uz/${link.icon}`" alt="" />
+          </a>
         </div>
       </div>
       <div class="bottom">
-        <p class="txt">
-          To use messages on the site, you must obtain written consent of the
-          BioGeoKim <br />
-          2017-2022
-        </p>
+        <p class="txt" v-if="copyRight.footer">{{ copyRight.footer.uz }}</p>
       </div>
     </div>
   </div>
@@ -40,6 +34,7 @@ export default {
   data() {
     return {
       list: [],
+      copyRight: ''
     }
   },
 
@@ -49,11 +44,9 @@ export default {
     },
     async getSocials() {
     const res = await axios.get('http://mediasaboq.uz/api/v1/socials')
-    // console.log(res.data);
-    this.list = [
-        ...res.data
-    ]
-    // console.log(this.list)
+    const copy = await axios.get('http://mediasaboq.uz/api/v1/footer')
+    this.list = res.data
+    this.copyRight = copy.data
   }
   },
 
@@ -99,8 +92,8 @@ export default {
   justify-content: center;
 }
 .soc {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   object-position: center;
 }

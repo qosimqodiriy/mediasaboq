@@ -5,7 +5,7 @@
       <nuxt-link class="last-page" to="/kitoblar">/ Kutubxona </nuxt-link>
       <p class="this-page">/ {{model.name}}</p>
     </div>
-    <div class="row grid-cols-1 lg:grid-cols-2">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
       <div class="">
         <MainBannerThird :item="model" />
       </div>
@@ -51,10 +51,6 @@ export default {
 <style scoped>
 .container {
   padding-bottom: 80px !important;
-}
-.row {
-  gap: 20px;
-  display: grid;
 }
 .content p {
   font-size: var(--18px);

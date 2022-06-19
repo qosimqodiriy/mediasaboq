@@ -7,10 +7,7 @@
     <div class="content">
       <div class="mid">
         <p class="time"><img src="../../assets/icons/time.png" alt=""> 6 soat avval</p>
-        <p class="seen">
-          <img src="@/assets/img/eye.svg" alt="" />
-          255
-        </p>
+        <p class="seen"> <img src="@/assets/img/eye.svg" alt="" /> {{ item.hit }} </p>
       </div>
       <h4 class="txt">{{ item.title }}</h4>
     </div>

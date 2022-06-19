@@ -1,8 +1,8 @@
 <template>
   <div class="wrap">
-    <div class="container p-0">
+    <div class="container">
       <h1 class="title">Kutubxona</h1>
-      <div class="grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         <nuxt-link
           class="link flex"
           :to="`/kitoblar/${item.slug}`"
@@ -78,11 +78,6 @@ export default {
 .title {
   padding: 40px 0 20px 0;
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
 .load {
   padding: 80px 0;
   display: flex;
@@ -108,23 +103,5 @@ export default {
 }
 .btn:hover img {
   transform: rotate(-360deg);
-}
-
-@media screen and (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
 }
 </style>

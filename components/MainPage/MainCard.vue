@@ -1,19 +1,6 @@
 <template>
     <div v-if="item.category" class="mainBlock">
-        
-        <nuxt-link class="link" v-if="item.type === 1" :to="`/media-blog/${item.category.slug}/${item.slug}`" >
-            <div class="category absolute top-0 right-0 bg-white"><p class="name">{{ item.category.name }}</p></div>
-            <div class="img"><img :src="`http:mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
-            <div class="content"><h4 class="txt">{{item.title}}</h4></div>
-        </nuxt-link>
-
-        <nuxt-link class="link" v-if="item.type === 2" :to="`/talim/${item.category.slug}/${item.slug}`" >
-            <div class="category absolute top-0 right-0 bg-white"><p class="name">{{ item.category.name }}</p></div>
-            <div class="img"><img :src="`http:mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
-            <div class="content"><h4 class="txt">{{item.title}}</h4></div>
-        </nuxt-link>
-
-        <nuxt-link class="link" v-if="item.type === 3 " :to="`/media-loyihalar/${item.slug}`" >
+        <nuxt-link class="link" :to="item.to" >
             <div class="category absolute top-0 right-0 bg-white"><p class="name">{{ item.category.name }}</p></div>
             <div class="img"><img :src="`http:mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
             <div class="content"><h4 class="txt">{{item.title}}</h4></div>

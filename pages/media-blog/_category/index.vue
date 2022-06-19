@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="container p-0">
+    <div class="container">
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
@@ -69,6 +69,7 @@ export default {
     async getArticles() {
       const response = await axios.get(`http://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
       this.list = response.data.list
+      console.log(this.list);
     }
   },
 

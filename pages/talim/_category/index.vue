@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="container p-0">
+    <div class="container">
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/talim">/ Ta’lim </nuxt-link>
@@ -86,6 +86,7 @@ export default {
   align-items: center;
   gap: 5px;
   font-size: var(--18px);
+  flex-wrap: wrap;
 }
 .last-page {
   color: black;

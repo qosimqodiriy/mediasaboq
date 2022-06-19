@@ -58,6 +58,13 @@ export default {
       this.listAll.forEach((item) => {
         if ((item.isMain === true || item.isTop === true) && index < 6) {
           if (index === 1) {
+            if(item.type === 1) {
+              item.to = `/media-blog/${item.category.slug}/${item.slug}`
+            } else if (item.type === 2) {
+              item.to = `/talim/${item.category.slug}/${item.slug}`
+            } else if (item.type === 3) {
+              item.to = `/media-loyihalar/${item.slug}`
+            }
             this.isBig = item
           } else {
             if(item.type === 1) {

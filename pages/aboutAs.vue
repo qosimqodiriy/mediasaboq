@@ -49,7 +49,7 @@ export default {
 <style scoped>
 .container {
   min-height: calc(100vh - 67px);
-  padding: 40px 0 80px 0 !important;
+  padding: 40px 10px 80px 10px !important;
 }
 .title {
   font-weight: 600;

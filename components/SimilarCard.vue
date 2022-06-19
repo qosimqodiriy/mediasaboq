@@ -1,6 +1,7 @@
 <template>
   <div class="wrap space-y-10">
     <h3 class="title">O'xshash bloglar</h3>
+    
     <div v-for="blog in item" :key="blog.id">
       <nuxt-link v-if="blog.type === 1" :to="`/media-blog/${blog.category.slug}/${blog.slug}`" >
         <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>

@@ -28,7 +28,7 @@
         </nuxt-link>
       </div>
       <div v-if="model.suggests.length > 0">
-        <SimilarCard :item="model" />
+        <SimilarCard :item="model.suggests" />
       </div>
     </div>
   </div>
@@ -124,6 +124,8 @@ export default {
   align-items: center;
   gap: 5px;
   font-size: var(--18px);
+  display: flex;
+  flex-wrap: wrap;
 }
 .last-page {
   color: black;
