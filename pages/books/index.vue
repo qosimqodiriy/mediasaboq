@@ -5,7 +5,7 @@
       <div class="grid gap-5">
         <nuxt-link
           class="link flex"
-          :to="`/kitoblar/${item.slug}`"
+          :to="`/books/${item.slug}`"
           v-for="item in list"
           :key="item.id"
           @click.native="scrollToTop"

@@ -2,7 +2,7 @@
   <div v-if="model.title" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-      <nuxt-link class="last-page" to="/kitoblar">/ Kutubxona </nuxt-link>
+      <nuxt-link class="last-page" to="/books">/ Kutubxona </nuxt-link>
       <p class="this-page">/ {{model.name}}</p>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">

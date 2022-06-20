@@ -4,7 +4,7 @@
       <h1 class="title">Mualliflar</h1>
       <div class="grid">
         <nuxt-link
-          :to="`/mualliflar/${item.username}`"
+          :to="`/authors/${item.username}`"
           class="link flex"
           v-for="item in data.list"
           :key="item.id"

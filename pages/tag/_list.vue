@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-0 flex flex-col">
+  <div class="container flex flex-col">
     <h1 class="title mb-5"># {{ this.tag }}</h1>
     <div class="pb-10">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
@@ -10,7 +10,7 @@
       <div class="pt-10">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog" :key="index">
+            <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog" :key="index">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
@@ -22,7 +22,7 @@
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim" :key="index">
+            <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim" :key="index">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
@@ -34,7 +34,7 @@
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
+            <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
               <FirstCard :item="item"/>
             </nuxt-link>
           </div>
@@ -160,7 +160,7 @@ export default {
 
 <style scoped>
 .container {
-  padding-bottom: 40px  !important;
+  padding: 40px 10px !important;
   min-height: calc(100vh - 140px);
 }
 .form {

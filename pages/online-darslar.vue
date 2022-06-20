@@ -90,7 +90,7 @@ h1 {
   margin-bottom: 40px;
 }
 .contact-box {
-  display: inline-flex;
+  display: flex;
 }
 .input {
   width: 360px;
@@ -105,10 +105,10 @@ h1 {
     outline: none;
 }
 .btn {
-  display: inline-block;
   color: white;
   font-size: 15px;
   line-height: 22px;
+  max-width: 200px;
   padding: 16px 20px;
   border-radius: 0px !important;
   background: #ff6300;
@@ -138,6 +138,16 @@ h1 {
     gap: 15px;
     display: flex;
     flex-direction: column;
+  }
+  .btn {
+    color: white;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 16px 20px;
+    border-radius: 0px !important;
+    background: #ff6300;
+    margin: 0 auto;
+    box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
   }
 }
 </style>

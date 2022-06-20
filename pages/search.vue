@@ -34,28 +34,28 @@
       <div class="pt-10">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog.list" :key="index">
+            <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog.list" :key="index">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim.list" :key="index">
+            <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim.list" :key="index">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <nuxt-link :to="`/kitoblar/${item.slug}`" v-for="(item, index) in kitoblar.list" :key="index">
+            <nuxt-link class="flex" :to="`/kitoblar/${item.slug}`" v-for="(item, index) in kitoblar.list" :key="index">
               <SecondCard :item="item" />
             </nuxt-link>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 4, block: openTab === 4 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar.list" :key="index">
+            <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar.list" :key="index">
               <FirstCard :item="item"/>
             </nuxt-link>
           </div>

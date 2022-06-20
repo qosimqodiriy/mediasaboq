@@ -2,7 +2,7 @@
   <div class="container">
     <div class="author-box">
       <div class="img-box">
-        <img class="w-full h-full object-cover" :src="`http://mediasaboq.uz/${user.image}`" alt=""/>
+        <img class="w-full h-full object-cover" :src="`https://mediasaboq.uz/${user.image}`" alt=""/>
       </div>
       <div class="max-w-sm text-center md:text-left">
         <p class="author-name">{{ user.name }}</p>
@@ -11,16 +11,16 @@
     </div>
     <div>
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
-        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1 }"> Media blog </p>
-        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2 }"> Ta‘lim </p>
-        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(3)" v-bind:class="{ 'font-normal': openTab !== 3, 'font-semibold border-active': openTab === 3 }"> Media loyihalar </p>
+        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1 }"> Media blog       <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
+        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2 }"> Ta‘lim           <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
+        <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(3)" v-bind:class="{ 'font-normal': openTab !== 3, 'font-semibold border-active': openTab === 3 }"> Media loyihalar  <span v-bind:class="{ 'countFalseBg': openTab !== 3, 'countTrueBg': openTab === 3 }" v-if="mediaLoyiha.count" class="count">{{mediaLoyiha.count}}</span></p>
       </div>
 
       <div class="pt-10">
 
         <div v-bind:class="{ 'hidden': openTab !== 1, 'block': openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="item in mediaBlog.list" :key="item.id">
+            <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="item in mediaBlog.list" :key="item.id">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
@@ -28,7 +28,7 @@
 
         <div v-bind:class="{ 'hidden': openTab !== 2, 'block': openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/talim/${item.category.slug}/${item.slug}`" v-for="item in talim.list" :key="item.id">
+            <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="item in talim.list" :key="item.id">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
@@ -36,7 +36,7 @@
 
         <div v-bind:class="{ 'hidden': openTab !== 3, 'block': openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link :to="`/media-loyihalar/${item.slug}`" v-for="item in mediaLoyiha.list" :key="item.id">
+            <nuxt-link class="flex" :to="`/media-loyihalar/${item.slug}`" v-for="item in mediaLoyiha.list" :key="item.id">
               <FirstCard :item="item" />
             </nuxt-link>
           </div>
@@ -136,6 +136,22 @@ export default {
   z-index: 2;
   position: relative;
   border-bottom: 2px solid #ff6300;
+}
+.count {
+  font-size: 15px;
+  line-height: 27px;
+  padding: 2px 12px;
+  color: #010E38;
+  /* background: #FF6300; */
+  border-radius: 13.5px;
+}
+.countFalseBg {
+  background: #E5E5E5;
+}
+.countTrueBg {
+  color: white;
+  font-weight: 400;
+  background: #FF6300;
 }
 
 @media screen and (max-width: 1024px) {

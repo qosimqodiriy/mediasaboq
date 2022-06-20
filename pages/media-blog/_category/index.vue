@@ -7,7 +7,7 @@
         <p class="this-page">/ {{ this.categoryName }}</p>
       </div>
       <div class="grid">
-        <nuxt-link :to="`/media-blog/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+        <nuxt-link class="flex" :to="`/media-blog/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :item="item" />
         </nuxt-link>
       </div>

@@ -11,7 +11,7 @@
             v-for="item in list"
             :key="item.id"
             @click.native="scrollToTop"
-            class="link"
+            class="link flex"
           >
             <FirstCard :item="item" />
           </nuxt-link>
