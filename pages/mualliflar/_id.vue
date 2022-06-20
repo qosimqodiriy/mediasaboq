@@ -50,6 +50,7 @@
 <script>
 import axios from 'axios'
 
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'pink-tabs',
   
@@ -69,7 +70,7 @@ export default {
     },
 
     async getAuthor() {
-      await axios.get(`http://mediasaboq.uz/api/v1/author?username=${this.slug}`).then(response =>{
+      await axios.get(`${BaseUrl}author?username=${this.slug}`).then(response =>{
         this.user = response.data
         this.getCategory()
       })
@@ -77,9 +78,9 @@ export default {
 
     async getCategory() {
   
-      const res1 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.user.id}&type=1`)
-      const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.user.id}&type=2`)
-      const res3 = await axios.get(`http://mediasaboq.uz/api/v1/articles?author=${this.user.id}&type=3`)
+      const res1 = await axios.get(`${BaseUrl}articles?author=${this.user.id}&type=1`)
+      const res2 = await axios.get(`${BaseUrl}articles?author=${this.user.id}&type=2`)
+      const res3 = await axios.get(`${BaseUrl}articles?author=${this.user.id}&type=3`)
 
       this.mediaBlog = res1.data
       this.talim = res2.data

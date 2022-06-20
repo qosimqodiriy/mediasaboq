@@ -36,6 +36,8 @@
 import axios from 'axios'
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
 import SimilarCard from '@/components/SimilarCard.vue'
+
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'NewsInner',
 
@@ -57,7 +59,7 @@ export default {
     },
 
     async getModel() {
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.id}`)
+      const response = await axios.get(`${BaseUrl}article?slug=${this.id}`)
       this.model = response.data
     },
   },

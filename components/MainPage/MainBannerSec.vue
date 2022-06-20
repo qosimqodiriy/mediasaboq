@@ -3,7 +3,7 @@
     <div class="category">
       <p class="name">{{ item.name }}</p>
     </div>
-    <div class="img"><img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
+    <div class="img"><img :src="`${BaseImgUrl}${item.image}`" alt="" class="pic" /></div>
     <div class="content">
       <div class="mid">
         <p class="time"><img src="../../assets/icons/time.png" alt=""> 6 soat avval</p>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+const BaseImgUrl = import.meta.env.VITE_BASE_URL2
+
 export default {
   name: 'MainBanner',
   

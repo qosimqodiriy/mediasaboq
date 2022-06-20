@@ -20,11 +20,13 @@
 <script>
 import axios from 'axios'
 import AuthorCard from '@/components/AuthorCard'
+
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'BooksPage',
 
   async asyncData() {
-    const post = await axios.get('http://mediasaboq.uz/api/v1/authors')
+    const post = await axios.get(`${BaseUrl}authors`)
     const data = post.data
     return { data }
   },

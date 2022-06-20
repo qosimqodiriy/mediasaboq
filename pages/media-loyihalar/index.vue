@@ -26,10 +26,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 import FirstCard from '../../components/FirstCard.vue'
 
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'MediaProjekts',
 
@@ -56,7 +57,7 @@ export default {
       }
     },
     async getMedia() {
-    const res = await axios.get('http://mediasaboq.uz/api/v1/articles', {
+    const res = await axios.get(`${BaseUrl}articles`, {
       params: {
         size: 6,
         offset: this.offset,

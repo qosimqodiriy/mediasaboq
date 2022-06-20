@@ -25,6 +25,8 @@
 <script>
 import axios from 'axios'
 import SecondCard from '@/components/SecondCard'
+
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'BooksPage',
 
@@ -52,7 +54,7 @@ export default {
       }
     },
     async getBooks() {
-      const res = await axios.get('http://mediasaboq.uz/api/v1/books', {
+      const res = await axios.get(`${BaseUrl}books`, {
         params: {
           size: 8,
           offset: this.offset,

@@ -11,7 +11,7 @@
         <div class="icon__div">
           <img
             class="max-w-6 max-h-6 object-cover object-center"
-            :src="`http://mediasaboq.uz/${link.icon}`"
+            :src="`${BaseUImgrl}${link.icon}`"
             alt=""
           />
         </div>
@@ -24,6 +24,8 @@
 
 <script>
 import axios from 'axios'
+const BaseUrl = import.meta.env.VITE_BASE_URL
+const BaseUImgrl = import.meta.env.VITE_BASE_URL2
 export default {
   name: 'AboutPage',
 
@@ -35,7 +37,7 @@ export default {
 
   methods: {
     async getAbout() {
-      const res = await axios.get('http://mediasaboq.uz/api/v1/aboutUs')
+      const res = await axios.get(`${BaseUrl}aboutUs`)
       this.list = res.data
     },
   },

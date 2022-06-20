@@ -70,6 +70,7 @@ import axios from 'axios'
 import SecondCard from '@/components/SecondCard'
 import FirstCard from '@/components/FirstCard'
 
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'QidirishOynasi',
 
@@ -113,10 +114,10 @@ export default {
     
     async getData() {
       if(this.InputValue.length > 2 ) {
-        const res1 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`)
-        const res2 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`)
-        const res3 = await axios.get(`http://mediasaboq.uz/api/v1/books?search=${this.InputValue}`)
-        const res4 = await axios.get(`http://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=4`)
+        const res1 = await axios.get(`${BaseUrl}articles?search=${this.InputValue}&type=1`)
+        const res2 = await axios.get(`${BaseUrl}articles?search=${this.InputValue}&type=2`)
+        const res3 = await axios.get(`${BaseUrl}books?search=${this.InputValue}`)
+        const res4 = await axios.get(`${BaseUrl}articles?search=${this.InputValue}&type=3`)
 
         // console.log(res1.data)
         // console.log(res2.data)

@@ -3,7 +3,7 @@
     <div>
       <div  class="imgBox">
         <div class="imgDown"></div>
-        <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+        <img :src="`${BaseImgUrl}${item.image}`" alt="" class="pic" />
       </div>
     </div>
     <div>
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+const BaseImgUrl = import.meta.env.VITE_BASE_URL2
+
 export default {
   name: 'SecondCard',
   

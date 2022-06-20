@@ -25,6 +25,7 @@
 import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'MediaBlogCategory',
 
@@ -58,7 +59,7 @@ export default {
 
     async getCategory() {
      
-      await axios.get(`http://mediasaboq.uz/api/v1/category?slug=${this.slug}`).then(response =>{
+      await axios.get(`${BaseUrl}category?slug=${this.slug}`).then(response =>{
          this.category = response.data
          this.categoryName = this.category.name
          this.categoryId = this.category.id
@@ -67,7 +68,7 @@ export default {
     },
 
     async getArticles() {
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
+      const response = await axios.get(`${BaseUrl}articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
       this.list = response.data.list
       console.log(this.list);
     }

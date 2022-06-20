@@ -18,6 +18,7 @@
 
 <script>
 import axios from 'axios';
+const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'OnlineDarslar',
 
@@ -31,7 +32,7 @@ export default {
     PostEmail(event) {
       event.preventDefault()
       if(this.EmailValue.length !== 0) {
-        axios.post('http://mediasaboq.uz/api/v1/email', {
+        axios.post(`${BaseUrl}email`, {
           url: this.EmailValue,
         })
         .then(function (response) {
