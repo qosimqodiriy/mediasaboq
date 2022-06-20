@@ -6,7 +6,7 @@
     <div class="asap">
       <div class="mid">
         <p class="name">{{ item.category.name }}</p>
-        <p class="time"><img src="../assets/icons/time.png" alt=""> 6 soat avval</p>
+        <p class="time"><img src="../assets/icons/time.png" alt=""> {{ time }} </p>
       </div>
       <div class="bottom">
         <p class="title__lil">{{ item.title }}</p>
@@ -27,6 +27,7 @@ export default {
       type: Object,
     },
   },
+
 }
 </script>
 

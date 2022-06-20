@@ -34,7 +34,7 @@
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
+            <nuxt-link class="flex" :to="`/media-loyihalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
               <FirstCard :item="item"/>
             </nuxt-link>
           </div>
