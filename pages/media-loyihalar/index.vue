@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrap">
-      <div class="container p-0">
+      <div class="container">
         <div class="top">
           <h3 class="title">Media loyihalar</h3>
         </div>
@@ -69,7 +69,7 @@ export default {
         ...this.list,
         ...res.data.list
     ]
-    console.log(this.list)
+    // console.log(this.list)
   }
   },
 

@@ -2,7 +2,7 @@
   <div class="wrap">
     <div class="container">
       <h1 class="title">Kutubxona</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="grid gap-5">
         <nuxt-link
           class="link flex"
           :to="`/kitoblar/${item.slug}`"
@@ -78,6 +78,10 @@ export default {
 .title {
   padding: 40px 0 20px 0;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
 .load {
   padding: 80px 0;
   display: flex;
@@ -103,5 +107,23 @@ export default {
 }
 .btn:hover img {
   transform: rotate(-360deg);
+}
+
+@media screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>
