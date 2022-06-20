@@ -161,16 +161,7 @@ export default {
 <style scoped>
 .container {
   padding: 40px 10px !important;
-  min-height: calc(100vh - 140px);
-}
-.form {
-  margin-bottom: 40px;
-}
-.search {
-  padding: 10px 0;
-  font-size: 18px;
-  line-height: 27px;
-  color: #010e38;
+
   position: relative;
   background: #ffffff;
   border: 1px solid #e5e5e5;
