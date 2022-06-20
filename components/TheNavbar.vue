@@ -13,7 +13,7 @@
           <nuxt-link class="link" @click.native="scrollToTop" to="/talim"> Ta’lim</nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/books"> Kutubxona</nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/media-loyihalar"> Media loyihalar</nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar"> Onlayn darslar</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/online-lessons"> Onlayn darslar</nuxt-link>
         </div>
       </div>
       <nuxt-link class="search" to="/search" @click.native="scrollToTop">

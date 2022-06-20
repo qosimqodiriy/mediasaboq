@@ -65,7 +65,6 @@ export default {
               item.to = `/media-loyihalar/${item.slug}`
             }
             this.isBig = item
-            console.log(this.isBig);
           } else {
             if(item.type === 1) {
               item.to = `/media-blog/${item.category.slug}/${item.slug}`
