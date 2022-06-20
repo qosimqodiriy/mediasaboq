@@ -53,7 +53,6 @@
 import axios from 'axios'
 import FirstCard from '@/components/FirstCard'
 
-const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'TagsPage',
 
@@ -104,7 +103,7 @@ export default {
     },
     
     async getMediaBlog() {
-        const res1 = await axios.get(`${BaseUrl}articles?tag=${this.tag}&type=1&lang=uz`, {
+        const res1 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=1&lang=uz`, {
           params: {
             size: 6,
             offset: this.offset1,
@@ -118,7 +117,7 @@ export default {
         console.log(this.mediaBlog);
     },
     async getTalim() {
-        const res2 = await axios.get(`${BaseUrl}articles?tag=${this.tag}&type=2&lang=uz`, {
+        const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=2&lang=uz`, {
           params: {
             size: 6,
             offset: this.offset2,
@@ -132,7 +131,7 @@ export default {
         console.log(this.talim);
     },
     async getMediaLoyiha() {
-        const res3 = await axios.get(`${BaseUrl}articles?tag=${this.tag}&type=3&lang=uz`, {
+        const res3 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=3&lang=uz`, {
           params: {
             size: 6,
             offset: this.offset3,

@@ -15,7 +15,7 @@
         </div>
         <div class="socs">
           <a target="_blank" :href="link.url" v-for="link in list" :key="link.id">
-            <img class="soc" :src="`${BaseImgUrl}${link.icon}`" alt="" />
+            <img class="soc" :src="`https://mediasaboq.uz/${link.icon}`" alt="" />
           </a>
         </div>
       </div>
@@ -29,8 +29,6 @@
 <script>
 import axios from 'axios'
 
-const BaseUrl = import.meta.env.VITE_BASE_URL
-const BaseImgUrl = import.meta.env.VITE_BASE_URL2
 export default {
   name: 'TheFooter',
 
@@ -46,8 +44,8 @@ export default {
       window.scrollTo(0, 0)
     },
     async getSocials() {
-    const res = await axios.get(`${BaseUrl}socials`)
-    const copy = await axios.get(`${BaseUrl}footer`)
+    const res = await axios.get(`https://mediasaboq.uz/api/v1/socials`)
+    const copy = await axios.get(`https://mediasaboq.uz/api/v1/footer`)
     this.list = res.data
     this.copyRight = copy.data
   }

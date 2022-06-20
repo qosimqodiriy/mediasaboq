@@ -1,6 +1,6 @@
 <template>
   <div class="cardo">
-    <img :src="`http:mediasaboq.uz/${item.image}`" class="pic" alt="" />
+    <img :src="`https:mediasaboq.uz/${item.image}`" class="pic" alt="" />
     <div class="content">
       <p class="txt">{{ item.name }}</p>
       <p class="arrow">

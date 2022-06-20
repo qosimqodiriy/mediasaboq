@@ -2,7 +2,7 @@
   <div class="whole flex w-full">
     <!-- <nuxt-link class="link" to="/" @click.native="scrollToTop"> -->
       <div class="asap flex-auto">
-        <img :src="`${BaseImgUrl}${item.image}`" alt="" class="pic" />
+        <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
         <div class="bottom">
           <p class="title__lil">{{ item.name }}</p>
           <p class="txt">{{ item.description }}</p>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-const BaseImgUrl = import.meta.env.VITE_BASE_URL2
 
 export default {
   name: 'AuthorCard',

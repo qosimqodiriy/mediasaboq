@@ -1,7 +1,7 @@
 <template>
   <div v-if="item.category" class="whole w-full">
     <div class="img">
-      <img :src="`${BaseImgUrl}${item.image}`" alt="" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-const BaseImgUrl = import.meta.env.VITE_BASE_URL2
 
 export default {
   name: 'FirstCard',

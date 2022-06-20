@@ -1,7 +1,7 @@
 <template>
   <div v-if="item.title" class="card">
     <div class="img">
-      <img :src="`${BaseImgUrl}${item.image}`" alt="" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
     </div>
     <div class="content">
       <div class="mid">
@@ -9,7 +9,7 @@
       </div>
       <h4 class="txt">{{ item.title }}</h4>
       <div class="download">
-        <a :href="`${BaseImgUrl}${item.url}`" download class="btn">
+        <a :href="`https://mediasaboq.uz/${item.url}`" download class="btn">
           Yuklab olish <img src="../../assets/icons/download.png" alt="">
         </a>
       </div>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-const BaseImgUrl = import.meta.env.VITE_BASE_URL2
 
 export default {
   name: 'BookBanner',

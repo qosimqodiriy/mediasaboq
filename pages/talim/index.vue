@@ -19,7 +19,6 @@
 import axios from 'axios'
 import EduMainCard from '@/components/EduPage/EduMainCard.vue'
 
-const BaseUrl = import.meta.env.VITE_BASE_URL
 export default {
   name: 'EducationPage',
 
@@ -33,7 +32,7 @@ export default {
 
   methods: {
     async getEducation() {
-      const res = await axios.get(`${BaseUrl}categories?type=2&lang=uz`)
+      const res = await axios.get(`https://mediasaboq.uz/api/v1/categories?type=2&lang=uz`)
       this.list = res.data.list
       // console.log(this.list)
     },
