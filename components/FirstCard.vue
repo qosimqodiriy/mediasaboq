@@ -1,7 +1,7 @@
 <template>
-  <div v-if="item.category" class="whole">
+  <div v-if="item.category" class="whole w-full">
     <div class="img">
-      <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'FirstCard',
   

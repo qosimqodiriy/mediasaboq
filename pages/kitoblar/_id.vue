@@ -22,6 +22,7 @@
 <script>
 import axios from 'axios'
 import MainBannerThird from '@/components/MainPage/MainBannerThird.vue'
+
 export default {
   name: 'BookInner',
   components: { MainBannerThird },
@@ -35,7 +36,7 @@ export default {
 
   methods: {
     async getModel() {
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/book?slug=${this.slug}`)
+      const response = await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`)
       this.model = response.data
       // console.log(this.model);
     },

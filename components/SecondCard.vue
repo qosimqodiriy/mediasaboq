@@ -3,7 +3,7 @@
     <div>
       <div  class="imgBox">
         <div class="imgDown"></div>
-        <img :src="`http://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+        <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
       </div>
     </div>
     <div>

@@ -17,7 +17,7 @@
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
-            <img :src="`http://mediasaboq.uz/${model.author.image}`" alt="" />
+            <img :src="`https://mediasaboq.uz/${model.author.image}`" alt="" />
           </div>
           <div class="initials">
             <p class="name">{{ model.author.name }}</p>
@@ -36,6 +36,7 @@
 import axios from 'axios'
 import MainBannerSec from '@/components/MainPage/MainBannerSec'
 import SimilarCard from '@/components/SimilarCard.vue'
+
 export default {
   name: 'MediaBlogPost',
 
@@ -59,7 +60,7 @@ export default {
     },
 
     async getModel() {
-      const response = await axios.get(`http://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
+      const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
       this.model = response.data
       this.categoryName = this.model.category.name
     },

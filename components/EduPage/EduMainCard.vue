@@ -1,14 +1,12 @@
 <template>
   <div class="cardo">
-    <!-- <nuxt-link class="link" :to="`/education/${item.id}`">  -->
-      <img src="@/assets/img/card-1.jpg" class="pic" alt="" />
-      <div class="content">
-        <p class="txt">{{ item.name }}</p>
-        <p class="arrow">
-          <img src="../../assets/icons/arrowUp.png" alt="">
-        </p>
-      </div>
-    <!-- </nuxt-link> -->
+    <img :src="`https:mediasaboq.uz/${item.image}`" class="pic" alt="" />
+    <div class="content">
+      <p class="txt">{{ item.name }}</p>
+      <p class="arrow">
+        <img src="../../assets/icons/arrowUp.png" alt="">
+      </p>
+    </div>
   </div>
 </template>
 

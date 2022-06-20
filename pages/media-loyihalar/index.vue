@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="wrap">
-      <div class="container p-0">
+      <div class="container">
         <div class="top">
           <h3 class="title">Media loyihalar</h3>
         </div>
@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 import FirstCard from '../../components/FirstCard.vue'
 
@@ -56,7 +56,7 @@ export default {
       }
     },
     async getMedia() {
-    const res = await axios.get('http://mediasaboq.uz/api/v1/articles', {
+    const res = await axios.get(`https://mediasaboq.uz/api/v1/articles`, {
       params: {
         size: 6,
         offset: this.offset,
@@ -69,7 +69,7 @@ export default {
         ...this.list,
         ...res.data.list
     ]
-    console.log(this.list)
+    // console.log(this.list)
   }
   },
 

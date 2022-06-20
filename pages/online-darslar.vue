@@ -18,6 +18,7 @@
 
 <script>
 import axios from 'axios';
+
 export default {
   name: 'OnlineDarslar',
 
@@ -31,7 +32,7 @@ export default {
     PostEmail(event) {
       event.preventDefault()
       if(this.EmailValue.length !== 0) {
-        axios.post('http://mediasaboq.uz/api/v1/email', {
+        axios.post(`https://mediasaboq.uz/api/v1/email`, {
           url: this.EmailValue,
         })
         .then(function (response) {

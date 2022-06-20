@@ -29,7 +29,6 @@ import MediaBlog from '@/components/MainPage/MediaBlog.vue'
 import MediaLoyiha from '@/components/MainPage/MediaLoyihalar.vue'
 import MainEdu from '@/components/MainPage/MainEdu.vue'
 
-
 export default {
   name: 'IndexPage',
 
@@ -51,7 +50,7 @@ export default {
       window.scrollTo(0, 0)
     },
     async getBooks() {
-      const res = await axios.get('http://mediasaboq.uz/api/v1/articles?mainPage=true')
+      const res = await axios.get(`https://mediasaboq.uz/api/v1/articles?mainPage=true`)
       this.listAll = res.data
 
       let index = 1
@@ -66,6 +65,7 @@ export default {
               item.to = `/media-loyihalar/${item.slug}`
             }
             this.isBig = item
+            console.log(this.isBig);
           } else {
             if(item.type === 1) {
               item.to = `/media-blog/${item.category.slug}/${item.slug}`

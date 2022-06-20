@@ -9,21 +9,11 @@
 
       <div class="show" ref="menu" :class="{ 'show-nav': isMenuOpen }">
         <div class="links">
-          <nuxt-link class="link" @click.native="scrollToTop" to="/media-blog">
-            Media blog
-          </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/talim">
-            Ta’lim
-          </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/kitoblar">
-            Kutubxona</nuxt-link
-          >
-          <nuxt-link class="link" @click.native="scrollToTop" to="/media-loyihalar">
-            Media loyihalar
-          </nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar">
-            Onlayn darslar</nuxt-link
-          >
+          <nuxt-link class="link" @click.native="scrollToTop" to="/media-blog"> Media blog</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/talim"> Ta’lim</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/kitoblar"> Kutubxona</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/media-loyihalar"> Media loyihalar</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar"> Onlayn darslar</nuxt-link>
         </div>
       </div>
       <nuxt-link class="search" to="/qidirish" @click.native="scrollToTop">

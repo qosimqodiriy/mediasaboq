@@ -20,11 +20,12 @@
 <script>
 import axios from 'axios'
 import AuthorCard from '@/components/AuthorCard'
+
 export default {
   name: 'BooksPage',
 
   async asyncData() {
-    const post = await axios.get('http://mediasaboq.uz/api/v1/authors')
+    const post = await axios.get(`https://mediasaboq.uz/api/v1/authors`)
     const data = post.data
     return { data }
   },
