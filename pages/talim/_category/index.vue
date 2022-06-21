@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div v-if="categoryName" class="wrapper">
     <div class="container">
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
@@ -31,6 +31,7 @@ export default {
   data() {
     return {
       category: {},
+      title: 'Talim',
       categoryName: '',
       categoryId: null,
       slug: '',
@@ -40,8 +41,10 @@ export default {
     }
   },
 
-  head: {
-    title: 'Talim',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   components: {
@@ -61,11 +64,11 @@ export default {
     },
 
     async getCategory() {
-     
       await axios.get(`https://mediasaboq.uz/api/v1/category?slug=${this.slug}`).then(response =>{
          this.category = response.data
          this.categoryName = this.category.name
          this.categoryId = this.category.id
+         this.title = this.category.name
          this.getArticles()
       })
     },

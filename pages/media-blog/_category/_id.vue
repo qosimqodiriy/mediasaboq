@@ -50,12 +50,15 @@ export default {
       slug: null,
       category: null,
       categoryName: '',
+      title: 'Category',
       model: {},
     }
   },
 
-  head: {
-    title: 'Media Blog',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   methods: {
@@ -66,6 +69,7 @@ export default {
     async getModel() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
       this.model = response.data
+      this.title = response.data.title
       this.categoryName = this.model.category.name
     },
 

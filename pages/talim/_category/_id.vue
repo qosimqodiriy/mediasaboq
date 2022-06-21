@@ -43,14 +43,17 @@ export default {
   data() {
     return {
       id: null,
+      title: '',
       category: null,
       categoryName: '',
       model: {},
     }
   },
 
-  head: {
-    title: 'Talim',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   components: {
@@ -67,6 +70,7 @@ export default {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.id}`)
       this.model = response.data
       this.categoryName = this.model.category.name
+      this.title = response.data.title
       // console.log(this.model);
     },
 

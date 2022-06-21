@@ -33,6 +33,7 @@ export default {
       category: {},
       categoryName: '',
       categoryId: null,
+      title: 'Media Blog',
       slug: '',
       offset: 0,
       list: [],
@@ -40,8 +41,10 @@ export default {
     }
   },
 
-  head: {
-    title: 'Media Blog',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   components: {
@@ -66,6 +69,7 @@ export default {
          this.category = response.data
          this.categoryName = this.category.name
          this.categoryId = this.category.id
+         this.title = this.category.name
          this.getArticles()
       })
     },

@@ -62,6 +62,7 @@ export default {
     async getMediaBlog() {
       const res = await axios.get(`https://mediasaboq.uz/api/v1/categories?type=1&lang=uz`)
       this.list = res.data.list
+      // console.log(this.list);
     },
   },
 

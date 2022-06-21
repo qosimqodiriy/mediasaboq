@@ -8,16 +8,17 @@
           imkoniyatimiz ishga tushganda sizga o‘zimiz xabar beramiz!
         </p>
         <form class="contact-box">
-          <input class="input" type="text" v-model="EmailValue" placeholder="Pochta manzilingiz" autocomplete="false" required />
+          <input class="input" type="email" v-model="EmailValue" placeholder="Pochta manzilingiz" autocomplete="false" required />
           <button class="btn" type="submit" @click="PostEmail">Ma’lumotni qoldirish</button>
         </form>
+        <p>{{ this.EmailValue }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: 'OnlineDarslar',
@@ -59,19 +60,22 @@ export default {
   methods: {
     PostEmail(event) {
       event.preventDefault()
-      if(this.EmailValue.length !== 0) {
-        axios.post(`https://mediasaboq.uz/api/v1/email`, {
-          url: this.EmailValue,
-        })
-        .then(function (response) {
-          console.log(response);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-        setTimeout(() => {
-          this.EmailValue = ''
-        }, 150)
+      // if(this.EmailValue.length !== 0) {
+      //   axios.post(`https://mediasaboq.uz/api/v1/email`, {
+      //     url: this.EmailValue,
+      //   })
+      //   .then(function (response) {
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     console.log(error);
+      //   });
+      //   setTimeout(() => {
+      //     this.EmailValue = ''
+      //   }, 150)
+      // }
+       if (this.EmailValue.value.includes('@')) {
+        console.log('has @');
       }
     }
   }

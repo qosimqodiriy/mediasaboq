@@ -46,13 +46,16 @@ export default {
 
   data() {
     return {
-      id: null,
+      slug: '',
       model: {},
+      title: 'Media Loyihalar'
     }
   },
 
-  head: {
-    title: 'Media Loyihalar',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   methods: {
@@ -61,13 +64,15 @@ export default {
     },
 
     async getModel() {
-      const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.id}`)
-      this.model = response.data
+      await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`).then( response => {
+        this.model = response.data
+        this.title = response.data.title
+      })
     },
   },
 
   mounted() {
-    this.id = this.$route.params.list;
+    this.slug = this.$route.params.list;
     this.getModel()
   },
 }

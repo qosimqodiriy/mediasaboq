@@ -12,7 +12,7 @@
       <div class="">
         <div class="content">
           <p class="lil-title">Kitob haqida</p>
-          <p>{{model.description}}</p>
+          <p v-html="model.description"></p>
         </div>
       </div>
     </div>
@@ -30,18 +30,14 @@ export default {
     return {
       slug: '',
       model: {},
+      title: 'Kutubxona',
     }
   },
 
-  head: {
-    title: `Kutubxona`,
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Kutubxona — bosma va ayrim qoʻlyozma asarlardan ommaviy foydalanishni taʼminlovchi madaniy-maʼrifiy va ilmiy muassasa.'
-      },
-    ],
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   components: { MainBannerThird },
@@ -50,6 +46,7 @@ export default {
     async getModel() {
       await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`).then(response => {
         this.model = response.data
+        this.title = response.data.name
       })
     },
   },
@@ -58,6 +55,7 @@ export default {
     this.slug = this.$route.params.id;
     this.getModel()
   }
+
 }
 </script>
 

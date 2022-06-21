@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex flex-col">
+  <div v-if="tag !== ''" class="container flex flex-col">
     <h1 class="title mb-5"># {{ this.tag }}</h1>
     <div class="pb-10">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
@@ -63,6 +63,7 @@ export default {
   data() {
     return {
       tag: '',
+      title: '',
       count1: 0,
       count2: 0,
       count3: 0,
@@ -73,6 +74,12 @@ export default {
       talim: [],
       mediaBlog: [],
       mediaLoyihalar: [],
+    }
+  },
+
+  head() {
+    return {
+      title: this.title,
     }
   },
 
@@ -114,7 +121,7 @@ export default {
           ...this.mediaBlog,
           ...res1.data.list
         ]
-        console.log(this.mediaBlog);
+        // console.log(this.mediaBlog);
     },
     async getTalim() {
         const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=2&lang=uz`, {
@@ -128,7 +135,7 @@ export default {
           ...this.talim,
           ...res2.data.list
         ]
-        console.log(this.talim);
+        // console.log(this.talim);
     },
     async getMediaLoyiha() {
         const res3 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=3&lang=uz`, {
@@ -142,14 +149,14 @@ export default {
           ...this.mediaLoyihalar,
           ...res3.data.list
         ]
-        console.log(this.mediaLoyihalar);
+        // console.log(this.mediaLoyihalar);
     },
   },
 
   mounted() {
     this.openTab = 1
     this.tag = this.$route.params.list
-    console.log(this.tag);
+    this.title = this.$route.params.list
     this.getMediaBlog()
     this.getTalim()
     this.getMediaLoyiha()

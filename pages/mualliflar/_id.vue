@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div v-if="user.name" class="container">
     <div class="author-box">
       <div class="img-box">
         <img class="w-full h-full object-cover" :src="`https://mediasaboq.uz/${user.image}`" alt=""/>
@@ -21,7 +21,7 @@
         <div v-bind:class="{ 'hidden': openTab !== 1, 'block': openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="item in mediaBlog.list" :key="item.id">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
         </div>
@@ -29,7 +29,7 @@
         <div v-bind:class="{ 'hidden': openTab !== 2, 'block': openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="item in talim.list" :key="item.id">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
         </div>
@@ -37,7 +37,7 @@
         <div v-bind:class="{ 'hidden': openTab !== 3, 'block': openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-loyihalar/${item.slug}`" v-for="item in mediaLoyiha.list" :key="item.id">
-              <FirstCard :item="item" />
+              <FirstCard :show="false" :item="item" />
             </nuxt-link>
           </div>
         </div>
@@ -56,6 +56,7 @@ export default {
   data() {
     return {
       slug: '',
+      title: 'Mualliflar',
       user: {},
       openTab: 1,
       mediaBlog: [],
@@ -64,8 +65,10 @@ export default {
     }
   },
 
-  head: {
-    title: 'Mualliflar',
+  head() {
+    return {
+      title: this.title,
+    }
   },
 
   methods: {
@@ -76,6 +79,7 @@ export default {
     async getAuthor() {
       await axios.get(`https://mediasaboq.uz/api/v1/author?username=${this.slug}`).then(response =>{
         this.user = response.data
+        this.title = response.data.name
         this.getCategory()
       })
     },
