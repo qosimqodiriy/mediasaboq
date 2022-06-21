@@ -35,14 +35,14 @@
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog.list" :key="index">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim.list" :key="index">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
         </div>
@@ -56,7 +56,7 @@
         <div v-bind:class="{ hidden: openTab !== 4, block: openTab === 4 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar.list" :key="index">
-              <FirstCard :item="item"/>
+              <FirstCard :show="false" :item="item"/>
             </nuxt-link>
           </div>
         </div>
@@ -74,17 +74,31 @@ export default {
   name: 'QidirishOynasi',
 
   head: {
-    title: 'Qidiruv oynasi',
+    title: 'Qidiruv',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Qidirish oynasi - ...'
-      }
+        content: 'Qidiruv - buu ...'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'qidiruv',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Qidiruv - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/qidiruv',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   components: {

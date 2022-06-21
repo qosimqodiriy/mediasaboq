@@ -9,7 +9,7 @@
       <div class="lg:col-span-2">  <!-- v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }"-->
         <MainBannerSec :item="model" />
         <div class="content">
-          <p>{{ model.body }}</p>
+          <p v-html="model.body"></p>
         </div>
         <div v-if="model.tags" class="tags">
           <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
@@ -49,6 +49,10 @@ export default {
       id: null,
       model: {},
     }
+  },
+
+  head: {
+    title: 'Media Loyihalar',
   },
 
   methods: {

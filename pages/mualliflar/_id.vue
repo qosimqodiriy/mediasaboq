@@ -9,7 +9,7 @@
         <p class="author-title">{{ user.description }}</p>
       </div>
     </div>
-    <div>
+    <div v-if="user.description">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
         <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1 }"> Media blog       <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
         <p class="cursor-pointer text-center md:text-left inline pb-1 pt-1.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2 }"> Ta‘lim           <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
@@ -51,7 +51,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'pink-tabs',
+  name: 'MualliflarHaqida',
   
   data() {
     return {
@@ -63,6 +63,11 @@ export default {
       mediaLoyiha: [],
     }
   },
+
+  head: {
+    title: 'Mualliflar',
+  },
+
   methods: {
     toggleTabs(tabNumber) {
       this.openTab = tabNumber

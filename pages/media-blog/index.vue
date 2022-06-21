@@ -30,10 +30,24 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'my website description'
-      }
+        content: 'Media Blog - buu ...'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'media, blog',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Media blog - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/media-blog',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   components: { EduMainCard },

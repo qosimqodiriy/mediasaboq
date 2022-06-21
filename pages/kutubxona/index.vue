@@ -38,9 +38,23 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Kutubxona — bosma va ayrim qoʻlyozma asarlardan ommaviy foydalanishni taʼminlovchi madaniy-maʼrifiy va ilmiy muassasa.'
-      }
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'kutubxona, kitoblar',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'kutubxona, kitoblar',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/kutubxona',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   components: {

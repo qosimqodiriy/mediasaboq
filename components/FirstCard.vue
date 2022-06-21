@@ -5,7 +5,7 @@
     </div>
     <div class="asap">
       <div class="mid">
-        <p class="name">{{ item.category.name }}</p>
+        <p class="name" v-if="show !== false">{{ item.category.name }}</p>
         <p class="time">
           <img src="../assets/icons/time.png" alt=""> 
           <span>
@@ -67,6 +67,10 @@ export default {
       required: true,
       type: Object,
     },
+    show: {
+      required: false,
+      type: Boolean,
+    }
   },
 
 }

@@ -27,11 +27,28 @@ export default {
   head: {
     title: 'Mualliflar',
     meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
         name: 'description',
-        content: 'Mualliflar — buu ...'
-      }
+        content: 'Mualliflar - buu ...'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'maullaflar',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Mualliflar - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/mualliflar',
+      },
     ],
   },
 

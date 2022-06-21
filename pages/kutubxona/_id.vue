@@ -25,7 +25,6 @@ import MainBannerThird from '@/components/MainPage/MainBannerThird.vue'
 
 export default {
   name: 'BookInner',
-  components: { MainBannerThird },
 
   data() {
     return {
@@ -34,10 +33,24 @@ export default {
     }
   },
 
+  head: {
+    title: `Kutubxona`,
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Kutubxona — bosma va ayrim qoʻlyozma asarlardan ommaviy foydalanishni taʼminlovchi madaniy-maʼrifiy va ilmiy muassasa.'
+      },
+    ],
+  },
+
+  components: { MainBannerThird },
+
   methods: {
     async getModel() {
-      const response = await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`)
-      this.model = response.data
+      await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`).then(response => {
+        this.model = response.data
+      })
     },
   },
 

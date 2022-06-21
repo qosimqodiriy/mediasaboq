@@ -23,7 +23,7 @@ export default {
   name: 'OnlineDarslar',
 
   head: {
-    title: 'Online Darslar',
+    title: 'Online darslar',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -31,9 +31,23 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Online darslar - buu ...'
-      }
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'online darslar',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Online darslar - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/online-darslar',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   data() {

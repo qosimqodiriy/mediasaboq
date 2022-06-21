@@ -36,10 +36,24 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Media saboq - buu ...'
-      }
+        content: 'Biz - buu ...'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'media saboq',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Biz - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/biz-haqimizda',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   data() {

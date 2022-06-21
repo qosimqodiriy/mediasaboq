@@ -8,7 +8,7 @@
       </div>
       <div class="grid">
         <nuxt-link class="flex" :to="`/talim/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
-          <FirstCard :item="item" />
+          <FirstCard :show="true" :item="item" />
         </nuxt-link>
       </div>
       <div class="load">
@@ -38,6 +38,10 @@ export default {
       list: [],
       count: 0,
     }
+  },
+
+  head: {
+    title: 'Talim',
   },
 
   components: {

@@ -13,7 +13,7 @@
             @click.native="scrollToTop"
             class="link flex"
           >
-            <FirstCard :item="item" />
+            <FirstCard :show="false" :item="item" />
           </nuxt-link>
         </div>
         <div class="load">
@@ -42,9 +42,23 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Media loyihalar - buu ...'
-      }
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'media, loyihalar',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Media loyihalar - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/media-loyihalar',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   components: {

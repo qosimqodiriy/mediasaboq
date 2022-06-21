@@ -11,7 +11,7 @@
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog" :key="index">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
           <div class="load">
@@ -23,7 +23,7 @@
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim" :key="index">
-              <FirstCard :item="item" />
+              <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
           <div class="load">
@@ -35,7 +35,7 @@
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             <nuxt-link class="flex" :to="`/media-loyihalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
-              <FirstCard :item="item"/>
+              <FirstCard :show="false" :item="item"/>
             </nuxt-link>
           </div>
           <div class="load">

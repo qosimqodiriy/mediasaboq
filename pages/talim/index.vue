@@ -30,10 +30,24 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Talim -  bilim berish, malaka va koʻnikmalar hosil qilish jarayoni, kishini hayotga va mehnatga tayyorlashning asosiy vositasi.'
-      }
+        content: 'Talim - buu ...'
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'talim, oqitish',
+      },
+      {
+        hid: 'og_description',
+        property: 'og:description',
+        content: 'Talim - buu ...',
+      },
+      {
+        hid: 'og_url',
+        property: 'og:url',
+        content: '/talim',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   components: { EduMainCard },
@@ -48,7 +62,6 @@ export default {
     async getEducation() {
       const res = await axios.get(`https://mediasaboq.uz/api/v1/categories?type=2&lang=uz`)
       this.list = res.data.list
-      // console.log(this.list)
     },
   },
 
