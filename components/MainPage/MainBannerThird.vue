@@ -56,6 +56,7 @@ export default {
   width: 100%;
   height: 540px;
   object-fit: cover;
+  object-position: top center;
   border-bottom: 2px solid black;
 }
 .seen,

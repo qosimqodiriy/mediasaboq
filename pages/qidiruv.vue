@@ -1,5 +1,5 @@
 <template>
-  <div class="container p-0 flex flex-col">
+  <div class="container flex flex-col">
     <form class="form">
       <label
         for="default-search"
@@ -26,7 +26,7 @@
     </div>
     <div v-if="InputValue.length > 2" class="pb-10">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
-        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
+        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg ': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(3)" v-bind:class="{ 'font-normal': openTab !== 3, 'font-semibold border-active': openTab === 3,}">Kutubxona       <span v-bind:class="{ 'countFalseBg': openTab !== 3, 'countTrueBg': openTab === 3 }" v-if="kitoblar.count" class="count">{{kitoblar.count}}</span></p>
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(4)" v-bind:class="{ 'font-normal': openTab !== 4, 'font-semibold border-active': openTab === 4,}">Media loyihalar <span v-bind:class="{ 'countFalseBg': openTab !== 4, 'countTrueBg': openTab === 4 }" v-if="mediaLoyihalar.count" class="count">{{mediaLoyihalar.count}}</span></p>
@@ -48,7 +48,7 @@
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <nuxt-link class="flex" :to="`/kitoblar/${item.slug}`" v-for="(item, index) in kitoblar.list" :key="index">
+            <nuxt-link class="flex" :to="`/kutubxona/${item.slug}`" v-for="(item, index) in kitoblar.list" :key="index">
               <SecondCard :item="item" />
             </nuxt-link>
           </div>
@@ -72,6 +72,20 @@ import FirstCard from '@/components/FirstCard'
 
 export default {
   name: 'QidirishOynasi',
+
+  head: {
+    title: 'Qidiruv oynasi',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Qidirish oynasi - ...'
+      }
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
 
   components: {
     SecondCard,
@@ -148,7 +162,7 @@ export default {
 
 <style scoped>
 .container {
-  padding: 40px 0 !important;
+  padding: 40px 10px !important;
   min-height: calc(100vh - 140px);
 }
 .form {

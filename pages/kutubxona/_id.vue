@@ -2,10 +2,10 @@
   <div v-if="model.title" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
-      <nuxt-link class="last-page" to="/books">/ Kutubxona </nuxt-link>
+      <nuxt-link class="last-page" to="/kutubxona">/ Kutubxona </nuxt-link>
       <p class="this-page">/ {{model.name}}</p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+    <div class="grid gap-5">
       <div class="">
         <MainBannerThird :item="model" />
       </div>
@@ -38,7 +38,6 @@ export default {
     async getModel() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`)
       this.model = response.data
-      // console.log(this.model);
     },
   },
 
@@ -77,6 +76,10 @@ export default {
   font-size: 23px !important;
   margin-bottom: 10px !important;
 }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
 
 @media screen and (max-width: 1024px) {
   .container {
@@ -87,6 +90,10 @@ export default {
 @media screen and (max-width: 768px) {
   .left {
     margin-top: 20px;
+    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 </style>

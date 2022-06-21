@@ -64,6 +64,7 @@ export default {
   height: 259px;
   width: 100%;
   object-fit: cover;
+  object-position: top center;
 }
 .time {
   font-size: var(--12px);

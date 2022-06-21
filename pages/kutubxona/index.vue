@@ -5,7 +5,7 @@
       <div class="grid gap-5">
         <nuxt-link
           class="link flex"
-          :to="`/books/${item.slug}`"
+          :to="`/kutubxona/${item.slug}`"
           v-for="item in list"
           :key="item.id"
           @click.native="scrollToTop"
@@ -28,6 +28,20 @@ import SecondCard from '@/components/SecondCard'
 
 export default {
   name: 'BooksPage',
+
+  head: {
+    title: 'Kutubxona',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Kutubxona — bosma va ayrim qoʻlyozma asarlardan ommaviy foydalanishni taʼminlovchi madaniy-maʼrifiy va ilmiy muassasa.'
+      }
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
 
   components: {
     SecondCard,

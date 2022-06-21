@@ -1,11 +1,11 @@
 <template>
   <div class="whole flex w-full">
     <!-- <nuxt-link class="link" to="/" @click.native="scrollToTop"> -->
-      <div class="asap flex-auto">
+      <div class="asap">
         <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
         <div class="bottom">
           <p class="title__lil">{{ item.name }}</p>
-          <p class="txt">{{ item.description }}</p>
+          <p class="txt flex-auto">{{ item.description }}</p>
         </div>
       </div>
     <!-- </nuxt-link> -->

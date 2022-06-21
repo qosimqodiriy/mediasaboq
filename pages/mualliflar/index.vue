@@ -4,7 +4,7 @@
       <h1 class="title">Mualliflar</h1>
       <div class="grid">
         <nuxt-link
-          :to="`/authors/${item.username}`"
+          :to="`/mualliflar/${item.username}`"
           class="link flex"
           v-for="item in data.list"
           :key="item.id"
@@ -23,6 +23,17 @@ import AuthorCard from '@/components/AuthorCard'
 
 export default {
   name: 'BooksPage',
+
+  head: {
+    title: 'Mualliflar',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Mualliflar — buu ...'
+      }
+    ],
+  },
 
   async asyncData() {
     const post = await axios.get(`https://mediasaboq.uz/api/v1/authors`)

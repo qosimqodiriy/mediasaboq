@@ -22,6 +22,20 @@ import EduMainCard from '@/components/EduPage/EduMainCard.vue'
 export default {
   name: 'EducationPage',
 
+  head: {
+    title: 'Talim',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Talim -  bilim berish, malaka va koʻnikmalar hosil qilish jarayoni, kishini hayotga va mehnatga tayyorlashning asosiy vositasi.'
+      }
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+
   components: { EduMainCard },
 
   data() {

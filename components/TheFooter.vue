@@ -9,8 +9,8 @@
             </nuxt-link>
           </div>
           <div class="links">
-            <nuxt-link class="link" to="/aboutAs" @click.native="scrollToTop">Biz haqimizda</nuxt-link>
-            <nuxt-link class="link" to="/authors" @click.native="scrollToTop">Mualliflar</nuxt-link>
+            <nuxt-link class="link" to="/biz-hoqimizda" @click.native="scrollToTop">Biz haqimizda</nuxt-link>
+            <nuxt-link class="link" to="/mualliflar" @click.native="scrollToTop">Mualliflar</nuxt-link>
           </div>
         </div>
         <div class="socs">

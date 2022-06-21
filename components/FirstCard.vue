@@ -6,7 +6,13 @@
     <div class="asap">
       <div class="mid">
         <p class="name">{{ item.category.name }}</p>
-        <p class="time"><img src="../assets/icons/time.png" alt=""> {{ time }} </p>
+        <p class="time">
+          <img src="../assets/icons/time.png" alt=""> 
+          <span>
+            {{ getHours(151616546465465).value }} 
+            {{ getHours(151616546465465).type }} avval
+          </span> 
+        </p>
       </div>
       <div class="bottom">
         <p class="title__lil">{{ item.title }}</p>
@@ -20,10 +26,45 @@
 
 export default {
   name: 'FirstCard',
+
+  methods: {
+    getHours(timestamp) {
+      const now = Date.now()
+      const date = new Date(timestamp)
+      const diff = now - date
+
+      if (diff / 1000 / 60 / 60 / 24 / 31 > 12) {
+        return {
+          type: 'yil',
+          value: Math.round(diff / 1000 / 60 / 60 / 24 / 31 / 12),
+        }
+      } else if (diff / 1000 / 60 / 60 / 24 > 31) {
+        return {
+          type: 'oy',
+          value: Math.round(diff / 1000 / 60 / 60 / 24 / 31),
+        }
+      } else if (diff / 1000 / 60 / 60 > 24) {
+        return {
+          type: 'kun',
+          value: Math.round(diff / 1000 / 60 / 60 / 24),
+        }
+      } else if (diff / 1000 / 60 / 60 > 1) {
+        return {
+          type: 'soat',
+          value: Math.round(diff / 1000 / 60 / 60 / 24),
+        }
+      } else {
+        return {
+          type: 'minut',
+          value: Math.round(diff / 1000 / 60),
+        }
+      }
+    },
+  },
   
   props: {
     item: {
-      // required: true,
+      required: true,
       type: Object,
     },
   },

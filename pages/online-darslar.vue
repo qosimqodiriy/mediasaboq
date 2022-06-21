@@ -22,6 +22,20 @@ import axios from 'axios';
 export default {
   name: 'OnlineDarslar',
 
+  head: {
+    title: 'Online Darslar',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Online darslar - buu ...'
+      }
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+  },
+
   data() {
     return {
       EmailValue: "",

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="brand">
         <nuxt-link to="/">
-          <img src="@/assets/img/brand.svg" alt="" />
+          <img class="cursor-pointer" src="@/assets/img/brand.svg" alt="" />
         </nuxt-link>
       </div>
 
@@ -11,12 +11,12 @@
         <div class="links">
           <nuxt-link class="link" @click.native="scrollToTop" to="/media-blog"> Media blog</nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/talim"> Ta’lim</nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/books"> Kutubxona</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/kutubxona"> Kutubxona</nuxt-link>
           <nuxt-link class="link" @click.native="scrollToTop" to="/media-loyihalar"> Media loyihalar</nuxt-link>
-          <nuxt-link class="link" @click.native="scrollToTop" to="/online-lessons"> Onlayn darslar</nuxt-link>
+          <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar"> Onlayn darslar</nuxt-link>
         </div>
       </div>
-      <nuxt-link class="search" to="/search" @click.native="scrollToTop">
+      <nuxt-link class="search" to="/qidiruv" @click.native="scrollToTop">
         <img src="@/assets/img/search.svg" alt="" />
       </nuxt-link>
 
