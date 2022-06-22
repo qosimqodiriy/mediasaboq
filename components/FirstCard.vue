@@ -1,13 +1,13 @@
 <template>
   <div v-if="item.category" class="whole w-full">
     <div class="img">
-      <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">
-        <p class="name" v-if="show !== false">{{ item.category.name }}</p>
+        <p class="name" v-if="show === true">{{ item.category.name }}</p>
         <p class="time">
-          <img src="../assets/icons/time.png" alt=""> 
+          <img src="../assets/icons/time.png" alt="time"> 
           <span>
             {{ getHours(151616546465465).value }} 
             {{ getHours(151616546465465).type }} avval
@@ -15,7 +15,7 @@
         </p>
       </div>
       <div class="bottom">
-        <p class="title__lil">{{ item.title }}</p>
+        <h3 class="title__lil">{{ item.title }}</h3>
         <p class="txt">{{ item.description }}</p>
       </div>
     </div>

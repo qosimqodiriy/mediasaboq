@@ -2,9 +2,9 @@
   <div class="whole flex w-full">
     <!-- <nuxt-link class="link" to="/" @click.native="scrollToTop"> -->
       <div class="asap">
-        <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+        <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.name" class="pic" />
         <div class="bottom">
-          <p class="title__lil">{{ item.name }}</p>
+          <h2 class="title__lil">{{ item.name }}</h2>
           <p class="txt flex-auto">{{ item.description }}</p>
         </div>
       </div>

@@ -74,9 +74,6 @@ export default {
       //     this.EmailValue = ''
       //   }, 150)
       // }
-       if (this.EmailValue.value.includes('@')) {
-        console.log('has @');
-      }
     }
   }
 }

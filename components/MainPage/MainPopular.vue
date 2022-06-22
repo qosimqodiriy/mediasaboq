@@ -1,10 +1,10 @@
 <template>
     <div v-if="list.length > 0" class="wrapBottom space-y-10">
-          <h3 class="title">Mashhur bloglar</h3>
+          <h2 class="title">Mashhur bloglar</h2>
 
           <div v-for="item in list" :key="item.id">
             <nuxt-link :to="item.to">
-              <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval </p>
+              <p class="time"><img src="@/assets/icons/time.png" alt="time" /> 6 soat avval </p>
               <p class="txtCard">{{ item.title }}</p>
             </nuxt-link>
           </div>

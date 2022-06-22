@@ -1,16 +1,16 @@
 <template>
   <div v-if="item.title" class="card">
     <div class="img">
-      <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
     </div>
     <div class="content">
       <div class="mid">
         <p class="time">{{ item.bookAuthor }}</p>
       </div>
-      <h4 class="txt">{{ item.title }}</h4>
+      <h3 class="txt">{{ item.title }}</h3>
       <div class="download">
         <a :href="`https://mediasaboq.uz/${item.url}`" download class="btn">
-          Yuklab olish <img src="../../assets/icons/download.png" alt="">
+          Yuklab olish <img src="@/assets/icons/download.png" alt="download">
         </a>
       </div>
     </div>

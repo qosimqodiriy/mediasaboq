@@ -4,18 +4,18 @@
     
     <div v-for="blog in item" :key="blog.id">
       <nuxt-link v-if="blog.type === 1" :to="`/media-blog/${blog.category.slug}/${blog.slug}`" >
-        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
-        <p class="txt">{{ blog.title }}</p>
+        <p class="time"><img src="@/assets/icons/time.png" alt="time" /> 6 soat avval</p>
+        <h3 class="txt">{{ blog.title }}</h3>
       </nuxt-link>
 
       <nuxt-link v-if="blog.type === 2" :to="`/talim/${blog.category.slug}/${blog.slug}`" >
-        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
-        <p class="txt">{{ blog.title }}</p>
+        <p class="time"><img src="@/assets/icons/time.png" alt="time" /> 6 soat avval</p>
+        <h3 class="txt">{{ blog.title }}</h3>
       </nuxt-link>
 
       <nuxt-link v-if="blog.type === 3" :to="`/media-loyihalar/${blog.slug}`" >
-        <p class="time"><img src="@/assets/icons/time.png" alt="" /> 6 soat avval</p>
-        <p class="txt">{{ blog.title }}</p>
+        <p class="time"><img src="@/assets/icons/time.png" alt="time" /> 6 soat avval</p>
+        <h3 class="txt">{{ blog.title }}</h3>
       </nuxt-link>
     </div>
   </div>

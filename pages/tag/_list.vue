@@ -16,7 +16,7 @@
           </div>
           <div class="load">
             <button class="btn" v-if="offset1 < count1 - 6" @click.native="loadMedia">
-              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="" />
+              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="resfesh" />
             </button>
           </div>
         </div>
@@ -28,7 +28,7 @@
           </div>
           <div class="load">
             <button class="btn" v-if="offset2 < count2 - 6" @click.native="loadTalim">
-              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="" />
+              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="resfesh" />
             </button>
           </div>
         </div>
@@ -40,7 +40,7 @@
           </div>
           <div class="load">
             <button class="btn" v-if="offset3 < count3 - 6" @click.native="loadMediaLoyiha">
-              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="" />
+              Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="resfesh" />
             </button>
           </div>
         </div>

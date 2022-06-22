@@ -2,10 +2,10 @@
   <div v-if="user.name" class="container">
     <div class="author-box">
       <div class="img-box">
-        <img class="w-full h-full object-cover" :src="`https://mediasaboq.uz/${user.image}`" alt=""/>
+        <img class="w-full h-full object-cover" :src="`https://mediasaboq.uz/${user.image}`" :alt="user.name" />
       </div>
       <div class="max-w-sm text-center md:text-left">
-        <p class="author-name">{{ user.name }}</p>
+        <h1 class="author-name">{{ user.name }}</h1>
         <p class="author-title">{{ user.description }}</p>
       </div>
     </div>

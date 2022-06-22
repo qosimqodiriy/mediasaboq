@@ -4,7 +4,7 @@
     <div class="content">
       <p class="txt">{{ item.name }}</p>
       <p class="arrow">
-        <img src="../../assets/icons/arrowUp.png" alt="">
+        <img src="../../assets/icons/arrowUp.png" alt="arrowDown">
       </p>
     </div>
   </div>

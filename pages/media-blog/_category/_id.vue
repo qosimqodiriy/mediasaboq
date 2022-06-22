@@ -4,7 +4,7 @@
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
       <nuxt-link class="last-page" :to="`/media-blog/${this.category}`">/ {{this.categoryName}}</nuxt-link>
-      <p class="this-page"> / {{ model.title }}</p>
+      <h1 class="this-page"> / {{ model.title }} </h1>
     </div>
     <div class="row grid-cols-1 lg:grid-cols-3">
       <div class="lg:col-span-2">  <!-- v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }"-->
@@ -17,7 +17,7 @@
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
-            <img :src="`https://mediasaboq.uz/${model.author.image}`" alt="" />
+            <img :src="`https://mediasaboq.uz/${model.author.image}`" :alt="model.author.name" />
           </div>
           <div class="initials">
             <p class="name">{{ model.author.name }}</p>
@@ -71,6 +71,7 @@ export default {
       this.model = response.data
       this.title = response.data.title
       this.categoryName = this.model.category.name
+      // console.log(this.model);
     },
 
     async getTag() {

@@ -1,15 +1,15 @@
 <template>
   <div class="wrap">
     <div class="category">
-      <p class="name">{{ item.name }}</p>
+      <p class="name">{{ item.category.name }}</p>
     </div>
-    <div class="img"><img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" /></div>
+    <div class="img"><img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" /></div>
     <div class="content">
       <div class="mid">
-        <p class="time"><img src="../../assets/icons/time.png" alt=""> 6 soat avval</p>
-        <p class="seen"> <img src="@/assets/img/eye.svg" alt="" /> {{ item.hit }} </p>
+        <p class="time"><img src="@/assets/icons/time.png" alt="clock"> 6 soat avval</p>
+        <p class="seen"> <img src="@/assets/img/eye.svg" alt="eye" /> {{ item.hit }} </p>
       </div>
-      <h4 class="txt">{{ item.title }}</h4>
+      <h3 class="txt">{{ item.title }}</h3>
     </div>
   </div>
 </template>

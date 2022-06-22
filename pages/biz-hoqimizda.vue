@@ -12,11 +12,11 @@
           <img
             class="max-w-6 max-h-6 object-cover object-center"
             :src="`https://mediasaboq.uz/${link.icon}`"
-            alt=""
+            :alt="link.name"
           />
         </div>
         <p class="link__title">{{ link.name }}</p>
-        <p class="link__url">{{ link.name }}</p>
+        <a :href="link.contact" class="link__url">{{ link.contact }}</a>
       </div>
     </div>
   </div>

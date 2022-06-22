@@ -4,7 +4,7 @@
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
-        <p class="this-page">/ {{ this.categoryName }}</p>
+        <h1 class="this-page">/ {{ this.categoryName }}</h1>
       </div>
       <div class="grid">
         <nuxt-link class="flex" :to="`/media-blog/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
@@ -14,7 +14,7 @@
       <div class="load">
         <button class="btn" v-if="offset < count - 6" @click="loadMedia">
           Boshqa yangiliklar
-          <img src="@/assets/img/refresh.svg" alt="" />
+          <img src="@/assets/img/refresh.svg" alt="refresh" />
         </button>
       </div>
     </div>
@@ -131,12 +131,12 @@ export default {
   border-radius: 0;
   box-shadow: var(--shadow);
 }
-.btn img {
+/* .btn img {
   transition: 1s;
 }
 .btn:hover img {
   transform: rotate(-360deg);
-}
+} */
 .card {
   border: none;
 }

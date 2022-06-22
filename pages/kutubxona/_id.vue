@@ -3,7 +3,7 @@
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/kutubxona">/ Kutubxona </nuxt-link>
-      <p class="this-page">/ {{model.name}}</p>
+      <h1 class="this-page">/ {{model.name}}</h1>
     </div>
     <div class="grid gap-5">
       <div class="">

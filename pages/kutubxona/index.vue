@@ -15,7 +15,7 @@
       </div>
       <div class="load">
         <button class="btn" v-if="offset < count - 8" @click="loadMedia">
-          Boshqa kitoblar <img src="@/assets/img/refresh.svg" alt="" />
+          Boshqa kitoblar <img src="@/assets/img/refresh.svg" alt="refresh" />
         </button>
       </div>
     </div>

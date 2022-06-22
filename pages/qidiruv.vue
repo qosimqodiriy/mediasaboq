@@ -1,64 +1,71 @@
 <template>
   <div class="container flex flex-col">
     <form class="form">
-      <label
-        for="search"
-        class="text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
-        >Search</label>
+      <label for="search" class="text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
       <div class="relative px-2">
-        <input
-          id="search"
-          class="search block w-full relative outline-none text-center"
-          v-model="InputValue"
-          placeholder="Qidiruv..."
-          v-on:keypress.enter.prevent="ClickSearch"
-        />
-        <div
-          v-if="InputValue.length !== 0"
-          @click="DeleteValue"
-          class="flex items-center absolute inset-y-0 right-3 close"
-        >
-          <img class="cursor-pointer" src="../assets/icons/close.png" alt="" />
+        <input id="search" v-model="InputValue" v-on:keypress.enter.prevent="ClickSearch" placeholder="Qidiruv..." class="search block w-full relative outline-none text-center" />
+        <div v-if="InputValue.length !== 0" @click="DeleteValue" class="flex items-center absolute inset-y-0 right-3 close">
+          <img class="cursor-pointer" src="../assets/icons/close.png" alt="close" />
         </div>
       </div>
     </form>
     <div v-if="isTrue === false || InputValue.length < 3" class="flex-auto w-full h-full flex items-center justify-center pb-10">
       <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!!!!</p>
     </div>
-    <div v-if="isTrue === true" class="pb-10">
+    <div v-if="isTrue === true">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
-        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg ': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
-        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
-        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(3)" v-bind:class="{ 'font-normal': openTab !== 3, 'font-semibold border-active': openTab === 3,}">Kutubxona       <span v-bind:class="{ 'countFalseBg': openTab !== 3, 'countTrueBg': openTab === 3 }" v-if="kitoblar.count" class="count">{{kitoblar.count}}</span></p>
-        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(4)" v-bind:class="{ 'font-normal': openTab !== 4, 'font-semibold border-active': openTab === 4,}">Media loyihalar <span v-bind:class="{ 'countFalseBg': openTab !== 4, 'countTrueBg': openTab === 4 }" v-if="mediaLoyihalar.count" class="count">{{mediaLoyihalar.count}}</span></p>
+        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="count1" class="count">{{count1}}</span></p>
+        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="count2" class="count">{{count2}}</span></p>
+        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(3)" v-bind:class="{ 'font-normal': openTab !== 3, 'font-semibold border-active': openTab === 3,}">Kutubxona       <span v-bind:class="{ 'countFalseBg': openTab !== 3, 'countTrueBg': openTab === 3 }" v-if="count3" class="count">{{count3}}</span></p>
+        <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(4)" v-bind:class="{ 'font-normal': openTab !== 4, 'font-semibold border-active': openTab === 4,}">Media loyihalar <span v-bind:class="{ 'countFalseBg': openTab !== 4, 'countTrueBg': openTab === 4 }" v-if="count4" class="count">{{count4}}</span></p>
       </div>
       <div class="pt-10">
         <div v-bind:class="{ hidden: openTab !== 1, block: openTab === 1 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog.list" :key="index">
+            <nuxt-link class="flex" :to="`/media-blog/${item.category.slug}/${item.slug}`" v-for="(item, index) in mediaBlog" :key="index">
               <FirstCard :show="true" :item="item" />
             </nuxt-link>
+          </div>
+          <div class="load">
+            <button class="btn" v-if="offset1 < count1 - 6" @click="loadMedia">
+              Boshqa maqolalar <img src="@/assets/img/refresh.svg" alt="resfesh" />
+            </button>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 2, block: openTab === 2 }">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim.list" :key="index">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="(item, index) in talim" :key="index">
               <FirstCard :show="true" :item="item" />
             </nuxt-link>
           </div>
+          <div class="load">
+            <button class="btn" v-if="offset2 < count2 - 6" @click="loadTalim">
+              Boshqa maqolalar <img src="@/assets/img/refresh.svg" alt="resfesh" />
+            </button>
+          </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 3, block: openTab === 3 }">
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <nuxt-link class="flex" :to="`/kutubxona/${item.slug}`" v-for="(item, index) in kitoblar.list" :key="index">
+          <div class="gridBooks gap-5">
+            <nuxt-link class="flex" :to="`/kutubxona/${item.slug}`" v-for="(item, index) in kitoblar" :key="index">
               <SecondCard :item="item" />
             </nuxt-link>
+          </div>
+          <div class="load">
+            <button class="btn" v-if="offset3 < count3 - 8" @click="loadBook">
+              Boshqa maqolalar <img src="@/assets/img/refresh.svg" alt="resfesh" />
+            </button>
           </div>
         </div>
         <div v-bind:class="{ hidden: openTab !== 4, block: openTab === 4 }">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar.list" :key="index">
+            <nuxt-link class="flex" :to="`/media-loyahalar/${item.slug}`" v-for="(item, index) in mediaLoyihalar" :key="index">
               <FirstCard :show="false" :item="item"/>
             </nuxt-link>
+          </div>
+          <div class="load">
+            <button class="btn" v-if="offset4 < count4 - 6" @click="loadMediaLoyiha">
+              Boshqa maqolalar <img src="@/assets/img/refresh.svg" alt="resfesh" />
+            </button>
           </div>
         </div>
       </div>
@@ -109,10 +116,18 @@ export default {
 
   data() {
     return {
-      isTrue: false,
+      get: true,
       openTab: 1,
+      isTrue: false,
       InputValue: '',
-      changeValue: 1,
+      count1: 0,
+      count2: 0,
+      count3: 0,
+      count4: 0,
+      offset1: 0,
+      offset2: 0,
+      offset3: 0,
+      offset4: 0,
       mediaBlog: [],
       talim: [],
       kitoblar: [],
@@ -130,14 +145,26 @@ export default {
     ClickSearch(event) {
       this.openTab = 1
       if(this.InputValue.length > 2) {
-        this.getData();
+        
+        if (this.get === true) {
+          this.getMediaBlog()
+          this.getTalim()
+          this.getBooks()
+          this.getMediaLoyiha()
+        }
         this.isTrue = true
+        this.get = false
       }
     },
 
     check() {
       if (this.InputValue.length < 3) {
         this.isTrue = false
+
+        this.mediaBlog = []
+        this.talim = []
+        this.kitoblar = []
+        this.mediaLoyihalar = []
       }
       setTimeout(() => { this.check() }, 100);
     },
@@ -145,32 +172,96 @@ export default {
     toggleTabs(tabNumber) {
       this.openTab = tabNumber
     },
-    
-    async getData() {
-      const res1 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`)
-      const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`)
-      const res3 = await axios.get(`https://mediasaboq.uz/api/v1/books?search=${this.InputValue}`)
-      const res4 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=3`)
 
-      this.mediaBlog = res1.data
-      this.talim = res2.data
-      this.kitoblar = res3.data
-      this.mediaLoyihalar = res4.data
-
-      if(this.InputValue.length === 0 ) {
-        this.mediaBlog = []
-        this.talim = []
-        this.kitoblar = []
-        this.mediaLoyihalar = []
-
-        this.isTrue = false
+    loadMedia() {
+      this.offset1 = this.offset1 + 6
+      if (this.offset1 < this.count1) {
+        console.log(this.count1);
+        this.getMediaBlog()
       }
+    },
+
+    loadTalim() {
+      this.offset2 = this.offset2 + 6
+      if (this.offset2 < this.count2) {
+        this.getTalim()
+      }
+    },
+
+    loadBook() {
+      this.offset3 = this.offset3 + 8
+      if (this.offset3 < this.count3) {
+        this.getBooks()
+      }
+    },
+
+    loadMediaLoyiha() {
+      this.offset4 = this.offset4 + 6
+      if (this.offset4 < this.count4) {
+        this.getMediaLoyiha()
+      }
+    },
+    
+    async getMediaBlog() {
+      const res1 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`, {
+        params: {
+          size: 6,
+          offset: this.offset1,
+        }
+      })
+      this.count1 = res1.data.count
+      this.mediaBlog = [
+        ...this.mediaBlog,
+        ...res1.data.list
+      ]
+      // console.log(this.mediaBlog);
+    },
+    async getTalim() {
+      const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`, {
+        params: {
+          size: 6,
+          offset: this.offset2,
+        }
+      })
+      this.count2 = res2.data.count
+      this.talim = [
+        ...this.talim,
+        ...res2.data.list
+      ]
+      // console.log(this.talim);
+    },
+    async getBooks() {
+        const res3 = await axios.get(`https://mediasaboq.uz/api/v1/books?search=${this.InputValue}`, {
+          params: {
+            size: 8,
+            offset: this.offset3,
+          }
+        })
+        this.count3 = res3.data.count
+        this.kitoblar = [
+          ...this.kitoblar,
+          ...res3.data.list
+        ]
+        // console.log(this.kitoblar);
+    },
+    async getMediaLoyiha() {
+        const res4 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=3`, {
+          params: {
+            size: 6,
+            offset: this.offset4,
+          }
+        })
+        this.count4 = res4.data.count
+        this.mediaLoyihalar = [
+          ...this.mediaLoyihalar,
+          ...res4.data.list
+        ]
+        // console.log(this.mediaLoyihalar);
     },
   },
 
   mounted() {
     this.check()
-    this.ClickSearch()
   },
 }
 </script>
@@ -178,7 +269,7 @@ export default {
 
 <style scoped>
 .container {
-  padding: 40px 10px !important;
+  padding-top: 40px !important;
   min-height: calc(100vh - 140px);
 }
 .form {
@@ -227,5 +318,51 @@ export default {
   color: white;
   font-weight: 400;
   background: #FF6300;
+}
+.gridBooks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.load {
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 392px;
+  padding: 20px 0;
+  background: var(--orange);
+  gap: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  border-radius: 0;
+  box-shadow: var(--shadow);
+  margin: 40px 0;
+}
+
+@media screen and (max-width: 1024px) {
+  .gridBooks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .load {
+    padding: 2rem 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .gridBooks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .gridBooks {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 </style>

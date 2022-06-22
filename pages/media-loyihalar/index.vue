@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="container">
         <div class="top">
-          <h3 class="title">Media loyihalar</h3>
+          <h1 class="title">Media loyihalar</h1>
         </div>
         <div class="grid">
           <nuxt-link
@@ -18,7 +18,7 @@
         </div>
         <div class="load">
           <button class="btn" v-if="offset < count - 6" @click="loadMedia">
-            Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="" />
+            Boshqa yangiliklar <img src="@/assets/img/refresh.svg" alt="refresh" />
           </button>
         </div>
       </div>
@@ -171,12 +171,12 @@ export default {
   border-radius: 0;
   box-shadow: var(--shadow);
 }
-.btn img {
+/* .btn img {
   transition: 1s;
 }
 .btn:hover img {
   transform: rotate(-360deg);
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .load {
@@ -187,7 +187,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(1, 1fr);
   }

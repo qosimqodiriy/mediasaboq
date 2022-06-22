@@ -4,7 +4,7 @@
       <div class="crumbs">
         <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
         <nuxt-link class="last-page" to="/talim">/ Ta’lim </nuxt-link>
-        <p class="this-page">/ {{ this.categoryName }}</p>
+        <h1 class="this-page">/ {{ this.categoryName }} </h1>
       </div>
       <div class="grid">
         <nuxt-link class="flex" :to="`/talim/${category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
@@ -14,7 +14,7 @@
       <div class="load">
         <button class="btn" v-if="offset < count - 6" @click="loadMedia">
           Boshqa yangiliklar
-          <img src="@/assets/img/refresh.svg" alt="" />
+          <img src="@/assets/img/refresh.svg" alt="refresh" />
         </button>
       </div>
     </div>
@@ -59,7 +59,7 @@ export default {
     loadMedia() {
       this.offset = this.offset + 6
       if (this.offset < this.count) {
-        this.getEducation()
+        this.getArticles()
       }
     },
 
@@ -75,7 +75,11 @@ export default {
 
     async getArticles() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
-      this.list = response.data.list
+      this.count = response.data.count
+      this.list = [
+        ...this.list,
+        ...response.data.list
+      ]
     }
   },
 
@@ -127,12 +131,12 @@ export default {
   border-radius: 0;
   box-shadow: var(--shadow);
 }
-.btn img {
+/* .btn img {
   transition: 1s;
 }
 .btn:hover img {
   transform: rotate(-360deg);
-}
+} */
 .card {
   border: none;
 }

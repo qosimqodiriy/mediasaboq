@@ -3,9 +3,9 @@
         <nuxt-link class="link" :to="item.to" >
             <div class="category absolute top-0 right-0 bg-white"><p class="name">{{ item.category.name }}</p></div>
             <div class="img">
-              <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+              <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
             </div>
-            <div class="content"><h4 class="txt">{{item.title}}</h4></div>
+            <div class="content"><h3 class="txt">{{item.title}}</h3></div>
         </nuxt-link>
     </div>
 </template>

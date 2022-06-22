@@ -1,11 +1,11 @@
 <template>
   <div class="wrap">
-    <div class="container p-0">
+    <div class="container">
       <div class="top">
         <div class="better">
           <div class="brand">
             <nuxt-link to="/" @click.native="scrollToTop">
-              <img src="@/assets/img/brand.svg" alt="" />
+              <img src="@/assets/img/brand.svg" alt="mediasaboq" />
             </nuxt-link>
           </div>
           <div class="links">
@@ -15,7 +15,7 @@
         </div>
         <div class="socs">
           <a target="_blank" :href="link.url" v-for="link in list" :key="link.id">
-            <img class="soc" :src="`https://mediasaboq.uz/${link.icon}`" alt="" />
+            <img class="soc" :src="`https://mediasaboq.uz/${link.icon}`" :alt="link.url" />
           </a>
         </div>
       </div>
