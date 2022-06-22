@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="container p-0">
+    <div class="container">
       <div class="top">
         <h3 class="title">Ta’lim</h3>
         <nuxt-link class="next" to="/talim" @click.native="scrollToTop">
@@ -41,8 +41,8 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
-  padding-top: 40px;
+.container {
+  padding-top: 40px !important;
 }
 .top {
   display: flex;

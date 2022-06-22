@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <div class="container p-0">
+    <div class="container">
       <div class="top">
         <h3 class="title">Media blog</h3>
         <nuxt-link class="next" to="/media-blog" @click.native="scrollToTop">
@@ -49,8 +49,8 @@ export default {
 </script>
 
 <style scoped>
-.wrap {
-  padding: 40px 0;
+.container {
+  padding: 40px 0 !important;
 }
 .top {
   display: flex;

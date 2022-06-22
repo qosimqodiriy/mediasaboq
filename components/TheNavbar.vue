@@ -16,17 +16,17 @@
           <nuxt-link class="link" @click.native="scrollToTop" to="/online-darslar"> Onlayn darslar</nuxt-link>
         </div>
       </div>
-      <nuxt-link class="search" to="/qidiruv" @click.native="scrollToTop">
-        <img src="@/assets/img/search.svg" alt="" />
-      </nuxt-link>
 
-      <div
-        class="burger"
-        :class="{ 'toggle-x': isMenuOpen }"
-        @click="isMenuOpen = !isMenuOpen"
-      >
-        <div class="stick"></div>
+      <div class="flex items-center gap-3">
+        <nuxt-link class="search" to="/qidiruv" @click.native="scrollToTop">
+          <img src="@/assets/img/search.svg" alt="" />
+        </nuxt-link>
+        
+        <div class="burger" :class="{ 'toggle-x': isMenuOpen }" @click="isMenuOpen = !isMenuOpen">
+          <div class="stick"></div>
+        </div>
       </div>
+
     </div>
   </div>
 </template>
@@ -43,6 +43,7 @@ export default {
   methods: {
     scrollToTop() {
       window.scrollTo(0, 0)
+      this.isMenuOpen = false
     },
   },
 }
@@ -108,18 +109,19 @@ export default {
   color: var(--orange);
 }
 .stick {
-  width: 30px;
+  width: 25px;
   height: 2px;
   background: white;
+  margin: 8px 0;
   position: relative;
   transition: 0.3s;
 }
 .stick::after {
   content: '';
   position: absolute;
-  top: 10px;
+  top: 8px;
   left: 0;
-  width: 30px;
+  width: 25px;
   height: 2px;
   background: white;
   transition: 0.3s;
@@ -127,9 +129,9 @@ export default {
 .stick::before {
   content: '';
   position: absolute;
-  top: -10px;
+  top: -8px;
   left: 0;
-  width: 30px;
+  width: 25px;
   height: 2px;
   background: white;
 }
@@ -170,9 +172,6 @@ export default {
   }
   .burger {
     display: block;
-  }
-  .search {
-    display: none;
   }
   .toggle-x .stick {
     transform: rotate(45deg);
