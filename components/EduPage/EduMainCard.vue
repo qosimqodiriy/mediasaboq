@@ -1,6 +1,6 @@
 <template>
   <div class="cardo">
-    <img :src="`https:mediasaboq.uz/${item.image}`" class="pic" alt="" />
+    <img :src="`https://mediasaboq.uz/${item.image}`" class="pic" :alt="item.name" />
     <div class="content">
       <p class="txt">{{ item.name }}</p>
       <p class="arrow">
@@ -30,9 +30,10 @@ export default {
   position: relative;
 }
 .pic {
+  width: 100%;
   height: 220px;
   object-fit: cover;
-  width: 100%;
+  object-position: top center;
 }
 .content {
   position: absolute;

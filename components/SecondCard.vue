@@ -2,8 +2,7 @@
   <div class="whole w-full">
     <div>
       <div  class="imgBox">
-        <div class="imgDown"></div>
-        <img :src="`https://mediasaboq.uz/${item.image}`" alt="" class="pic" />
+        <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
       </div>
     </div>
     <div>
@@ -47,18 +46,6 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-@keyframes identifier {
-  0% {
-    opacity: 0.1;
-    transform: scale(0.8);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
 }
 .pic {
   height: 259px;
