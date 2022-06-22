@@ -59,7 +59,7 @@ export default {
     loadMedia() {
       this.offset = this.offset + 6
       if (this.offset < this.count) {
-        this.getEducation()
+        this.getArticles()
       }
     },
 
@@ -75,8 +75,12 @@ export default {
     },
 
     async getArticles() {
-      const response = await axios.get(`https://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`,{ params: { size: 6,  offset: this.offset }})
-      this.list = response.data.list
+      const response = await axios.get(`https://mediasaboq.uz/api/v1/articles?category=${this.categoryId}`, { params: { size: 6,  offset: this.offset }})
+      this.count = response.data.count
+      this.list = [
+        ...this.list,
+        ...response.data.list
+      ]
     }
   },
 

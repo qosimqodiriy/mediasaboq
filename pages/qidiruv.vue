@@ -2,15 +2,16 @@
   <div class="container flex flex-col">
     <form class="form">
       <label
-        for="default-search"
+        for="search"
         class="text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
         >Search</label>
       <div class="relative px-2">
         <input
-          id="default-search"
+          id="search"
           class="search block w-full relative outline-none text-center"
           v-model="InputValue"
           placeholder="Qidiruv..."
+          v-on:keypress.enter.prevent="ClickSearch"
         />
         <div
           v-if="InputValue.length !== 0"
@@ -21,10 +22,10 @@
         </div>
       </div>
     </form>
-    <div v-if="InputValue.length < 3" class="flex-auto w-full h-full flex items-center justify-center pb-10">
+    <div v-if="isTrue === false || InputValue.length < 3" class="flex-auto w-full h-full flex items-center justify-center pb-10">
       <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!!!!</p>
     </div>
-    <div v-if="InputValue.length > 2" class="pb-10">
+    <div v-if="isTrue === true" class="pb-10">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg ': openTab === 1 }" v-if="mediaBlog.count" class="count">{{mediaBlog.count}}</span></p>
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="talim.count" class="count">{{talim.count}}</span></p>
@@ -108,7 +109,7 @@ export default {
 
   data() {
     return {
-      isTrue: 0,
+      isTrue: false,
       openTab: 1,
       InputValue: '',
       changeValue: 1,
@@ -120,55 +121,56 @@ export default {
   },
 
   methods: {
-    DeleteValue() {
+    DeleteValue(event) {
+      event.preventDefault();
       this.InputValue = ''
+    },
+    
+
+    ClickSearch(event) {
+      this.openTab = 1
+      if(this.InputValue.length > 2) {
+        this.getData();
+        this.isTrue = true
+      }
+    },
+
+    check() {
+      if (this.InputValue.length < 3) {
+        this.isTrue = false
+      }
+      setTimeout(() => { this.check() }, 100);
     },
     
     toggleTabs(tabNumber) {
       this.openTab = tabNumber
     },
-
-    Check() {
-      if(this.changeValue !== this.InputValue) {
-        this.getData();
-        this.changeValue = this.InputValue
-      }
-      if(this.InputValue.length > 0) {
-        this.isTrue = 1
-      }
-      setTimeout(() => {this.Check()}, 100)
-    },
     
     async getData() {
-      if(this.InputValue.length > 2 ) {
-        const res1 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`)
-        const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`)
-        const res3 = await axios.get(`https://mediasaboq.uz/api/v1/books?search=${this.InputValue}`)
-        const res4 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=3`)
+      const res1 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=1`)
+      const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`)
+      const res3 = await axios.get(`https://mediasaboq.uz/api/v1/books?search=${this.InputValue}`)
+      const res4 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=3`)
 
-        // console.log(res1.data)
-        // console.log(res2.data)
-        // console.log(res3.data)
-        // console.log(res4.data)
+      this.mediaBlog = res1.data
+      this.talim = res2.data
+      this.kitoblar = res3.data
+      this.mediaLoyihalar = res4.data
 
-        this.mediaBlog = res1.data
-        this.talim = res2.data
-        this.kitoblar = res3.data
-        this.mediaLoyihalar = res4.data
-      }
-      if(this.InputValue.length < 3 && this.isTrue === 1) {
+      if(this.InputValue.length === 0 ) {
         this.mediaBlog = []
         this.talim = []
         this.kitoblar = []
         this.mediaLoyihalar = []
 
-        this.openTab = 1
+        this.isTrue = false
       }
     },
   },
 
   mounted() {
-    this.Check()
+    this.check()
+    this.ClickSearch()
   },
 }
 </script>
