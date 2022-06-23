@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="socs">
-          <a target="_blank" :href="link.url" v-for="link in list" :key="link.id">
+          <a target="_blank" :href="link.url" v-for="link in list" :key="link.id" rel="nofollow">
             <img class="soc" :src="`https://mediasaboq.uz/${link.icon}`" :alt="link.url" />
           </a>
         </div>

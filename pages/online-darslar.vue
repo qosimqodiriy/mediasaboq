@@ -71,15 +71,19 @@ export default {
         axios.post(`https://mediasaboq.uz/api/v1/email`, {
           url: this.EmailValue,
         })
-        .then(function (response) {
+        .then(response => {
           // console.log(response);
+          if (response.statusText === "OK") {
+            this.Send = "Pochta manzilingiz yuborildi"
+            setTimeout(() => { this.Send = '' }, 2000)
+          }
         })
-        .catch(function (error) {
+        .catch( error => {
           console.log(error);
+          this.Error = "Emailingiz yuborilmadi"
+          setTimeout(() => { this.Error = '' }, 2000)
         });
-        setTimeout(() => { this.Send = "Pochta manzilingiz yuborildi" }, 500);
-        setTimeout(() => { this.Send = '' }, 2000)
-        setTimeout(() => { this.EmailValue = '' }, 150)
+        this.EmailValue = ''
       }
     }
   }
