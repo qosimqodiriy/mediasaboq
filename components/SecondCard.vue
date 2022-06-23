@@ -11,7 +11,7 @@
         </div> -->
       <div class="asap">
         <div class="bottom">
-          <h3 class="title__lil">{{ item.title }}</h3>
+          <h3 class="title__lil">{{ item.name }}</h3>
           <p class="txt">{{ item.bookAuthor }}</p>
         </div>
       </div>
