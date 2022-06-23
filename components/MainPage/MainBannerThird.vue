@@ -63,7 +63,6 @@ export default {
     },
     SendEmail(event) {
       event.preventDefault()
-      console.log("Email yuborish btn bosildi");
       if (!/@/.test(this.EmailValue) || /[ `!#$%^&*()_+\-={};':"|,<>?~]/.test(this.EmailValue)) {
         this.Error = "To'g'ri email kiritilmadi"
         setTimeout(() => { this.Error = '' }, 2000)
@@ -78,7 +77,7 @@ export default {
           this.isDownload = true
           this.Send = "Pochta manzilingiz yuborildi"
           setTimeout(() => { this.Send = '' }, 2000)
-          this.isOpen = false
+          setTimeout(() => { this.isOpen = false }, 2000)
           this.EmailValue = ''
         })
         .catch(function (error) {
