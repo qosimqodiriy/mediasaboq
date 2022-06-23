@@ -7,18 +7,19 @@
           Agarda biz bilan pochta manzilingizni bo‘lishsangiz onlayn darslar
           imkoniyatimiz ishga tushganda sizga o‘zimiz xabar beramiz!
         </p>
+        <p v-if="Error !== ''" class="text-red-500 mb-3">{{ Error }}</p>
         <form class="contact-box">
           <input class="input" type="email" v-model="EmailValue" placeholder="Pochta manzilingiz" autocomplete="false" required />
           <button class="btn" type="submit" @click="PostEmail">Ma’lumotni qoldirish</button>
         </form>
-        <p>{{ this.EmailValue }}</p>
+        <p v-if="Send !== ''" class="text-green-500 mt-3">{{ Send }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 
 export default {
   name: 'OnlineDarslar',
@@ -54,26 +55,32 @@ export default {
   data() {
     return {
       EmailValue: "",
+      Error: '',
+      Send: '',
     }
   },
 
   methods: {
     PostEmail(event) {
       event.preventDefault()
-      // if(this.EmailValue.length !== 0) {
-      //   axios.post(`https://mediasaboq.uz/api/v1/email`, {
-      //     url: this.EmailValue,
-      //   })
-      //   .then(function (response) {
-      //     console.log(response);
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
-      //   setTimeout(() => {
-      //     this.EmailValue = ''
-      //   }, 150)
-      // }
+      if (!/@/.test(this.EmailValue) || /[ `!#$%^&*()_+\-={};':"|,<>?~]/.test(this.EmailValue)) {
+        this.Error = "To'g'ri email kiritilmadi"
+        setTimeout(() => { this.Error = '' }, 2000)
+      }
+      if (/@/.test(this.EmailValue) && !/[ `!#$%^&*()_+\-={};':"|,<>?~]/.test(this.EmailValue)) {
+        axios.post(`https://mediasaboq.uz/api/v1/email`, {
+          url: this.EmailValue,
+        })
+        .then(function (response) {
+          // console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+        setTimeout(() => { this.Send = "Pochta manzilingiz yuborildi" }, 500);
+        setTimeout(() => { this.Send = '' }, 2000)
+        setTimeout(() => { this.EmailValue = '' }, 150)
+      }
     }
   }
 }

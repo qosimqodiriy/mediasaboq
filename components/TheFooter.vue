@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="bottom">
-        <p class="txt" v-if="copyRight.footer">{{ copyRight.footer.uz }}</p>
+        <p class="txt" v-if="copyRight.footer" v-html="copyRight.footer.uz"></p>
       </div>
     </div>
   </div>

@@ -9,8 +9,8 @@
         <p class="time">
           <img src="../assets/icons/time.png" alt="time"> 
           <span>
-            {{ getHours(151616546465465).value }} 
-            {{ getHours(151616546465465).type }} avval
+            {{ getHours(item.date).value }} 
+            {{ getHours(item.date).type }} avval
           </span> 
         </p>
       </div>
@@ -26,6 +26,17 @@
 
 export default {
   name: 'FirstCard',
+  
+  props: {
+    item: {
+      required: true,
+      type: Object,
+    },
+    show: {
+      required: false,
+      type: Boolean,
+    }
+  },
 
   methods: {
     getHours(timestamp) {
@@ -60,17 +71,6 @@ export default {
         }
       }
     },
-  },
-  
-  props: {
-    item: {
-      required: true,
-      type: Object,
-    },
-    show: {
-      required: false,
-      type: Boolean,
-    }
   },
 
 }

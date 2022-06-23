@@ -1,7 +1,7 @@
 <template>
   <div v-if="list.body" class="container">
     <h1 class="title">Biz haqimizda</h1>
-    <p class="text">{{ list.body.uz }}</p>
+    <p class="text" v-html="list.body.uz"></p>
     <div class="space-y-2.5">
       <div
         v-for="(link, index) in list.contacts"

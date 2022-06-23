@@ -1,7 +1,11 @@
 <template>
   <div v-if="item.title" class="card">
     <div class="img">
-      <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
+      <img
+        :src="`https://mediasaboq.uz/${item.image}`"
+        :alt="item.title"
+        class="pic"
+      />
     </div>
     <div class="content">
       <div class="mid">
@@ -9,9 +13,16 @@
       </div>
       <h3 class="txt">{{ item.title }}</h3>
       <div class="download">
-        <a :href="`https://mediasaboq.uz/${item.url}`" download class="btn">
+        <button @click="(event) => onClick(item.url)" class="btn">
           Yuklab olish <img src="@/assets/icons/download.png" alt="download">
-        </a>
+        </button>
+        <div v-if="isOpen === false" class="mt-5">
+          <p class="my-4 text-lg">Iltimos, Yuklash uchun emailingizni kiriting!</p>
+          <form class="contact-box">
+            <input class="input flex-auto" type="email" placeholder="Pochta manzilingiz" autocomplete="false" required />
+            <button class="btnSend" type="submit">Yuborish</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -28,6 +39,26 @@ export default {
       type: Object,
     },
   },
+
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
+
+  methods: {
+    onClick(url){
+      if(localStorage.getItem("email")){
+        window.open(`https://mediasaboq.uz/${url}`)
+      } else {
+        this.isOpen = true
+        console.log("Email yo'q");
+      }
+    }
+
+  }
+
+
 }
 </script>
 
@@ -98,6 +129,7 @@ export default {
   align-items: center;
   justify-content: center;
   column-gap: 5px;
+  box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
 }
 .btn:hover img {
   transform: rotate(0deg);
@@ -105,10 +137,55 @@ export default {
 .btn:focus {
   box-shadow: none;
 }
+
+.contact-box {
+  display: flex;
+}
+.input {
+  font-size: 15px;
+  line-height: 22px;
+  color: #010e38;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
+}
+.input:focus {
+    outline: none;
+}
+.btnSend {
+  color: white;
+  font-size: 15px;
+  line-height: 22px;
+  max-width: 200px;
+  padding: 16px 20px;
+  border-radius: 0px !important;
+  background: #ff6300;
+  box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
+}
+
 @media screen and (max-width: 1024px) {
   .txt {
     font-size: 20px;
     line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .contact-box {
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .btnSend {
+    color: white;
+    font-size: 15px;
+    line-height: 22px;
+    padding: 16px 24px;
+    border-radius: 0px !important;
+    background: #ff6300;
+    margin: 0;
+    box-shadow: 0px 10px 20px rgba(255, 99, 0, 0.1);
   }
 }
 </style>

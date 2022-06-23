@@ -81,6 +81,7 @@ export default {
         ...this.list,
         ...response.data.list
       ]
+      console.log(this.list);
     }
   },
 
