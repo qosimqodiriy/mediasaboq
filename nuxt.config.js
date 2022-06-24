@@ -97,7 +97,6 @@ export default {
         name: 'twitter:card',
         content: 'summary_large_image',
       },
-      ...i18nHead.meta,
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
