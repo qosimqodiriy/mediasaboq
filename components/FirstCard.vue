@@ -1,7 +1,7 @@
 <template>
-  <div v-if="item.category" class="whole w-full">
+  <div class="whole w-full">
     <div class="img">
-      <img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
+      <nuxt-img :src="`https://mediasaboq.uz/${item.image}`" format="webp" :alt="item.title" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">
