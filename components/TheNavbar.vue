@@ -3,7 +3,7 @@
     <div class="container">
       <div class="brand">
         <nuxt-link to="/">
-          <img class="cursor-pointer" src="@/assets/img/brand.svg" alt="mediasaboq" />
+          <img class="cursor-pointer" width="134" height="23" src="@/assets/img/brand.svg" alt="mediasaboq" />
         </nuxt-link>
       </div>
 
@@ -19,7 +19,7 @@
 
       <div class="flex items-center gap-3">
         <nuxt-link class="search" to="/qidiruv" @click.native="scrollToTop">
-          <img src="@/assets/img/search.svg" alt="search" />
+          <img src="@/assets/img/search.svg" width="23" height="23" alt="search" />
         </nuxt-link>
         
         <div class="burger" :class="{ 'toggle-x': isMenuOpen }" @click="isMenuOpen = !isMenuOpen">
@@ -166,9 +166,6 @@ export default {
   }
   .link {
     margin-right: 0;
-  }
-  .brand img {
-    width: 100px;
   }
   .burger {
     display: block;

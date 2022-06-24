@@ -4,7 +4,7 @@
       <div class="top">
         <h3 class="title">Media Loyihalar</h3>
         <nuxt-link class="next" to="/media-loyihalar" @click.native="scrollToTop">
-          Barchasi <img src="../../assets/icons/arrow.png" alt="arrowRight">
+          Barchasi <img src="../../assets/icons/arrow.png" width="21" height="21" alt="arrowRight">
         </nuxt-link>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

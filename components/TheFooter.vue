@@ -5,7 +5,7 @@
         <div class="better">
           <div class="brand">
             <nuxt-link to="/" @click.native="scrollToTop">
-              <img src="@/assets/img/brand.svg" alt="mediasaboq" />
+              <img src="@/assets/img/brand.svg" width="134" height="23" alt="mediasaboq" />
             </nuxt-link>
           </div>
           <div class="links">

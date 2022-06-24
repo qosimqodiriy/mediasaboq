@@ -75,5 +75,22 @@ export default {
     font-size: 20px;
     line-height: 28px;
   }
+  .pic {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .txt {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .pic {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
 }
 </style>

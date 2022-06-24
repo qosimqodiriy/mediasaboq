@@ -5,7 +5,7 @@
           <div v-for="item in list" :key="item.id">
             <nuxt-link :to="item.to">
               <p class="time">
-                <img src="@/assets/icons/time.png" alt="time" /> 
+                <img src="@/assets/icons/time.png" width="18" height="18" alt="time" /> 
                 <span>
                   {{ getHours(item.date).value }} 
                   {{ getHours(item.date).type }} avval

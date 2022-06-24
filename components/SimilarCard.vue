@@ -5,7 +5,7 @@
     <div v-for="blog in item" :key="blog.id">
       <nuxt-link v-if="blog.type === 1" :to="`/media-blog/${blog.category.slug}/${blog.slug}`" >
         <p class="time">
-          <img src="@/assets/icons/time.png" alt="time" /> 
+          <img src="@/assets/icons/time.png" width="18" height="18" alt="time" /> 
           <span>
             {{ getHours(item.date).value }} 
             {{ getHours(item.date).type }} avval

@@ -7,7 +7,7 @@
       <div class="mid">
         <p class="name" v-if="show === true">{{ item.category.name }}</p>
         <p class="time">
-          <img src="../assets/icons/time.png" alt="time"> 
+          <img src="../assets/icons/time.png" width="18" height="18" alt="time"> 
           <span>
             {{ getHours(item.date).value }} 
             {{ getHours(item.date).type }} avval
