@@ -90,7 +90,7 @@ export default {
       })
       this.count = res.data.count
       this.list = [...this.list, ...res.data.list]
-      console.log(this.list);
+      // console.log(this.list);
     },
   },
 
@@ -131,12 +131,12 @@ export default {
   border-radius: 0;
   box-shadow: var(--shadow);
 }
-.btn img {
+/* .btn img {
   transition: 1s;
 }
 .btn:hover img {
   transform: rotate(-360deg);
-}
+} */
 
 @media screen and (max-width: 1024px) {
   .grid {
