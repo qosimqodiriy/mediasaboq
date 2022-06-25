@@ -1,7 +1,7 @@
 <template>
   <div class="whole w-full">
     <div class="img">
-      <nuxt-img :src="`https://mediasaboq.uz/${item.image}`" format="webp" :alt="item.title" class="pic" />
+      <img :src="`https://mediasaboq.uz/${item.image}`" format="webp" :alt="item.title" class="pic" />
     </div>
     <div class="asap">
       <div class="mid">

@@ -3,7 +3,7 @@
         <nuxt-link class="link" :to="item.to" >
             <div class="category absolute top-0 right-0 bg-white"><p class="name">{{ item.category.name }}</p></div>
             <div class="img">
-              <nuxt-img preload :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
+              <img preload :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" />
             </div>
             <div class="content"><h3 class="txt">{{item.title}}</h3></div>
         </nuxt-link>
