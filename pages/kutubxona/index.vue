@@ -90,7 +90,6 @@ export default {
       })
       this.count = res.data.count
       this.list = [...this.list, ...res.data.list]
-      // console.log(this.list);
     },
   },
 

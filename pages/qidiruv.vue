@@ -3,16 +3,17 @@
     <form class="form">
       <label for="search" class="text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
       <div class="relative px-2">
-        <input id="search" v-model="InputValue" v-on:keypress.enter.prevent="ClickSearch" placeholder="Qidiruv..." class="search block w-full relative outline-none text-center" />
-        <div v-if="InputValue.length !== 0" @click="DeleteValue" class="flex items-center absolute inset-y-0 right-3 close">
+        <!-- <input id="search" v-model="InputValue" v-on:keypress.enter.prevent="ClickSearch" placeholder="Qidiruv..." class="search block w-full relative outline-none text-center" /> -->
+        <input type="search" name="search" v-model="InputValue" @input="ClickSearch" placeholder="Qidiruv..." class="search block w-full relative outline-none text-center">
+        <!-- <div v-if="InputValue.length !== 0" @click="DeleteValue" class="flex items-center absolute inset-y-0 right-3 close">
           <img class="cursor-pointer" src="../assets/icons/close.png" alt="close" />
-        </div>
+        </div> -->
       </div>
     </form>
-    <div v-if="isTrue === false || InputValue.length < 3" class="flex-auto w-full h-full flex items-center justify-center pb-10">
+    <div v-if="!isTrue || InputValue == ''" class="flex-auto w-full h-full flex items-center justify-center pb-10">
       <p class="search-title">Kerakli maqolangizga tegishli kalit so‘zni kiriting!!!!</p>
     </div>
-    <div v-if="isTrue === true">
+    <div v-if="isTrue">
       <div class="tabs flex flex-col md:flex-row items-center justify-center md:gap-10">
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(1)" v-bind:class="{ 'font-normal': openTab !== 1, 'font-semibold border-active': openTab === 1,}">Media blog      <span v-bind:class="{ 'countFalseBg': openTab !== 1, 'countTrueBg': openTab === 1 }" v-if="count1" class="count">{{count1}}</span></p>
         <p class="cursor-pointer text-center md:text-start inline pb-1 pt-1.5 md:pb-3.5 md:pb-3.5 border-b-2 text-lg" v-on:click="toggleTabs(2)" v-bind:class="{ 'font-normal': openTab !== 2, 'font-semibold border-active': openTab === 2,}">Ta‘lim          <span v-bind:class="{ 'countFalseBg': openTab !== 2, 'countTrueBg': openTab === 2 }" v-if="count2" class="count">{{count2}}</span></p>
@@ -143,31 +144,34 @@ export default {
     
 
     ClickSearch(event) {
-      this.openTab = 1
-      if(this.InputValue.length > 2) {
-        
-        if (this.get === true) {
-          this.getMediaBlog()
-          this.getTalim()
-          this.getBooks()
-          this.getMediaLoyiha()
-        }
+      // this.openTab = 1
+      if(this.InputValue.length > 0) {
         this.isTrue = true
-        this.get = false
-      }
-    },
-
-    check() {
-      if (this.InputValue.length < 3) {
-        this.isTrue = false
-
         this.mediaBlog = []
         this.talim = []
         this.kitoblar = []
         this.mediaLoyihalar = []
+
+        this.getMediaBlog()
+        this.getTalim()
+        this.getBooks()
+        this.getMediaLoyiha()
+      } else {
+        this.isTrue = false
       }
-      setTimeout(() => { this.check() }, 100);
     },
+
+    // check() {
+    //   if (this.InputValue.length < 3) {
+    //     this.isTrue = false
+
+    //     this.mediaBlog = []
+    //     this.talim = []
+    //     this.kitoblar = []
+    //     this.mediaLoyihalar = []
+    //   }
+    //   setTimeout(() => { this.check() }, 100);
+    // },
     
     toggleTabs(tabNumber) {
       this.openTab = tabNumber
@@ -176,7 +180,6 @@ export default {
     loadMedia() {
       this.offset1 = this.offset1 + 6
       if (this.offset1 < this.count1) {
-        console.log(this.count1);
         this.getMediaBlog()
       }
     },
@@ -216,6 +219,7 @@ export default {
       ]
       // console.log(this.mediaBlog);
     },
+
     async getTalim() {
       const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=2`, {
         params: {
@@ -230,6 +234,7 @@ export default {
       ]
       // console.log(this.talim);
     },
+
     async getBooks() {
         const res3 = await axios.get(`https://mediasaboq.uz/api/v1/books?search=${this.InputValue}`, {
           params: {
@@ -244,6 +249,7 @@ export default {
         ]
         // console.log(this.kitoblar);
     },
+
     async getMediaLoyiha() {
         const res4 = await axios.get(`https://mediasaboq.uz/api/v1/articles?search=${this.InputValue}&type=3`, {
           params: {
@@ -261,7 +267,7 @@ export default {
   },
 
   mounted() {
-    this.check()
+    // this.check()
   },
 }
 </script>
@@ -276,7 +282,7 @@ export default {
   margin-bottom: 40px;
 }
 .search {
-  padding: 10px 0;
+  padding: 10px 5px;
   font-size: 18px;
   line-height: 27px;
   color: #010e38;

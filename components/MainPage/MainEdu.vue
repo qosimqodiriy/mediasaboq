@@ -8,7 +8,7 @@
         </nuxt-link>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.id}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
+        <nuxt-link class="flex" :to="`/talim/${item.category.slug}/${item.slug}`" v-for="item in list" :key="item.id" @click.native="scrollToTop">
           <FirstCard :show="true" :item="item" />
         </nuxt-link>
       </div>

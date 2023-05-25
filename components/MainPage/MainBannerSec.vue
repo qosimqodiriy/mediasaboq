@@ -6,7 +6,13 @@
     <div class="img"><img :src="`https://mediasaboq.uz/${item.image}`" :alt="item.title" class="pic" /></div>
     <div class="content">
       <div class="mid">
-        <p class="time"><img src="@/assets/icons/time.png" width="18" height="18" alt="clock"> 6 soat avval</p>
+        <p class="time">
+          <img src="@/assets/icons/time.png" width="18" height="18" alt="clock">
+          <span>
+            {{ getHours(item.date).value }} 
+            {{ getHours(item.date).type }} avval
+          </span> 
+        </p>
         <p class="seen"> <img src="@/assets/img/eye.svg" width="18" height="18" alt="eye" /> {{ item.hit }} </p>
       </div>
       <h3 class="txt">{{ item.title }}</h3>
@@ -15,7 +21,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'MainBanner',
   
@@ -23,6 +28,41 @@ export default {
     item: {
       // required: true,
       type: Object,
+    },
+  },
+
+  methods: {
+    getHours(timestamp) {
+      const now = Date.now()
+      const date = new Date(timestamp)
+      const diff = now - date
+
+      if (diff / 1000 / 60 / 60 / 24 / 31 > 12) {
+        return {
+          type: 'yil',
+          value: Math.round(diff / 1000 / 60 / 60 / 24 / 31 / 12),
+        }
+      } else if (diff / 1000 / 60 / 60 / 24 > 31) {
+        return {
+          type: 'oy',
+          value: Math.round(diff / 1000 / 60 / 60 / 24 / 31),
+        }
+      } else if (diff / 1000 / 60 / 60 > 24) {
+        return {
+          type: 'kun',
+          value: Math.round(diff / 1000 / 60 / 60 / 24),
+        }
+      } else if (diff / 1000 / 60 / 60 > 1) {
+        return {
+          type: 'soat',
+          value: Math.round(diff / 1000 / 60 / 60 / 24),
+        }
+      } else {
+        return {
+          type: 'minut',
+          value: Math.round(diff / 1000 / 60),
+        }
+      }
     },
   },
 }

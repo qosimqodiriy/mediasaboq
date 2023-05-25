@@ -10,9 +10,11 @@
         
         <MainPopular :list="listTops"  v-if="listTops.length > 0" />
       </div>
+
       <MediaBlog v-if="listType1.length > 0" :list="listType1" />
       <MainEdu v-if="listType2.length > 0" :list="listType2" />
       <MediaLoyiha v-if="listType3.length > 0" :list="listType3" />
+        
       <div class="load" v-if="listAll.length > 0">
         <nuxt-link class="btn"  to="/media-blog" @click.native="scrollToTop"> 
           Boshqa yangiliklar
@@ -50,9 +52,9 @@ export default {
     scrollToTop() {
       window.scrollTo(0, 0)
     },
-    async getBooks() {
+    async getItems() {
       const res = await axios.get(`https://mediasaboq.uz/api/v1/articles?mainPage=true`)
-      this.listAll = res.data
+      this.listAll = res.data;
 
       let index = 1
       this.listAll.forEach((item) => {
@@ -89,7 +91,7 @@ export default {
   },
 
   mounted() {
-    this.getBooks()
+    this.getItems()
   },
 }
 </script>

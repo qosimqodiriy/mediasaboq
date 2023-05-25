@@ -1,19 +1,20 @@
 <template>
-  <div v-if="model.category" class="container">
+  <div v-if="model.id" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/media-blog">/ Media Blog </nuxt-link>
       <nuxt-link class="last-page" :to="`/media-blog/${this.category}`">/ {{this.categoryName}}</nuxt-link>
       <h1 class="this-page"> / {{ model.title }} </h1>
     </div>
+
     <div class="row grid-cols-1 lg:grid-cols-3">
       <div class="lg:col-span-2">  <!-- v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }"-->
         <MainBannerSec :item="model" />
         <div class="content">
-        <p v-html="model.body"></p>
+          <p v-html="model.body"></p>
         </div>
         <div v-if="model.tags" class="tags">
-          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
+          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" v-show="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
@@ -25,6 +26,8 @@
           </div>
         </nuxt-link>
       </div>
+
+
       <div v-if="model.suggests.length > 0">
         <SimilarCard :item="model.suggests" />
       </div>
@@ -34,15 +37,15 @@
 
 <script>
 import axios from 'axios'
-import MainBannerSec from '@/components/MainPage/MainBannerSec'
 import SimilarCard from '@/components/SimilarCard.vue'
+import MainBannerSec from '@/components/MainPage/MainBannerSec'
 
 export default {
   name: 'MediaBlogPost',
 
   components: {
-    MainBannerSec,
     SimilarCard,
+    MainBannerSec,
   },
 
   data() {
@@ -71,7 +74,6 @@ export default {
       this.model = response.data
       this.title = response.data.title
       this.categoryName = this.model.category.name
-      // console.log(this.model);
     },
 
     async getTag() {

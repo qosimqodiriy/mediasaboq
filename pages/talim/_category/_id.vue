@@ -1,5 +1,5 @@
 <template>
-  <div v-if="model.body" class="container">
+  <div v-if="model.category" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/talim">/ Ta`lim </nuxt-link>
@@ -42,7 +42,7 @@ export default {
 
   data() {
     return {
-      id: null,
+      slug: null,
       title: '',
       category: null,
       categoryName: '',
@@ -67,16 +67,16 @@ export default {
     },
 
     async getModel() {
-      const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.id}`)
+      const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
       this.model = response.data
-      this.categoryName = this.model.category.name
+      this.categoryName = response.data.category.name
       this.title = response.data.title
     },
 
   },
 
   mounted() {
-    this.id = this.$route.params.id;
+    this.slug = this.$route.params.id;
     this.category = this.$route.params.category
     this.getModel()
   },

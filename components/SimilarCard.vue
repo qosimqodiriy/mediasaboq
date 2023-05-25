@@ -7,8 +7,8 @@
         <p class="time">
           <img src="@/assets/icons/time.png" width="18" height="18" alt="time" /> 
           <span>
-            {{ getHours(item.date).value }} 
-            {{ getHours(item.date).type }} avval
+            {{ getHours(item[0].date).value }} 
+            {{ getHours(item[0].date).type }} avval
           </span>
         </p>
         <h3 class="txt">{{ blog.title }}</h3>
@@ -18,8 +18,8 @@
         <p class="time">
           <img src="@/assets/icons/time.png" alt="time" /> 
           <span>
-            {{ getHours(item.date).value }} 
-            {{ getHours(item.date).type }} avval
+            {{ getHours(item[0].date).value }} 
+            {{ getHours(item[0].date).type }} avval
           </span>
         </p>
         <h3 class="txt">{{ blog.title }}</h3>
@@ -27,10 +27,10 @@
 
       <nuxt-link v-if="blog.type === 3" :to="`/media-loyihalar/${blog.slug}`" >
         <p class="time">
-          <img src="@/assets/icons/time.png" alt="time" /> 
+          <img src="@/assets/icons/time.png" alt="time" />
           <span>
-            {{ getHours(item.date).value }} 
-            {{ getHours(item.date).type }} avval
+            {{ getHours(item[0].date).value }} 
+            {{ getHours(item[0].date).type }} avval
           </span>
         </p>
         <h3 class="txt">{{ blog.title }}</h3>
