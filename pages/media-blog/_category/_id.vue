@@ -13,18 +13,31 @@
         <div class="content">
           <p v-html="model.body"></p>
         </div>
-        <div v-if="model.tags" class="tags">
-          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" v-show="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
+        <div v-if="model.tags && model.tags.length > 0" class="tags">
+          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" v-show="tag.id && tag.name" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
         </div>
-        <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
+
+        <div v-if="model.author.id != -1">
+          <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
+            <div class="person overflow-hidden rounded-full object-cover">
+              <img :src="`https://mediasaboq.uz/${model.author.image}`" :alt="model.author.name" />
+            </div>
+            <div class="initials">
+              <p class="name">{{ model.author.name }}</p>
+              <p class="status">{{ model.author.username }}</p>
+            </div>
+          </nuxt-link>
+        </div>
+        
+        <div v-else class="inline-flex items-center gap-2.5">
           <div class="person overflow-hidden rounded-full object-cover">
-            <img :src="`https://mediasaboq.uz/${model.author.image}`" :alt="model.author.name" />
+            <img src="../../../assets/img/logo.png" alt="mediasaboq" />
           </div>
           <div class="initials">
-            <p class="name">{{ model.author.name }}</p>
-            <p class="status">{{ model.author.username }}</p>
+            <p class="name">mediasaboq.uz</p>
+            <p class="status">mediasaboq.uz</p>
           </div>
-        </nuxt-link>
+        </div>
       </div>
 
 
@@ -71,6 +84,8 @@ export default {
 
     async getModel() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
+      response.data.tags = response.data.tags.filter(tag => (tag.id !== 0 && tag.id !== null))
+      console.log(response.data);
       this.model = response.data
       this.title = response.data.title
       this.categoryName = this.model.category.name

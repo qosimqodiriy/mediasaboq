@@ -12,8 +12,8 @@
         <div class="content">
         <p v-html="model.body"></p>
         </div>
-        <div v-if="model.tags" class="tags">
-          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
+        <div v-if="model.tags && model.tags.length > 0" class="tags">
+          <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" v-show="tag.id && tag.name" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>
         </div>
         <nuxt-link :to="`/mualliflar/${model.author.username}`" class="inline-flex items-center gap-2.5" @click.native="scrollToTop">
           <div class="person overflow-hidden rounded-full object-cover">
@@ -68,9 +68,12 @@ export default {
 
     async getModel() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
+      response.data.tags = response.data.tags.filter(tag => (tag.id !== 0 && tag.id !== null))
+      console.log(response.data);
       this.model = response.data
       this.categoryName = response.data.category.name
       this.title = response.data.title
+
     },
 
   },

@@ -65,6 +65,7 @@ export default {
 
     async getModel() {
       await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`).then( response => {
+        response.data.tags = response.data.tags.filter(tag => (tag.id !== 0 && tag.id !== null))
         this.model = response.data
         this.title = response.data.title
       })
