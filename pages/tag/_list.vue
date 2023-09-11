@@ -121,7 +121,6 @@ export default {
           ...this.mediaBlog,
           ...res1.data.list
         ]
-        // console.log(this.mediaBlog);
     },
     async getTalim() {
         const res2 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=2&lang=uz`, {
@@ -135,7 +134,6 @@ export default {
           ...this.talim,
           ...res2.data.list
         ]
-        // console.log(this.talim);
     },
     async getMediaLoyiha() {
         const res3 = await axios.get(`https://mediasaboq.uz/api/v1/articles?tag=${this.tag}&type=3&lang=uz`, {
@@ -149,7 +147,6 @@ export default {
           ...this.mediaLoyihalar,
           ...res3.data.list
         ]
-        // console.log(this.mediaLoyihalar);
     },
   },
 

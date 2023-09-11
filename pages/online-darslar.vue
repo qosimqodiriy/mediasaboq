@@ -72,7 +72,6 @@ export default {
           url: this.EmailValue,
         })
         .then(response => {
-          // console.log(response);
           if (response.statusText === "OK") {
             this.Send = "Pochta manzilingiz yuborildi"
             setTimeout(() => { this.Send = '' }, 2000)

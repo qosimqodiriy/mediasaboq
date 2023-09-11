@@ -217,7 +217,6 @@ export default {
         ...this.mediaBlog,
         ...res1.data.list
       ]
-      // console.log(this.mediaBlog);
     },
 
     async getTalim() {
@@ -232,7 +231,6 @@ export default {
         ...this.talim,
         ...res2.data.list
       ]
-      // console.log(this.talim);
     },
 
     async getBooks() {
@@ -247,7 +245,6 @@ export default {
           ...this.kitoblar,
           ...res3.data.list
         ]
-        // console.log(this.kitoblar);
     },
 
     async getMediaLoyiha() {
@@ -262,7 +259,6 @@ export default {
           ...this.mediaLoyihalar,
           ...res4.data.list
         ]
-        // console.log(this.mediaLoyihalar);
     },
   },
 
