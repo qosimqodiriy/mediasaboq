@@ -85,7 +85,7 @@ export default {
     async getModel() {
       const response = await axios.get(`https://mediasaboq.uz/api/v1/article?slug=${this.slug}`)
       response.data.tags = response.data.tags.filter(tag => (tag.id !== 0 && tag.id !== null))
-      console.log(response.data);
+      // console.log(response.data);
       this.model = response.data
       this.title = response.data.title
       this.categoryName = this.model.category.name
@@ -141,11 +141,6 @@ export default {
 .content {
   padding-top: 40px;
 }
-/* .content p {
-  font-size: var(--18px);
-  line-height: 30px;
-  margin-bottom: 40px;
-} */
 .crumbs {
   padding: 40px 0;
   display: flex;

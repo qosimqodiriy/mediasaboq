@@ -115,11 +115,6 @@ export default {
 .content {
   padding-top: 40px;
 }
-.content p {
-  font-size: var(--18px);
-  line-height: 30px;
-  margin-bottom: 40px;
-}
 .crumbs {
   padding: 40px 0;
   display: flex;
