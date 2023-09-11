@@ -1,4 +1,6 @@
+@import './default.css';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 @font-face {
   font-family: 'poppins';
   src: url('../fonts/Poppins-Regular.ttf') format('truetype');
@@ -36,7 +38,7 @@ body {
   background: var(--orange);
 }
 
-html,
+/* html,
 body,
 div,
 span,
@@ -112,9 +114,9 @@ video {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
-}
+} */
 
-body {
+/* body {
   line-height: 1;
 }
 
@@ -155,17 +157,17 @@ a {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
-}
+} */
 
 /* change colours to suit your needs */
-ins {
+/* ins {
   background-color: #ff9;
   color: #000;
   text-decoration: none;
-}
+} */
 
 /* change colours to suit your needs */
-mark {
+/* mark {
   background-color: #ff9;
   color: #000;
   font-style: italic;
@@ -180,27 +182,27 @@ abbr[title],
 dfn[title] {
   border-bottom: 1px dotted;
   cursor: help;
-}
+} */
 
-table {
+/* table {
   border-collapse: collapse;
   border-spacing: 0;
-}
+} */
 
 /* change border colour to suit your needs */
-hr {
+/* hr {
   display: block;
   height: 1px;
   border: 0;
   border-top: 1px solid #cccccc;
   margin: 1em 0;
   padding: 0;
-}
+} */
 
-input,
+/* input,
 select {
   vertical-align: middle;
-}
+} */
 
 .container {
   max-width: 1216px;

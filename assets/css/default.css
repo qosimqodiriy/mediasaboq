@@ -1,0 +1,289 @@
+.text_editor_inner a {
+  color: #552A8B;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.text_editor_inner a:link {
+  color: (internal value);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.text_editor_inner a:visited {
+  color: (internal value);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.text_editor_inner a:link:active {
+  color: (internal value);
+}
+
+.text_editor_inner a:visited:active {
+  color: (internal value);
+}
+
+.text_editor_inner address {
+  display: block;
+  font-style: italic;
+}
+
+.text_editor_inner b {
+  font-weight: bold;
+}
+
+.text_editor_inner bdo {
+  unicode-bidi: bidi-override;
+}
+
+.text_editor_inner blockquote {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.text_editor_inner caption {
+  display: table-caption;
+}
+
+.text_editor_inner cite {
+  font-style: italic;
+}
+
+.text_editor_inner del {
+  text-decoration: line-through;
+}
+
+.text_editor_inner dl {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.text_editor_inner em {
+  font-style: italic;
+}
+
+f.text_editor_inner ieldset {
+  display: block;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding-top: 0.35em;
+  padding-bottom: 0.625em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  border: 2px groove (internal value);
+}
+
+.text_editor_inner figure {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.text_editor_inner h1 {
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.text_editor_inner h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.text_editor_inner h4 {
+  margin-top: 1.33em;
+  margin-bottom: 1.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.text_editor_inner h5 {
+  display: block;
+  font-size: .83em;
+  margin-top: 1.67em;
+  margin-bottom: 1.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.text_editor_inner h6 {
+  display: block;
+  font-size: .67em;
+  margin-top: 2.33em;
+  margin-bottom: 2.33em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+}
+
+.text_editor_inner hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+.text_editor_inner i {
+  font-style: italic;
+}
+
+.text_editor_inner ins {
+  text-decoration: underline;
+}
+
+.text_editor_inner kbd {
+  font-family: monospace;
+}
+
+.text_editor_inner legend {
+  display: block;
+  padding-left: 2px;
+  padding-right: 2px;
+  border: none;
+}
+
+.text_editor_inner li {
+  display: list-item;
+}
+
+.text_editor_inner menu {
+  display: block;
+  list-style-type: disc;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.text_editor_inner ol {
+  display: block;
+  list-style-type: decimal;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}
+
+.text_editor_inner p {
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.text_editor_inner pre {
+  display: block;
+  font-family: monospace;
+  white-space: pre;
+  margin: 1em 0;
+}
+
+.text_editor_inner small {
+  font-size: smaller;
+}
+
+.text_editor_inner strong {
+  font-weight: bold;
+}
+
+.text_editor_inner sub {
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+.text_editor_inner sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+.text_editor_inner table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+}
+
+.text_editor_inner tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.text_editor_inner td {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+.text_editor_inner tfoot {
+  display: table-footer-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.text_editor_inner th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  text-align: center;
+}
+
+.text_editor_inner thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.text_editor_inner tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.text_editor_inner u {
+  text-decoration: underline;
+}
+
+.text_editor_inner ul {
+  display: block;
+  list-style-type: disc;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
+}

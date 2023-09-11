@@ -10,7 +10,7 @@
       <div class="lg:col-span-2">  <!-- v-bind:class="{ 'lg:col-span-2': model.suggests.length > 0, 'lg:col-span-3': model.suggests.length === 0 }"-->
         <MainBannerSec :item="model" />
         <div class="content">
-        <p v-html="model.body"></p>
+          <div class="text_editor_inner" v-html="model.body"></div>
         </div>
         <div v-if="model.tags && model.tags.length > 0" class="tags">
           <nuxt-link :to="`/tag/${tag.name}`" v-for="tag in model.tags" :key="tag.id" v-show="tag.id && tag.name" @click.native="scrollToTop">#{{ tag.name }}</nuxt-link>

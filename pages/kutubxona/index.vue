@@ -80,6 +80,7 @@ export default {
         this.getBooks()
       }
     },
+    
     async getBooks() {
       const res = await axios.get(`https://mediasaboq.uz/api/v1/books`, {
         params: {
