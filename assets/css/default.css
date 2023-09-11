@@ -218,10 +218,23 @@ h3 {
 }
 
 .text_editor_inner strong {
-  font-weight: bold !important;
-  color: red !important;
-  font-size: 20px;
-  font-family: 'poppins', 'Courier New', Courier, monospace !important;
+  font-weight: 700 !important;
+  font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
+}
+
+.text_editor_inner > * > strong {
+  font-weight: 700 !important;
+  font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
+}
+
+.text_editor_inner > strong {
+  font-weight: 700 !important;
+  font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
+}
+
+.text_editor_inner p strong {
+  font-weight: 700 !important;
+  font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
 }
 
 .text_editor_inner sub {
