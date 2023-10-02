@@ -1,5 +1,5 @@
 <template>
-  <div v-if="model.title" class="container">
+  <div v-if="model.id" class="container">
     <div class="crumbs">
       <nuxt-link class="last-page" to="/"> Asosiy </nuxt-link>
       <nuxt-link class="last-page" to="/kutubxona">/ Kutubxona </nuxt-link>
@@ -45,6 +45,7 @@ export default {
   methods: {
     async getModel() {
       await axios.get(`https://mediasaboq.uz/api/v1/book?slug=${this.slug}`).then(response => {
+        console.log(response.data);
         this.model = response.data
         this.title = response.data.name
       })
@@ -69,17 +70,20 @@ export default {
 }
 .crumbs {
   display: flex;
-  align-items: center;
+  align-items: start;
   padding: 40px 0 !important;
+  /* flex-wrap: wrap; */
   gap: 5px;
   font-size: var(--18px);
 }
 .last-page {
   color: black;
   opacity: 0.7;
+  white-space: nowrap;
 }
 .this-page {
   font-weight: 600;
+  word-break: keep-all;
 }
 .lil-title {
   font-weight: 600;

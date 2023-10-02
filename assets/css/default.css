@@ -218,21 +218,25 @@ h3 {
 }
 
 .text_editor_inner strong {
+  -webkit-font-smoothing: antialiased;
   font-weight: 700 !important;
   font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
 }
 
 .text_editor_inner > * > strong {
+  -webkit-font-smoothing: antialiased;
   font-weight: 700 !important;
   font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
 }
 
 .text_editor_inner > strong {
+  -webkit-font-smoothing: antialiased;
   font-weight: 700 !important;
   font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
 }
 
 .text_editor_inner p strong {
+  -webkit-font-smoothing: antialiased;
   font-weight: 700 !important;
   font-family: 'Poppins', 'poppins', 'Courier New', Courier, monospace !important;
 }
