@@ -13,7 +13,8 @@
       <!-- Download -->
       <div class="download">
         <button v-if="isOpen === false" @click="(event) => onClick(item.url)" class="btn">Yuklab olish <img src="@/assets/icons/download.png" width="24" height="24" alt="download">
-          <a v-if="isDownload === true" :href="`https://mediasaboq.uz/${item.url}`" download class="href"></a>
+          <a v-if="isDownload === true" :href="`${item.url}`" download target="_blank" class="href"></a>
+          <!-- <a v-if="isDownload === true" :href="`https://mediasaboq.uz/${item.url}`" download class="href"></a> -->
         </button>
 
         <div v-if="isOpen === true" class="mt-5">
