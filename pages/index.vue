@@ -2,6 +2,9 @@
   <div>
     <div class="container p-0 relative">
       <h1 class="hidden">Mediasaboq</h1>
+      <h1 class="hidden">Mediasaboq</h1>
+      <h1 class="hidden">Mediasaboq</h1>
+      <h1 class="hidden">Mediasaboq</h1>
       <div class="grid gap-5 pt-10 grid-cols-1 lg:grid-cols-3 items-start">
         
         <div v-if="isBig.category" class="lg:col-span-2" >  <!-- v-bind:class="{ 'lg:col-span-2': listTops.length > 0, 'lg:col-span-3': listTops.length === 0 }" -->
